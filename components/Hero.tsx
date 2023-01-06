@@ -5,7 +5,7 @@ import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import BackgroundCircles from './BackgroundCircles'
 
 const Hero = () => {
-  const [text, count] = useTypewriter({
+  const [text] = useTypewriter({
     words: ["Hi, The Name's Parv Garg", '<Guy who loves to code/>'],
     delaySpeed: 2000,
     loop: true,
