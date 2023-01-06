@@ -4,6 +4,6 @@
 
 @layer components {
   .heroButton {
-    @apply border border-transparent px-6 py-2 text-xs uppercase tracking-widest text-zinc-500 hover:rounded-xl hover:border-yellow-600 hover:bg-zinc-900 hover:text-yellow-600;
+    @apply border border-transparent px-2 py-2 text-xs uppercase tracking-widest text-zinc-500 hover:rounded-xl hover:border-yellow-600 hover:bg-zinc-900 hover:text-yellow-600 md:px-6;
   }
 }

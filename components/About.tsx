@@ -12,7 +12,9 @@ const About = () => {
       transition={{ duration: 1.5 }}
       viewport={{ once: true }}
       className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-evenly p-5 px-10 text-center md:flex-row md:text-left">
-      <h3 className="absolute top-24 text-2xl uppercase tracking-[20px] text-zinc-500">About</h3>
+      <h3 className="absolute top-24 text-lg uppercase tracking-wider text-zinc-500 sm:text-2xl sm:tracking-[20px]">
+        About
+      </h3>
 
       <motion.img
         initial={{
@@ -24,14 +26,14 @@ const About = () => {
         viewport={{ once: true }}
         src="https://avatars.githubusercontent.com/u/45873074?v=4"
         alt="Parv about"
-        className="-mb-28 h-36 w-36 rounded-full object-cover md:mb-0 md:h-96 md:w-64 md:rounded-lg xl:h-[600px] xl:w-[500px]"
+        className="-mb-28 h-12 w-12 rounded-full object-cover sm:h-36 sm:w-36 md:mb-0 md:h-96 md:w-64 md:rounded-lg xl:h-[600px] xl:w-[500px]"
       />
 
-      <div className="flex flex-col space-y-5 px-0 md:px-10">
-        <h4 className="text-xl font-semibold tracking-wide">
+      <div className="flex flex-col space-y-2 px-0 sm:space-y-5 md:px-10">
+        <h4 className="text-base font-semibold tracking-wide sm:text-xl">
           Here is a <span className="underline decoration-yellow-700">little</span> background
         </h4>
-        <p className="text-sm md:text-base">
+        <p className="text-xs sm:text-sm md:text-base">
           I am a software developer with a strong background in Solidity, a programming language used for developing
           smart contracts on the Ethereum blockchain. In addition to my work with blockchain technology, I am also
           experienced in React and Node, popular front-end and back-end JavaScript libraries, respectively. With my

@@ -22,8 +22,10 @@ const Hero = () => {
           width={128}
           height={128}
         />
-        <h2 className="pb-2 text-sm uppercase tracking-[15px] text-zinc-500">Software engineer</h2>
-        <h1 className="scroll-px-10 text-5xl font-semibold lg:text-6xl">
+        <h2 className="pb-2 text-xs uppercase tracking-[0.5rem] text-zinc-500 sm:text-sm sm:tracking-[15px]">
+          Software engineer
+        </h2>
+        <h1 className="scroll-px-10 text-base font-semibold sm:text-5xl lg:text-6xl">
           <span className="mr-3">{text}</span>
           <Cursor cursorColor="#F7AB0A" />
         </h1>
