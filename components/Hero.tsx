@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import BackgroundCircles from './BackgroundCircles'
@@ -28,10 +29,18 @@ const Hero = () => {
         </h1>
 
         <div>
-          <button className="heroButton">About</button>
-          <button className="heroButton">Experience</button>
-          <button className="heroButton">Skills</button>
-          <button className="heroButton">Projects</button>
+          <Link href="#about" className="heroButton">
+            About
+          </Link>
+          <Link href="#experience" className="heroButton">
+            Experience
+          </Link>
+          <Link href="#skills" className="heroButton">
+            Skills
+          </Link>
+          <Link href="#projects" className="heroButton">
+            Projects
+          </Link>
         </div>
       </div>
     </div>
