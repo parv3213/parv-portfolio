@@ -11,7 +11,7 @@ const About = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
       viewport={{ once: true }}
-      className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-evenly p-5 px-10 text-center md:flex-row md:text-left">
+      className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-center p-5 px-10 text-center sm:justify-evenly md:flex-row md:text-left">
       <h3 className="absolute top-24 text-lg uppercase tracking-wider text-zinc-500 sm:text-2xl sm:tracking-[20px]">
         About
       </h3>
@@ -26,7 +26,7 @@ const About = () => {
         viewport={{ once: true }}
         src="https://avatars.githubusercontent.com/u/45873074?v=4"
         alt="Parv about"
-        className="-mb-28 h-12 w-12 rounded-full object-cover sm:h-36 sm:w-36 md:mb-0 md:h-96 md:w-64 md:rounded-lg xl:h-[600px] xl:w-[500px]"
+        className="mb-10 h-36 w-36 rounded-full object-cover sm:-mb-28 sm:h-36 sm:w-36 md:mb-0 md:h-96 md:w-64 md:rounded-lg xl:h-[600px] xl:w-[500px]"
       />
 
       <div className="flex flex-col space-y-2 px-0 sm:space-y-5 md:px-10">
