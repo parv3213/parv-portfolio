@@ -19,7 +19,7 @@ const BackgroundCircles = () => {
       <div className="absolute mt-52 h-[200px] w-[200px] animate-ping rounded-full border border-zinc-700 opacity-30" />
       <div className="absolute mt-52 h-[300px] w-[300px] rounded-full border border-zinc-700 opacity-30" />
       <div className="absolute mt-52 h-[500px] w-[500px] rounded-full border border-zinc-700 opacity-30" />
-      <div className="absolute mt-52 h-[650px] w-[650px] animate-pulse rounded-full border border-yellow-300 opacity-5" />
+      <div className="absolute mt-52 h-[650px] w-[650px] animate-pulse rounded-full border border-yellow-700 opacity-5" />
       <div className="absolute mt-52 h-[800px] w-[800px] rounded-full border border-zinc-700 opacity-30" />
     </motion.div>
   )

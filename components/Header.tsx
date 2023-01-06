@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const Header = () => {
   return (
-    <header className="flex sticky top-0 justify-between items-start max-w-7xl mx-auto z-20 xl:items-center p-5">
+    <header className="sticky top-0 z-20 mx-auto flex max-w-7xl items-start justify-between p-5 xl:items-center">
       <motion.div
         initial={{
           x: -500,
@@ -39,9 +39,9 @@ const Header = () => {
         transition={{
           duration: 1.5,
         }}
-        className="flex items-center cursor-pointer">
+        className="flex cursor-pointer items-center">
         <SocialIcon network="email" fgColor="gray" bgColor="transparent" />
-        <p className="uppercase hidden md:inline-flex text-sm text-gray-400">Get in touch</p>
+        <p className="hidden text-sm uppercase text-zinc-400 md:inline-flex">Get in touch</p>
       </motion.div>
     </header>
   )
