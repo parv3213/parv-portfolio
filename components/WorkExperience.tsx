@@ -16,7 +16,7 @@ const WorkExperience = () => {
         Experience
       </h3>
 
-      <div className="mt-12 flex w-full snap-x snap-mandatory space-x-5 overflow-x-scroll p-10 sm:mt-24 md:mt-36">
+      <div className="mt-12 flex w-full snap-x snap-mandatory space-x-5 overflow-x-scroll p-10 scrollbar-thin scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700 sm:mt-24 md:mt-36">
         <ExperienceCard />
         <ExperienceCard />
         <ExperienceCard />

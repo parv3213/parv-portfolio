@@ -16,11 +16,11 @@ const ExperienceCard = () => {
         viewport={{ once: true }}
         src="https://pbs.twimg.com/profile_images/1433046911871864836/zVFeya5O_400x400.jpg"
         alt="Company Img"
-        className="mb-7 h-28 w-28 rounded-full object-cover object-center xl:h-[200px] xl:w-[200px]"
+        className="mb-7 h-28 w-28 rounded-full object-cover object-center xl:h-[100px] xl:w-[100px]"
       />
 
       <div className="px-0 md:px-10">
-        <h4 className="text-2xl font-light md:text-4xl">Blockchain | Web3 Developer</h4>
+        <h4 className="text-2 xl font-light md:text-4xl">Blockchain | Web3 Developer</h4>
         <p className="mt-1 text-xl font-bold md:text-2xl">Rigor</p>
         <div className="my-2 flex space-x-2">
           <img
@@ -46,22 +46,10 @@ const ExperienceCard = () => {
         </div>
         <p className="py-5 uppercase text-zinc-300">Started from ... Ended at</p>
         <ul className="ml-5 list-disc space-y-2 text-lg">
-          <li>
-            Work summary Work summaryWork summaryWork summaryWork summaryWork summaryWork summaryWork summaryWork
-            summary
-          </li>
-          <li>
-            Work summary Work summaryWork summaryWork summaryWork summaryWork summaryWork summaryWork summaryWork
-            summary
-          </li>
-          <li>
-            Work summary Work summaryWork summaryWork summaryWork summaryWork summaryWork summaryWork summaryWork
-            summary
-          </li>
-          <li>
-            Work summary Work summaryWork summaryWork summaryWork summaryWork summaryWork summaryWork summaryWork
-            summary
-          </li>
+          <li>Work summary</li>
+          <li>Work summary</li>
+          <li>Work summary</li>
+          <li>Work summary</li>
         </ul>
       </div>
     </article>
