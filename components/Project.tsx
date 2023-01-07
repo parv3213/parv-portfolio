@@ -17,7 +17,7 @@ const Project = () => {
         alt="Project Image"
       />
 
-      <h3 className="text-2xl font-light md:text-4xl">Netflix Clone</h3>
+      <h3 className="text-2xl md:text-4xl">Netflix Clone</h3>
       <p className="text-center md:text-left">
         Netflix clone is a streaming service that uses a subscription model to provide content to users. It is modeled
         after the popular streaming service Netflix and utilizes many of the same features, such as a library of movies

@@ -40,7 +40,7 @@ const Header = () => {
           duration: 1.5,
         }}
         className="flex cursor-pointer items-center">
-        <SocialIcon network="email" fgColor="gray" bgColor="transparent" />
+        <SocialIcon network="email" fgColor="gray" bgColor="transparent" url="#contactMe" />
         <p className="hidden text-sm uppercase text-zinc-400 md:inline-flex">Get in touch</p>
       </motion.div>
     </header>
