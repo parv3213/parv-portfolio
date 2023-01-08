@@ -50,7 +50,7 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects />
+        <Projects projects={projects} />
       </section>
 
       <section id="contactMe" className="snap-center">
