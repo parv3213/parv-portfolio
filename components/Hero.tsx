@@ -2,11 +2,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
+import { urlFor } from '../sanity'
+import { PageInfo } from '../typings'
 import BackgroundCircles from './BackgroundCircles'
 
-const Hero = () => {
+const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
   const [text] = useTypewriter({
-    words: ["Hi, The Name's Parv Garg", '<Guy who loves to code/>'],
+    words: [`Hi, The Name's ${pageInfo?.name}`, '<Guy who loves to code/>'],
     delaySpeed: 2000,
     loop: true,
   })
@@ -17,13 +19,13 @@ const Hero = () => {
       <div className="z-20 space-y-8">
         <Image
           className="mx-auto h-32 w-32 rounded-full object-cover"
-          src="https://media.licdn.com/dms/image/D4D03AQEfGcqOu_2aFA/profile-displayphoto-shrink_800_800/0/1665142521830?e=1678320000&v=beta&t=Qj1Pe5P81IEaqpB-YFkRcTUt9IP48dEHKmN7194eoyI"
+          src={urlFor(pageInfo?.heroImage).url()}
           alt="Parv's photo"
           width={128}
           height={128}
         />
         <h2 className="pb-2 text-xs uppercase tracking-[0.5rem] text-zinc-500 sm:text-sm sm:tracking-[15px]">
-          Software engineer
+          {pageInfo?.role}
         </h2>
         <h1 className="scroll-px-10 text-base font-semibold sm:text-5xl lg:text-6xl">
           <span className="mr-3">{text}</span>

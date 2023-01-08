@@ -1,16 +1,19 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Skill } from '../typings'
+import { urlFor } from '../sanity'
 
 type Props = {
+  skill: Skill
   directionLeft?: boolean
 }
 
-const Skill = (props: Props) => {
+const Skill = ({ skill, directionLeft }: Props) => {
   return (
     <div className="group relative flex cursor-pointer">
       <motion.img
         initial={{
-          x: props.directionLeft ? -50 : 50,
+          x: directionLeft ? -50 : 50,
           opacity: 0,
         }}
         transition={{ duration: 1.2 }}
@@ -18,13 +21,13 @@ const Skill = (props: Props) => {
         viewport={{ once: true }}
         className="h-20 w-20 rounded-full border border-zinc-400 object-cover object-center p-2 filter transition duration-300 ease-in-out
         group-hover:grayscale xl:h-24 xl:w-24"
-        src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png"
-        alt=""
+        src={urlFor(skill?.image).url()}
+        alt="skill"
       />
 
       <div className="absolute z-0 h-20 w-20 rounded-full opacity-0 transition duration-300 ease-in group-hover:bg-white group-hover:opacity-70 xl:h-24 xl:w-24">
         <div className="flex h-full items-center justify-center">
-          <p className="text-xl font-bold text-black opacity-100">100%</p>
+          <p className="text-xl font-bold text-black opacity-100">{skill?.progress}%</p>
         </div>
       </div>
     </div>

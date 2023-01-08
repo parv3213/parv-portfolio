@@ -1,8 +1,9 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Skill from './Skill'
+import { Skill as SkillType } from '../typings'
 
-const Skills = () => {
+const Skills = ({ skills }: { skills: SkillType[] }) => {
   return (
     <motion.div
       initial={{
@@ -13,7 +14,7 @@ const Skills = () => {
       transition={{ duration: 1.2 }}
       viewport={{ once: true }}
       className="relative mx-auto flex h-screen min-h-screen max-w-[2000px] flex-col items-center justify-center text-center md:text-left xl:flex-row
-    xl:space-y-0 xl:px-10">
+  xl:space-y-0 xl:px-10">
       <h3 className="absolute top-24 text-lg uppercase tracking-[15px] text-zinc-500 sm:text-2xl sm:tracking-[20px]">
         Skills
       </h3>
@@ -23,18 +24,9 @@ const Skills = () => {
       </h3>
 
       <div className="grid grid-cols-4 gap-5 p-5">
-        <Skill directionLeft={true} />
-        <Skill directionLeft={true} />
-        <Skill directionLeft={true} />
-        <Skill directionLeft={true} />
-        <Skill directionLeft={true} />
-        <Skill directionLeft={true} />
-        <Skill directionLeft={true} />
-        <Skill directionLeft={true} />
-        <Skill />
-
-        <Skill />
-        <Skill />
+        {skills?.map((skill) => (
+          <Skill key={skill._id} directionLeft={true} skill={skill} />
+        ))}
       </div>
     </motion.div>
   )
