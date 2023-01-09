@@ -19,4 +19,16 @@
   .underline {
     @apply decoration-yellow-700;
   }
+
+  .section {
+    @apply mx-auto h-screen max-w-7xl;
+  }
+
+  .sectionContainer {
+    @apply flex h-[calc(100%-5rem)] w-full flex-col items-center justify-start overflow-hidden;
+  }
+
+  .scrollbarThin {
+    @apply scrollbar-thin scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700;
+  }
 }

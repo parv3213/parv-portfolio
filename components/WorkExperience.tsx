@@ -12,15 +12,15 @@ const WorkExperience = ({ experiences }: { experiences: Experience[] }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
       viewport={{ once: true }}
-      className="relative mx-auto flex h-screen max-w-full flex-col items-center justify-evenly overflow-hidden px-10 text-left md:flex-row">
-      <h3 className="absolute top-24 text-lg uppercase tracking-[15px] text-zinc-500 sm:text-2xl sm:tracking-[20px]">
-        Experience
-      </h3>
+      className="section">
+      <div className="sectionContainer">
+        <h3 className="sectionHeading">Experience</h3>
 
-      <div className="mt-12 flex w-full snap-x snap-mandatory space-x-5 overflow-x-scroll p-10 scrollbar-thin scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700 sm:mt-24 md:mt-36">
-        {experiences.map((experience) => {
-          return <ExperienceCard key={experience._id} experience={experience} />
-        })}
+        <div className="scrollbarThin flex h-full w-full snap-x snap-mandatory space-x-5 overflow-x-auto p-10">
+          {experiences.map((experience) => {
+            return <ExperienceCard key={experience._id} experience={experience} />
+          })}
+        </div>
       </div>
     </motion.div>
   )
