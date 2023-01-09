@@ -8,6 +8,7 @@ import Hero from '../components/Hero'
 import Projects from '../components/Projects'
 import Skills from '../components/Skills'
 import WorkExperience from '../components/WorkExperience'
+import { urlFor } from '../sanity'
 import { Experience, PageInfo, Project, Skill, Social } from '../typings'
 import { fetchExperiences } from '../utils/fetchExperiences'
 import { fetchPageInfo } from '../utils/fetchPageInfo'
@@ -27,7 +28,7 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
   return (
     <div className="z-0	h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll bg-zinc-800 text-white scrollbar scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700">
       <Head>
-        <title>Parv's Portfolio</title>
+        {pageInfo?.name ? <title>{pageInfo.name.split(' ')[0]}'s Portfolio</title> : <title>Portfolio</title>}
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -62,8 +63,8 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
           <div className="flex items-center justify-center">
             <img
               className="h-10 w-10 cursor-pointer rounded-full object-contain object-center grayscale filter hover:grayscale-0"
-              src="https://media.licdn.com/dms/image/D4D03AQEfGcqOu_2aFA/profile-displayphoto-shrink_800_800/0/1665142521830?e=1678320000&v=beta&t=Qj1Pe5P81IEaqpB-YFkRcTUt9IP48dEHKmN7194eoyI"
-              alt=""
+              src={urlFor(pageInfo?.profilePic).url()}
+              alt="hero image"
             />
           </div>
         </footer>
