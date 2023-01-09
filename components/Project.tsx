@@ -6,9 +6,7 @@ import Link from 'next/link'
 
 const Project = ({ project }: { project: Project }) => {
   return (
-    <div
-      className="flex h-full w-screen flex-shrink-0 snap-center flex-col 
-      items-center justify-center space-y-10 overflow-y-scroll px-10 text-center">
+    <div className="flex h-full w-full flex-shrink-0 snap-center flex-col items-center justify-center space-y-5 p-10 text-center">
       <motion.img
         initial={{
           y: -100,
@@ -17,16 +15,16 @@ const Project = ({ project }: { project: Project }) => {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
-        className="w-[50%]"
+        className="mb-5 h-[50%] rounded-lg"
         src={urlFor(project?.image).url()}
         alt="Project Image"
       />
 
       <Link href={project?.linkToBuild} target="_blank">
-        <h3 className="text-2xl underline decoration-yellow-500/30 md:text-4xl">{project?.title}</h3>
+        <h3 className="text-2xl underline md:text-4xl">{project?.title}</h3>
       </Link>
 
-      <p className="text-center md:w-[80%] md:text-left">{project?.summary}</p>
+      <p className="scrollbarThin overflow-y-auto text-center md:w-[80%] md:text-left">{project?.summary}</p>
     </div>
   )
 }
