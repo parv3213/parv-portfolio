@@ -20,7 +20,7 @@ const Skills = ({ skills }: { skills: SkillType[] }) => {
       </h3>
 
       <h3 className="absolute top-36 text-sm uppercase tracking-wider text-zinc-500 md:tracking-[3px]">
-        Hover over a skill for currency proficiency
+        Hover over a skill for current proficiency
       </h3>
 
       <div className="grid grid-cols-4 gap-5 p-5">
