@@ -26,9 +26,9 @@ type Props = {
 
 const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
   return (
-    <div className="z-0	h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll bg-zinc-800 text-white scrollbar scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700">
+    <div className="z-0	h-screen snap-y snap-mandatory overflow-y-scroll bg-zinc-800 text-white scrollbar overflow-x-hidden scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700">
       <Head>
-        {pageInfo?.name ? <title>{pageInfo.name.split(' ')[0]}'s Portfolio</title> : <title>Portfolio</title>}
+        <title>Parv's Portfolio</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
