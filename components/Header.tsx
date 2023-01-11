@@ -24,11 +24,19 @@ const Header = ({ socials }: { socials: Social[] }) => {
         }}
         className="flex items-center">
         {socials.map((social) => {
-          return <SocialIcon key={social?._id} url={social?.url} fgColor="gray" bgColor="transparent" />
+          return (
+            <SocialIcon
+              key={social?._id}
+              url={social?.url}
+              fgColor="gray"
+              bgColor="transparent"
+              className="transition-all duration-150 ease-in-out hover:scale-105"
+            />
+          )
         })}
       </motion.div>
 
-      <Link href="#contactMe">
+      <Link href="#contactMe" className="transition-all duration-150 ease-in-out hover:scale-105">
         <motion.span
           initial={{
             x: 500,
