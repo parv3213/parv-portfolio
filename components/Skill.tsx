@@ -19,7 +19,7 @@ const Skill = ({ skill, directionLeft }: Props) => {
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="h-20 w-20 rounded-full object-contain p-2 xl:h-24 xl:w-24"
+        className="h-20 w-20 rounded-full bg-zinc-50 object-contain p-2 xl:h-24 xl:w-24"
         src={urlFor(skill?.image).url()}
         alt="skill"
       />
