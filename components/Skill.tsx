@@ -10,7 +10,7 @@ type Props = {
 
 const Skill = ({ skill, directionLeft }: Props) => {
   return (
-    <div className="group relative flex h-20 w-20 cursor-pointer hover:scale-105 xl:h-24 xl:w-24">
+    <div className="group relative flex cursor-pointer rounded-full border border-zinc-400 hover:scale-105">
       <motion.img
         initial={{
           x: directionLeft ? -50 : 50,
@@ -19,7 +19,7 @@ const Skill = ({ skill, directionLeft }: Props) => {
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="h-20 w-20 rounded-full border border-zinc-400 object-cover object-center p-2 xl:h-24 xl:w-24"
+        className="-z-1 h-20 w-20 rounded-full object-contain p-2 xl:h-24 xl:w-24"
         src={urlFor(skill?.image).url()}
         alt="skill"
       />

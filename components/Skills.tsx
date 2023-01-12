@@ -22,7 +22,7 @@ const Skills = ({ skills }: { skills: SkillType[] }) => {
 
         <div className="flex h-full items-center justify-center">
           {/* TODO fix when screen size is small */}
-          <div className="grid grid-cols-4 gap-5 p-5">
+          <div className="grid grid-cols-3 gap-5 p-5 md:grid-cols-4">
             {skills?.map((skill) => (
               <Skill key={skill._id} directionLeft={true} skill={skill} />
             ))}
