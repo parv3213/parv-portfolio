@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
   return (
-    <article className="flex h-full w-[100%] flex-shrink-0 snap-center flex-col items-center justify-evenly space-y-5 overflow-hidden rounded-lg bg-zinc-700/20 p-10 opacity-60 transition-opacity duration-200 hover:opacity-100 md:w-[600px] xl:w-[900px]">
+    <article className="flex h-full w-[100%] flex-shrink-0 snap-center flex-col items-center justify-evenly space-y-5 overflow-hidden rounded-lg bg-zinc-200 p-10 opacity-80 transition-opacity duration-200 hover:opacity-100 dark:bg-zinc-700/20 md:w-[600px] xl:w-[900px]">
       <Link href={experience?.companyUrl} target="_blank">
         <motion.img
           initial={{
@@ -41,7 +41,7 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
             )
           })}
         </div>
-        <p className="mb-6 uppercase text-zinc-300">
+        <p className="mb-6 uppercase text-zinc-500 dark:text-zinc-300">
           {format(new Date(experience?.dateStarted), 'MMMM yyyy')} -{' '}
           {experience?.isCurrentlyWorkingHere ? 'Present' : format(new Date(experience?.dateEnded), 'MMMM yyyy')}
         </p>

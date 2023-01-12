@@ -17,7 +17,7 @@ const Projects = ({ projects }: { projects: ProjectType[] }) => {
       <div className="sectionContainer h-full">
         <h3 className="sectionHeading">Projects</h3>
 
-        <div className="absolute top-[30%] left-0 h-[40vh] w-full -skew-y-12 bg-yellow-500/10" />
+        <div className="absolute top-[30%] left-0 h-[40vh] w-full -skew-y-12 bg-yellow-700/20 dark:bg-yellow-500/10" />
 
         <div className="scrollbarThin flex h-full w-full snap-x snap-mandatory space-x-5 overflow-x-auto overflow-y-hidden">
           {projects?.map((project) => (

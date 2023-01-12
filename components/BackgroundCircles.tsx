@@ -16,11 +16,11 @@ const BackgroundCircles = () => {
       transition={{
         duration: 2.5,
       }}>
-      <div className="absolute mt-52 h-[200px] w-[200px] animate-ping rounded-full border border-zinc-700 opacity-30" />
-      <div className="absolute mt-52 h-[300px] w-[300px] rounded-full border border-zinc-700 opacity-30" />
-      <div className="absolute mt-52 h-[500px] w-[500px] rounded-full border border-zinc-700 opacity-30" />
-      <div className="absolute mt-52 h-[650px] w-[650px] animate-pulse rounded-full border border-yellow-700 opacity-5" />
-      <div className="absolute mt-52 h-[800px] w-[800px] rounded-full border border-zinc-700 opacity-30" />
+      <div className="absolute mt-52 h-[200px] w-[200px] animate-ping rounded-full border border-zinc-300 opacity-30 dark:border-zinc-700" />
+      <div className="absolute mt-52 h-[300px] w-[300px] rounded-full border border-zinc-300 opacity-30 dark:border-zinc-700" />
+      <div className="absolute mt-52 h-[500px] w-[500px] rounded-full border border-zinc-300 opacity-30 dark:border-zinc-700" />
+      <div className="absolute mt-52 h-[650px] w-[650px] animate-pulse rounded-full border border-yellow-400 opacity-5 dark:border-yellow-700" />
+      <div className="absolute mt-52 h-[800px] w-[800px] rounded-full border border-zinc-300 opacity-30 dark:border-zinc-700" />
     </motion.div>
   )
 }

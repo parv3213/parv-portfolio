@@ -4,12 +4,12 @@
 
 @layer components {
   .heroButton {
-    @apply border border-transparent px-2 py-2 text-xs uppercase tracking-widest text-zinc-500 hover:rounded-xl hover:border-yellow-600 hover:bg-zinc-900 hover:text-yellow-600 md:px-6;
+    @apply border border-transparent px-2 py-2 text-xs uppercase tracking-widest text-zinc-500 hover:rounded-xl hover:border-yellow-800 hover:bg-zinc-200 hover:text-yellow-600 dark:hover:border-yellow-800 dark:hover:bg-zinc-900 dark:hover:text-yellow-600 md:px-6;
   }
 
   .contractFormInput {
-    @apply rounded-sm border-b border-zinc-800 bg-zinc-700 p-2 px-4 text-zinc-400 outline-0 transition-all placeholder:text-zinc-400
-    focus:border-b focus:border-yellow-500 focus:text-yellow-500 hover:border-b hover:border-yellow-500 hover:text-yellow-500;
+    @apply rounded-sm border-b border-zinc-200 bg-zinc-200 p-2 px-4 text-zinc-500 outline-0 transition-all placeholder:text-zinc-400 focus:border-b focus:border-yellow-800 focus:text-yellow-800 hover:border-b hover:border-yellow-800
+    hover:text-yellow-800 dark:border-zinc-800 dark:bg-zinc-700 dark:text-zinc-400 dark:focus:border-yellow-500 dark:focus:text-yellow-500 dark:hover:border-yellow-500 dark:hover:text-yellow-500;
   }
 
   .sectionHeading {
@@ -21,7 +21,7 @@
   }
 
   .section {
-    @apply mx-auto h-screen max-w-7xl;
+    @apply mx-auto h-screen max-w-7xl text-zinc-900 dark:text-white;
   }
 
   .sectionContainer {

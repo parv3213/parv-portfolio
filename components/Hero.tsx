@@ -28,7 +28,7 @@ const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
           {pageInfo?.role}
         </h2>
         <h1 className="scroll-px-10 text-base font-semibold sm:text-5xl lg:text-6xl">
-          <span className="mr-3">{text}</span>
+          <span className="mr-3 text-zinc-900 dark:text-zinc-50">{text}</span>
           <Cursor cursorColor="#F7AB0A" />
         </h1>
 

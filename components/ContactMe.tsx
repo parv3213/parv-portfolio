@@ -71,7 +71,7 @@ const ContactMe = () => {
               />
               <button
                 type="submit"
-                className="w-full rounded-sm bg-yellow-500 p-3 text-xl font-bold text-zinc-800 hover:bg-yellow-600">
+                className="w-full rounded-sm bg-yellow-400 p-3 text-xl font-bold hover:bg-yellow-500 dark:bg-yellow-500 dark:text-zinc-800 dark:hover:bg-yellow-600">
                 Submit
               </button>
             </form>
