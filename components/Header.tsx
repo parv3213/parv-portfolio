@@ -66,7 +66,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
         {loaded ? (
           <div
             aria-label="Toggle Dark Mode"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')}
             className="flex cursor-pointer items-center justify-center rounded-lg bg-zinc-50 p-1 dark:bg-gray-700">
             {theme === 'dark' || resolvedTheme === 'dark' ? (
               // Light Icon
