@@ -26,6 +26,10 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
     <div className="z-0	h-screen snap-y snap-mandatory overflow-y-scroll bg-zinc-50 text-white scrollbar overflow-x-hidden scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700 dark:bg-zinc-800">
       <Head>
         <title>Parv | Portfolio</title>
+        <meta
+          name="description"
+          content="Parv is a web3 full-stack developer. Skilled in software engineering and programming."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
