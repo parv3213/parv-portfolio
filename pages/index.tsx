@@ -1,4 +1,4 @@
-import type { GetStaticProps, NextPage } from 'next'
+import type { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import About from '../components/About'
@@ -10,11 +10,8 @@ import Skills from '../components/Skills'
 import WorkExperience from '../components/WorkExperience'
 import { urlFor } from '../sanity'
 import { Experience, PageInfo, Project, Skill, Social } from '../typings'
-import { fetchExperiences } from '../utils/fetchExperiences'
-import { fetchPageInfo } from '../utils/fetchPageInfo'
-import { fetchProjects } from '../utils/fetchProjects'
-import { fetchSkills } from '../utils/fetchSkills'
-import { fetchSocials } from '../utils/fetchSocials'
+import { client } from '../sanity'
+import { groq } from 'next-sanity'
 
 type Props = {
   pageInfo: PageInfo
@@ -76,11 +73,27 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
 export default Home
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo: PageInfo = await fetchPageInfo()
-  const experiences: Experience[] = await fetchExperiences()
-  const socials: Social[] = await fetchSocials()
-  const skills: Skill[] = await fetchSkills()
-  const projects: Project[] = await fetchProjects()
+  const pageInfo: PageInfo = await client.fetch(groq`
+  *[_type=="pageInfo"][0]
+`)
+  const experiences: Experience[] = await client.fetch(groq`*[_type=="experience"]{
+    ...,
+    technologies[]->
+      
+  } 
+  | order(dateStarted desc)
+  | order(dateEnded desc)
+  | order(isCurrentlyWorkingHere desc)
+`)
+  const socials: Social[] = await client.fetch(groq`
+  *[_type=="social"]
+`)
+  const skills: Skill[] = await client.fetch(groq`
+  *[_type=="skill"]
+`)
+  const projects: Project[] = await client.fetch(groq`
+  *[_type=="project"] | order(_createdAt asc)
+`)
 
   return {
     props: {
