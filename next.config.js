@@ -4,4 +4,7 @@ module.exports = {
     domains: ['cdn.sanity.io'],
   },
   reactStrictMode: true,
+  eslint: {
+    dirs: ['pages', 'components'],
+  },
 }
