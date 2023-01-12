@@ -19,12 +19,12 @@ const Skill = ({ skill, directionLeft }: Props) => {
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        className="-z-1 h-20 w-20 rounded-full object-contain p-2 xl:h-24 xl:w-24"
+        className="h-20 w-20 rounded-full object-contain p-2 xl:h-24 xl:w-24"
         src={urlFor(skill?.image).url()}
         alt="skill"
       />
 
-      <p className="absolute -top-14 z-20 flex w-full items-center justify-center text-lg opacity-0 group-hover:opacity-100">
+      <p className="absolute -top-14 -z-20 flex w-full items-center justify-center text-lg opacity-0 group-hover:opacity-100">
         <span className="rounded-lg bg-zinc-200 p-3 dark:bg-zinc-900">{skill?.title}</span>
       </p>
     </div>
