@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { useTheme } from 'next-themes'
 
 const Header = ({ socials }: { socials: Social[] }) => {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
   const [loaded, setLoaded] = useState(false)
   useEffect(() => setLoaded(true), [])
 
@@ -68,7 +68,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
             aria-label="Toggle Dark Mode"
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="flex cursor-pointer items-center justify-center rounded-lg bg-zinc-50 p-1 dark:bg-gray-700">
-            {theme === 'dark' ? (
+            {theme === 'dark' || resolvedTheme === 'dark' ? (
               // Light Icon
               <svg
                 xmlns="http://www.w3.org/2000/svg"
