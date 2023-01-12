@@ -16,7 +16,7 @@ const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
       <div className="sectionContainer">
         <h3 className="sectionHeading">About</h3>
 
-        <div className="flex h-full flex-col items-center justify-center space-y-5 overflow-hidden px-10 text-center md:flex-row md:space-y-0 md:space-x-5 md:text-left">
+        <div className="flex h-full flex-col items-center justify-center space-y-5 overflow-hidden px-10 text-center md:flex-row md:space-y-0 md:space-x-10 md:text-left">
           <motion.img
             initial={{
               x: -200,
