@@ -7,4 +7,8 @@ module.exports = {
   eslint: {
     dirs: ['pages', 'components'],
   },
+  i18n: {
+    locales: ['en-US'],
+    defaultLocale: 'en-US',
+  },
 }
