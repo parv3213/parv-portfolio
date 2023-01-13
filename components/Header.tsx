@@ -33,7 +33,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
             <SocialIcon
               key={social?._id}
               url={social?.url}
-              fgColor="gray"
+              fgColor={theme === 'dark' || resolvedTheme === 'dark' ? 'gray' : 'rgb(113 113 122)'}
               bgColor="transparent"
               className="transition-all duration-150 ease-in-out hover:scale-105"
             />
@@ -42,8 +42,8 @@ const Header = ({ socials }: { socials: Social[] }) => {
       </motion.div>
 
       <div className="mr-4 flex items-center justify-center space-x-4">
-        <Link href="#contactMe" className="transition-all duration-150 ease-in-out hover:scale-105">
-          <motion.span
+        <Link href="#contactMe" className="transition-all duration-150 ease-in-out hover:scale-[1.03]">
+          <motion.div
             initial={{
               x: 500,
               opacity: 0,
@@ -58,16 +58,30 @@ const Header = ({ socials }: { socials: Social[] }) => {
               duration: 1.5,
             }}
             className="flex cursor-pointer items-center">
-            <Image src="/mailIcon.svg" alt="Mail Icon" height={25} width={25} className="mx-2" />
-            <p className="hidden text-sm uppercase text-zinc-400 md:inline-flex">Get in touch</p>
-          </motion.span>
+            {/* Mail Icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke={theme === 'dark' || resolvedTheme === 'dark' ? 'gray' : 'rgb(113 113 122)'}
+              className="mr-1 h-6 w-6">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+              />
+            </svg>
+
+            <p className="hidden text-sm uppercase text-zinc-500 dark:text-zinc-400 md:inline-flex">Get in touch</p>
+          </motion.div>
         </Link>
 
         {loaded ? (
           <div
             aria-label="Toggle Dark Mode"
             onClick={() => setTheme(theme === 'dark' || resolvedTheme === 'dark' ? 'light' : 'dark')}
-            className="flex cursor-pointer items-center justify-center rounded-lg bg-zinc-50 p-1 dark:bg-gray-700">
+            className="flex cursor-pointer items-center justify-center rounded-lg bg-zinc-50 p-1 dark:bg-gray-400">
             {theme === 'dark' || resolvedTheme === 'dark' ? (
               // Light Icon
               <svg
