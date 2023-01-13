@@ -36,11 +36,13 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
         <div className="my-4 flex items-center justify-start space-x-2">
           {experience?.technologies?.map((technology) => {
             return (
-              <img
+              <Image
                 key={technology._id}
                 className="h-10 w-10 rounded-full"
                 src={urlFor(technology?.image).url()}
                 alt="technology"
+                height={10}
+                width={10}
               />
             )
           })}

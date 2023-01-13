@@ -30,7 +30,7 @@ const ContactMe = () => {
 
           <div className="flex h-full flex-col items-center justify-center space-y-5 overflow-hidden px-10">
             <h3 className="text-2xl font-semibold md:text-4xl">
-              Would be glad to help. <span className="underline">Let's talk</span>
+              Would be glad to help. <span className="underline">Let&#39;s talk</span>
             </h3>
 
             <div className="flex items-center justify-center space-x-2">

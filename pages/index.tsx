@@ -12,6 +12,7 @@ import { urlFor } from '../sanity'
 import { Experience, PageInfo, Project, Skill, Social } from '../typings'
 import { client } from '../sanity'
 import { groq } from 'next-sanity'
+import Image from 'next/image'
 
 type Props = {
   pageInfo: PageInfo
@@ -65,10 +66,12 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
       <Link href={'#hero'}>
         <footer className="sticky bottom-5 w-full cursor-pointer">
           <div className="flex items-center justify-center">
-            <img
+            <Image
               className="h-10 w-10 cursor-pointer rounded-full object-contain object-center grayscale filter hover:grayscale-0"
               src={urlFor(pageInfo?.profilePic).url()}
               alt="hero image"
+              width={10}
+              height={10}
             />
           </div>
         </footer>
