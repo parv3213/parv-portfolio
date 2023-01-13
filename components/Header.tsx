@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { SocialIcon } from 'react-social-icons'
 import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { Social } from '../typings'
-import Image from 'next/image'
 import { useTheme } from 'next-themes'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { SocialIcon } from 'react-social-icons'
+import { Social } from '../typings'
 
 const Header = ({ socials }: { socials: Social[] }) => {
   const { theme, setTheme, resolvedTheme } = useTheme()

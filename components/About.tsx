@@ -1,8 +1,7 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { PageInfo } from '../typings'
-import { urlFor } from '../sanity'
 import Image from 'next/image'
+import { urlFor } from '../sanity'
+import { PageInfo } from '../typings'
 
 const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
   return (

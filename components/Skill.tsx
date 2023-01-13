@@ -1,7 +1,6 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Skill } from '../typings'
 import { urlFor } from '../sanity'
+import { Skill } from '../typings'
 
 type Props = {
   skill: Skill

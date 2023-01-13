@@ -1,10 +1,9 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Experience } from '../typings'
-import { urlFor } from '../sanity'
 import { format } from 'date-fns'
-import Link from 'next/link'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
+import { urlFor } from '../sanity'
+import { Experience } from '../typings'
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
   return (

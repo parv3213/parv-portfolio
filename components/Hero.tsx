@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import { urlFor } from '../sanity'
 import { PageInfo } from '../typings'

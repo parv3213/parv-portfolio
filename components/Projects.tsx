@@ -1,7 +1,6 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import Project from './Project'
 import { Project as ProjectType } from '../typings'
+import Project from './Project'
 
 const Projects = ({ projects }: { projects: ProjectType[] }) => {
   return (

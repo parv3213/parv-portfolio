@@ -1,7 +1,6 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import Skill from './Skill'
 import { Skill as SkillType } from '../typings'
+import Skill from './Skill'
 
 const Skills = ({ skills }: { skills: SkillType[] }) => {
   return (
