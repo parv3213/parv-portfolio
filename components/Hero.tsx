@@ -18,6 +18,7 @@ const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
 
       <div className="z-20 space-y-8">
         <Image
+          priority
           className="mx-auto h-32 w-32 rounded-full object-cover"
           src={urlFor(pageInfo?.heroImage).url()}
           alt="Parv's photo"
