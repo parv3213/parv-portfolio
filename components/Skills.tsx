@@ -16,13 +16,9 @@ const Skills = ({ skills }: { skills: SkillType[] }) => {
     >
       <div className="sectionContainer">
         <h2 className="sectionHeading">Skills</h2>
-        {/* <h3 className="text-sm uppercase tracking-wider text-zinc-500 md:tracking-[3px]">
-          Hover over a skill for current proficiency
-        </h3> */}
 
-        <div className="flex h-full items-center justify-center">
-          {/* TODO fix when screen size is small */}
-          <div className="grid grid-cols-3 gap-5 p-5 md:grid-cols-4">
+        <div className="sectionBody">
+          <div className="grid grid-cols-4 gap-5 p-5 md:grid-cols-5 lg:grid-cols-6">
             {skills?.map((skill) => (
               <Skill key={skill._id} directionLeft={true} skill={skill} />
             ))}
