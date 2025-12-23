@@ -45,10 +45,10 @@ const ContactMe = ({ pageInfo }: { pageInfo: PageInfo }) => {
             </div>
 
             <form
-              className="flex flex-col space-y-2"
+              className="flex flex-col space-y-4"
               onSubmit={(e) => handleSubmit(e)}
             >
-              <div className="flex w-full space-x-2">
+              <div className="flex w-full gap-4">
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
