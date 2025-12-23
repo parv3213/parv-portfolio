@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-import { urlFor } from '../sanity'
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { urlFor } from "../sanity";
 import { Project as ProjectType } from "../typings";
 
 const Project = ({ project }: { project: ProjectType }) => {
@@ -17,7 +17,11 @@ const Project = ({ project }: { project: ProjectType }) => {
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
 
-      <Link href={project?.linkToBuild} target="_blank">
+      <Link
+        href={project?.linkToBuild}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <h3 className="text-2xl underline md:text-4xl">{project?.title}</h3>
       </Link>
 
@@ -37,4 +41,4 @@ const Project = ({ project }: { project: ProjectType }) => {
   );
 };
 
-export default Project
+export default Project;

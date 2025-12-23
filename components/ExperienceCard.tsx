@@ -8,7 +8,7 @@ import { Experience } from '../typings'
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
   return (
     <article className="flex h-full w-[100%] flex-shrink-0 snap-center flex-col items-center justify-evenly space-y-5 overflow-hidden rounded-lg bg-zinc-200 p-10 opacity-80 transition-opacity duration-200 hover:opacity-100 dark:bg-zinc-700/20 md:w-[600px] xl:w-[900px]">
-      <Link href={experience?.companyUrl} target="_blank">
+      <Link href={experience?.companyUrl} target="_blank" rel="noopener noreferrer">
         <Image
           src={urlFor(experience?.companyImage).url()}
           alt={experience?.company || "Company Image"}
@@ -29,10 +29,10 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
         viewport={{ once: true }}
         className="scrollbarThin overflow-y-auto"
       >
-        <h4 className="text-2xl font-thin md:text-4xl">
+        <h3 className="text-2xl font-thin md:text-4xl">
           {experience?.jobTitle}
-        </h4>
-        <Link href={experience?.companyUrl} target="_blank">
+        </h3>
+        <Link href={experience?.companyUrl} target="_blank" rel="noopener noreferrer">
           <p className="cursor-pointer text-xl font-bold underline md:text-2xl">
             {experience?.company}
           </p>
@@ -46,8 +46,8 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
                 className="h-10 w-10 rounded-full"
                 src={urlFor(technology?.image)?.url()}
                 alt={technology?.title || "Technology"}
-                height={10}
-                width={10}
+                height={40}
+                width={40}
                 sizes="10vw"
               />
             );

@@ -1,25 +1,25 @@
-import type { GetStaticProps } from 'next'
+import type { GetStaticProps } from "next";
 import { groq } from "next-sanity";
-import Head from 'next/head'
+import Head from "next/head";
 import Image from "next/image";
-import Link from 'next/link'
-import About from '../components/About'
-import ContactMe from '../components/ContactMe'
-import Header from '../components/Header'
-import Hero from '../components/Hero'
-import Projects from '../components/Projects'
-import Skills from '../components/Skills'
-import WorkExperience from '../components/WorkExperience'
+import Link from "next/link";
+import About from "../components/About";
+import ContactMe from "../components/ContactMe";
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import Projects from "../components/Projects";
+import Skills from "../components/Skills";
+import WorkExperience from "../components/WorkExperience";
 import { client, urlFor } from "../sanity";
 import { Experience, PageInfo, Project, Skill, Social } from "../typings";
 
 type Props = {
-  pageInfo: PageInfo
-  experiences: Experience[]
-  socials: Social[]
-  projects: Project[]
-  skills: Skill[]
-}
+  pageInfo: PageInfo;
+  experiences: Experience[];
+  socials: Social[];
+  projects: Project[];
+  skills: Skill[];
+};
 
 const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
   return (
@@ -52,39 +52,41 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
 
       <Header socials={socials} />
 
-      <section id="hero" className="snap-start">
-        <Hero pageInfo={pageInfo} />
-      </section>
+      <main>
+        <section id="hero" className="snap-start">
+          <Hero pageInfo={pageInfo} />
+        </section>
 
-      <section id="about" className="snap-center">
-        <About pageInfo={pageInfo} />
-      </section>
+        <section id="about" className="snap-center">
+          <About pageInfo={pageInfo} />
+        </section>
 
-      <section id="experience" className="snap-center">
-        <WorkExperience experiences={experiences} />
-      </section>
+        <section id="experience" className="snap-center">
+          <WorkExperience experiences={experiences} />
+        </section>
 
-      <section id="skills" className="snap-start">
-        <Skills skills={skills} />
-      </section>
+        <section id="skills" className="snap-start">
+          <Skills skills={skills} />
+        </section>
 
-      <section id="projects" className="snap-start">
-        <Projects projects={projects} />
-      </section>
+        <section id="projects" className="snap-start">
+          <Projects projects={projects} />
+        </section>
 
-      <section id="contactMe" className="snap-center">
-        <ContactMe pageInfo={pageInfo} />
-      </section>
+        <section id="contactMe" className="snap-center">
+          <ContactMe pageInfo={pageInfo} />
+        </section>
+      </main>
 
-      <Link href={"#hero"}>
+      <Link href={"#hero"} aria-label="Scroll to top">
         <footer className="sticky bottom-5 w-full cursor-pointer">
           <div className="flex items-center justify-center">
             <Image
               className="h-10 w-10 cursor-pointer rounded-full object-contain object-center grayscale filter hover:grayscale-0"
               src={urlFor(pageInfo?.profilePic).url()}
               alt={pageInfo?.name || "Footer Image"}
-              width={10}
-              height={10}
+              width={40}
+              height={40}
               sizes="10vw"
             />
           </div>
@@ -92,15 +94,16 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
       </Link>
     </div>
   );
-}
+};
 
-export default Home
+export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo: PageInfo = await client.fetch(groq`
   *[_type=="pageInfo"][0]
-`)
-  const experiences: Experience[] = await client.fetch(groq`*[_type=="experience"]{
+`);
+  const experiences: Experience[] =
+    await client.fetch(groq`*[_type=="experience"]{
     ...,
     technologies[]->
       
@@ -108,16 +111,16 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   | order(dateStarted desc)
   | order(dateEnded desc)
   | order(isCurrentlyWorkingHere desc)
-`)
+`);
   const socials: Social[] = await client.fetch(groq`
   *[_type=="social"]
-`)
+`);
   const skills: Skill[] = await client.fetch(groq`
   *[_type=="skill"]
-`)
+`);
   const projects: Project[] = await client.fetch(groq`
   *[_type=="project"] | order(_createdAt asc)
-`)
+`);
 
   return {
     props: {
@@ -127,5 +130,5 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       skills,
       projects,
     },
-  }
-}
+  };
+};

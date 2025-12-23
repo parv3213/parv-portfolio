@@ -40,6 +40,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
               }
               bgColor="transparent"
               className="transition-all duration-150 ease-in-out hover:scale-105"
+              aria-label={social?.title || "Social Link"}
             />
           );
         })}
@@ -49,6 +50,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
         <Link
           href="#contactMe"
           className="transition-all duration-150 ease-in-out hover:scale-[1.03]"
+          aria-label="Contact Me"
         >
           <motion.div
             initial={{
@@ -89,13 +91,14 @@ const Header = ({ socials }: { socials: Social[] }) => {
         </Link>
 
         {loaded ? (
-          <div
+          <button
             onClick={() =>
               setTheme(
                 theme === "dark" || resolvedTheme === "dark" ? "light" : "dark"
               )
             }
             className="flex cursor-pointer items-center justify-center rounded-lg"
+            aria-label="Toggle Theme"
           >
             {theme === "dark" || resolvedTheme === "dark" ? (
               // Light Icon
@@ -122,7 +125,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
                 />
               </svg>
             )}
-          </div>
+          </button>
         ) : null}
       </div>
     </header>

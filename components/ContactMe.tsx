@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { SocialIcon } from 'react-social-icons'
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { SocialIcon } from "react-social-icons";
 import { PageInfo } from "../typings";
 
 const ContactMe = ({ pageInfo }: { pageInfo: PageInfo }) => {
@@ -27,7 +27,7 @@ const ContactMe = ({ pageInfo }: { pageInfo: PageInfo }) => {
         className="section"
       >
         <div className="sectionContainer">
-          <h3 className="sectionHeading">Contact</h3>
+          <h2 className="sectionHeading">Contact</h2>
 
           <div className="flex h-full flex-col items-center justify-center space-y-5 overflow-hidden px-10">
             <h3 className="text-2xl font-semibold md:text-4xl">
@@ -92,4 +92,4 @@ const ContactMe = ({ pageInfo }: { pageInfo: PageInfo }) => {
   );
 };
 
-export default ContactMe
+export default ContactMe;

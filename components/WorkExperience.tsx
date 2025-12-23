@@ -13,7 +13,7 @@ const WorkExperience = ({ experiences }: { experiences: Experience[] }) => {
       viewport={{ once: true }}
       className="section">
       <div className="sectionContainer">
-        <h3 className="sectionHeading">Experience</h3>
+        <h2 className="sectionHeading">Experience</h2>
 
         <div className="scrollbarThin flex h-full w-full snap-x snap-mandatory space-x-5 overflow-x-auto p-10">
           {experiences.map((experience) => {

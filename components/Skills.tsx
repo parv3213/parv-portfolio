@@ -15,7 +15,7 @@ const Skills = ({ skills }: { skills: SkillType[] }) => {
       className="section"
     >
       <div className="sectionContainer">
-        <h3 className="sectionHeading">Skills</h3>
+        <h2 className="sectionHeading">Skills</h2>
         {/* <h3 className="text-sm uppercase tracking-wider text-zinc-500 md:tracking-[3px]">
           Hover over a skill for current proficiency
         </h3> */}

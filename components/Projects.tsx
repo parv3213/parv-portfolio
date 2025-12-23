@@ -14,7 +14,7 @@ const Projects = ({ projects }: { projects: ProjectType[] }) => {
       viewport={{ once: true }}
       className="section relative w-full max-w-full">
       <div className="sectionContainer h-full">
-        <h3 className="sectionHeading">Projects</h3>
+        <h2 className="sectionHeading">Projects</h2>
 
         <div className="absolute top-[30%] left-0 h-[40vh] w-full -skew-y-12 bg-yellow-700/20 dark:bg-yellow-500/10" />
 

@@ -15,7 +15,7 @@ const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
       className="section"
     >
       <div className="sectionContainer">
-        <h3 className="sectionHeading">About</h3>
+        <h2 className="sectionHeading">About</h2>
 
         <div className="flex h-full flex-col items-center justify-center space-y-5 overflow-hidden px-10 text-center md:flex-row md:space-y-0 md:space-x-10 md:text-left">
           <Image
@@ -37,9 +37,9 @@ const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
             viewport={{ once: true }}
             className="scrollbarThin flex flex-col justify-start space-y-5 overflow-y-auto"
           >
-            <h4 className="text-2xl font-semibold tracking-wide sm:text-4xl">
+            <h3 className="text-2xl font-semibold tracking-wide sm:text-4xl">
               Here is a <span className="underline">little</span> background
-            </h4>
+            </h3>
             <p className="text-sm md:text-lg">
               {pageInfo?.backgroundInformation}
             </p>

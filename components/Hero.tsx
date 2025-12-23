@@ -25,9 +25,9 @@ const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
           height={128}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <h2 className="pb-2 text-xs uppercase tracking-[0.5rem] text-zinc-500 sm:text-sm sm:tracking-[15px]">
+        <p className="pb-2 text-xs uppercase tracking-[0.5rem] text-zinc-500 sm:text-sm sm:tracking-[15px]">
           {pageInfo?.role}
-        </h2>
+        </p>
         <h1 className="scroll-px-10 text-base font-semibold sm:text-5xl lg:text-6xl">
           <span className="mr-3 text-zinc-900 dark:text-zinc-50">{text}</span>
           <Cursor cursorColor="#F7AB0A" />
