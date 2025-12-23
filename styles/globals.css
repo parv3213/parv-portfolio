@@ -4,7 +4,7 @@
 
 @layer components {
   .heroButton {
-    @apply border border-transparent px-2 py-2 text-xs uppercase tracking-widest text-zinc-500 hover:rounded-xl hover:border-yellow-800 hover:bg-zinc-200 hover:text-yellow-600 dark:hover:border-yellow-800 dark:hover:bg-zinc-900 dark:hover:text-yellow-600 md:px-6;
+    @apply px-3 md:px-6 py-2 border border-zinc-200 dark:border-[#333333] rounded-full uppercase text-xs tracking-widest text-zinc-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A];
   }
 
   .contractFormInput {
@@ -13,7 +13,11 @@
   }
 
   .sectionHeading {
-    @apply mt-24 p-2 text-xl uppercase tracking-[15px] text-zinc-500 sm:text-2xl sm:tracking-[20px];
+    @apply p-2 text-xl uppercase tracking-[15px] text-zinc-500 sm:text-2xl sm:tracking-[20px] flex-shrink-0;
+    }
+    
+    .sectionBody {
+      @apply flex flex-1 w-full items-center justify-center overflow-hidden;
   }
 
   .underline {
@@ -21,11 +25,11 @@
   }
 
   .section {
-    @apply mx-auto h-screen max-w-7xl text-zinc-900 dark:text-white;
+    @apply mx-auto min-h-screen max-w-7xl text-zinc-900 dark:text-white;
   }
 
   .sectionContainer {
-    @apply flex h-[calc(100%-5rem)] w-full flex-col items-center justify-start overflow-hidden;
+    @apply flex h-full min-h-screen w-full flex-col items-center pt-20 pb-10 overflow-hidden;
   }
 
   .scrollbarThin {

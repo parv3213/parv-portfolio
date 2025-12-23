@@ -15,21 +15,21 @@ const ContactMe = ({ pageInfo }: { pageInfo: PageInfo }) => {
   };
 
   return (
-    <div className="h-screen">
-      <motion.div
-        initial={{
-          y: -100,
-          opacity: 0,
-        }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.2 }}
-        viewport={{ once: true }}
-        className="section"
-      >
-        <div className="sectionContainer">
-          <h2 className="sectionHeading">Contact</h2>
+    <motion.div
+      initial={{
+        y: -100,
+        opacity: 0,
+      }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 1.2 }}
+      viewport={{ once: true }}
+      className="section"
+    >
+      <div className="sectionContainer">
+        <h2 className="sectionHeading">Contact</h2>
 
-          <div className="flex h-full flex-col items-center justify-center space-y-5 overflow-hidden px-10">
+        <div className="sectionBody">
+          <div className="flex flex-col items-center justify-center gap-8 px-6">
             <h3 className="text-2xl font-semibold md:text-4xl">
               Would be glad to help.{" "}
               <span className="underline">Let&#39;s talk</span>
@@ -87,8 +87,8 @@ const ContactMe = ({ pageInfo }: { pageInfo: PageInfo }) => {
             </form>
           </div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
