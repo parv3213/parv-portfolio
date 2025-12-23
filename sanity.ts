@@ -1,5 +1,5 @@
-import { createClient, groq } from 'next-sanity'
 import createImageUrlBuilder from '@sanity/image-url'
+import { createClient } from 'next-sanity'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID // "pv8y60vp"
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET // "production"

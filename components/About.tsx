@@ -12,7 +12,8 @@ const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
       viewport={{ once: true }}
-      className="section">
+      className="section"
+    >
       <div className="sectionContainer">
         <h3 className="sectionHeading">About</h3>
 
@@ -21,7 +22,8 @@ const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
             height={500}
             width={400}
             src={urlFor(pageInfo?.profilePic).url()}
-            alt="Parv about"
+            alt={pageInfo?.name || "About Image"}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="h-36 w-36 rounded-full object-cover object-center md:h-96 md:w-64 md:rounded-lg xl:h-[500px] xl:w-[400px]"
           />
 
@@ -33,16 +35,19 @@ const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
             transition={{ duration: 1 }}
             whileInView={{ x: 0, opacity: 1 }}
             viewport={{ once: true }}
-            className="scrollbarThin flex flex-col justify-start space-y-5 overflow-y-auto">
+            className="scrollbarThin flex flex-col justify-start space-y-5 overflow-y-auto"
+          >
             <h4 className="text-2xl font-semibold tracking-wide sm:text-4xl">
               Here is a <span className="underline">little</span> background
             </h4>
-            <p className="text-sm md:text-lg">{pageInfo?.backgroundInformation}</p>
+            <p className="text-sm md:text-lg">
+              {pageInfo?.backgroundInformation}
+            </p>
           </motion.div>
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
 export default About

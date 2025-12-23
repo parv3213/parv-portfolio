@@ -20,9 +20,10 @@ const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
           priority
           className="mx-auto h-32 w-32 rounded-full object-cover"
           src={urlFor(pageInfo?.heroImage).url()}
-          alt="Parv's photo"
+          alt={pageInfo?.name || "Hero Image"}
           width={128}
           height={128}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <h2 className="pb-2 text-xs uppercase tracking-[0.5rem] text-zinc-500 sm:text-sm sm:tracking-[15px]">
           {pageInfo?.role}
@@ -48,7 +49,7 @@ const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Hero

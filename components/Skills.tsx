@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
-import { Skill as SkillType } from '../typings'
-import Skill from './Skill'
+import { motion } from "framer-motion";
+import { Skill as SkillType } from "../typings";
+import Skill from "./Skill";
 
 const Skills = ({ skills }: { skills: SkillType[] }) => {
   return (
@@ -10,14 +10,15 @@ const Skills = ({ skills }: { skills: SkillType[] }) => {
         opacity: 0,
       }}
       whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1.2 }}
+      transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="section">
+      className="section"
+    >
       <div className="sectionContainer">
         <h3 className="sectionHeading">Skills</h3>
-        <h3 className="text-sm uppercase tracking-wider text-zinc-500 md:tracking-[3px]">
+        {/* <h3 className="text-sm uppercase tracking-wider text-zinc-500 md:tracking-[3px]">
           Hover over a skill for current proficiency
-        </h3>
+        </h3> */}
 
         <div className="flex h-full items-center justify-center">
           {/* TODO fix when screen size is small */}
@@ -29,7 +30,7 @@ const Skills = ({ skills }: { skills: SkillType[] }) => {
         </div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default Skills
+export default Skills;

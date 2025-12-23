@@ -1,18 +1,18 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { SocialIcon } from 'react-social-icons'
+import { PageInfo } from "../typings";
 
-const ContactMe = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [subject, setSubject] = useState('')
-  const [message, setMessage] = useState('')
+const ContactMe = ({ pageInfo }: { pageInfo: PageInfo }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // TODO hardcoding
-    window.location.href = `mailto:parv3213@gmail.com?subject=${subject}&body=Hi, my name is ${name}. ${message} (${email})`
-  }
+    e.preventDefault();
+    window.location.href = `mailto:${pageInfo?.email}?subject=${subject}&body=Hi, my name is ${name}. ${message} (${email})`;
+  };
 
   return (
     <div className="h-screen">
@@ -24,21 +24,30 @@ const ContactMe = () => {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
-        className="section">
+        className="section"
+      >
         <div className="sectionContainer">
           <h3 className="sectionHeading">Contact</h3>
 
           <div className="flex h-full flex-col items-center justify-center space-y-5 overflow-hidden px-10">
             <h3 className="text-2xl font-semibold md:text-4xl">
-              Would be glad to help. <span className="underline">Let&#39;s talk</span>
+              Would be glad to help.{" "}
+              <span className="underline">Let&#39;s talk</span>
             </h3>
 
             <div className="flex items-center justify-center space-x-2">
-              <SocialIcon network="email" fgColor="#eab308" bgColor="transparent" />
-              <p>parv3213@gmail.com</p>
+              <SocialIcon
+                network="email"
+                fgColor="#eab308"
+                bgColor="transparent"
+              />
+              <p>{pageInfo?.email}</p>
             </div>
 
-            <form className="flex flex-col space-y-2" onSubmit={(e) => handleSubmit(e)}>
+            <form
+              className="flex flex-col space-y-2"
+              onSubmit={(e) => handleSubmit(e)}
+            >
               <div className="flex w-full space-x-2">
                 <input
                   value={name}
@@ -71,7 +80,8 @@ const ContactMe = () => {
               />
               <button
                 type="submit"
-                className="w-full rounded-sm bg-yellow-400 p-3 text-xl font-bold hover:bg-yellow-500 dark:bg-yellow-500 dark:text-zinc-800 dark:hover:bg-yellow-600">
+                className="w-full rounded-sm bg-yellow-400 p-3 text-xl font-bold hover:bg-yellow-500 dark:bg-yellow-500 dark:text-zinc-800 dark:hover:bg-yellow-600"
+              >
                 Submit
               </button>
             </form>
@@ -79,7 +89,7 @@ const ContactMe = () => {
         </div>
       </motion.div>
     </div>
-  )
-}
+  );
+};
 
 export default ContactMe

@@ -2,18 +2,19 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { urlFor } from '../sanity'
-import { Project } from '../typings'
+import { Project as ProjectType } from "../typings";
 
-const Project = ({ project }: { project: Project }) => {
+const Project = ({ project }: { project: ProjectType }) => {
   return (
     <div className="flex h-full w-full flex-shrink-0 snap-center flex-col items-center justify-center space-y-5 p-10 text-center">
       <Image
         className="z-20 mb-5 h-[50%] rounded-lg"
         src={urlFor(project?.image).url()}
-        alt="Project Image"
+        alt={project?.title || "Project Image"}
         height={1200}
         width={800}
         placeholder="empty"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
 
       <Link href={project?.linkToBuild} target="_blank">
@@ -28,11 +29,12 @@ const Project = ({ project }: { project: Project }) => {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
-        className="scrollbarThin overflow-y-auto text-center md:w-[80%] md:text-left">
+        className="scrollbarThin overflow-y-auto text-center md:w-[80%] md:text-left"
+      >
         {project?.summary}
       </motion.p>
     </div>
-  )
-}
+  );
+};
 
 export default Project

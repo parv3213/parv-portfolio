@@ -1,5 +1,7 @@
 import type { GetStaticProps } from 'next'
+import { groq } from "next-sanity";
 import Head from 'next/head'
+import Image from "next/image";
 import Link from 'next/link'
 import About from '../components/About'
 import ContactMe from '../components/ContactMe'
@@ -8,11 +10,8 @@ import Hero from '../components/Hero'
 import Projects from '../components/Projects'
 import Skills from '../components/Skills'
 import WorkExperience from '../components/WorkExperience'
-import { urlFor } from '../sanity'
-import { Experience, PageInfo, Project, Skill, Social } from '../typings'
-import { client } from '../sanity'
-import { groq } from 'next-sanity'
-import Image from 'next/image'
+import { client, urlFor } from "../sanity";
+import { Experience, PageInfo, Project, Skill, Social } from "../typings";
 
 type Props = {
   pageInfo: PageInfo
@@ -32,9 +31,23 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
           content="Parv is a web3 full-stack developer. Skilled in software engineering and programming."
         />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
       </Head>
 
       <Header socials={socials} />
@@ -60,24 +73,25 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
       </section>
 
       <section id="contactMe" className="snap-center">
-        <ContactMe />
+        <ContactMe pageInfo={pageInfo} />
       </section>
 
-      <Link href={'#hero'}>
+      <Link href={"#hero"}>
         <footer className="sticky bottom-5 w-full cursor-pointer">
           <div className="flex items-center justify-center">
             <Image
               className="h-10 w-10 cursor-pointer rounded-full object-contain object-center grayscale filter hover:grayscale-0"
               src={urlFor(pageInfo?.profilePic).url()}
-              alt="hero image"
+              alt={pageInfo?.name || "Footer Image"}
               width={10}
               height={10}
+              sizes="10vw"
             />
           </div>
         </footer>
       </Link>
     </div>
-  )
+  );
 }
 
 export default Home
