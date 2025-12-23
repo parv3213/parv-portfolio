@@ -1,21 +1,27 @@
-import { format } from 'date-fns'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-import { urlFor } from '../sanity'
-import { Experience } from '../typings'
+import { format } from "date-fns";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { urlFor } from "../sanity";
+import { Experience } from "../typings";
 
 const ExperienceCard = ({ experience }: { experience: Experience }) => {
   return (
     <article className="flex h-full w-[100%] flex-shrink-0 snap-center flex-col items-center justify-evenly space-y-5 overflow-hidden rounded-lg bg-zinc-200 p-10 opacity-80 transition-opacity duration-200 hover:opacity-100 dark:bg-zinc-700/20 md:w-[600px] xl:w-[900px]">
-      <Link href={experience?.companyUrl} target="_blank" rel="noopener noreferrer">
+      <Link
+        href={experience?.companyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Visit ${experience?.company} website`}
+      >
         <Image
           src={urlFor(experience?.companyImage).url()}
           alt={experience?.company || "Company Image"}
-          className="max-h-[50px] max-w-[50px] sm:max-h-[100px] sm:min-h-[50px] sm:max-w-[100px]"
-          height={100}
-          width={100}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="rounded-md bg-zinc-50 object-contain p-1 dark:bg-zinc-800/60"
+          height={80}
+          width={80}
+          sizes="80px"
+          loading="lazy"
         />
       </Link>
 
@@ -32,7 +38,11 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
         <h3 className="text-2xl font-thin md:text-4xl">
           {experience?.jobTitle}
         </h3>
-        <Link href={experience?.companyUrl} target="_blank" rel="noopener noreferrer">
+        <Link
+          href={experience?.companyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <p className="cursor-pointer text-xl font-bold underline md:text-2xl">
             {experience?.company}
           </p>
@@ -41,15 +51,22 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
         <div className="my-4 flex items-center justify-start space-x-2">
           {experience?.technologies?.map((technology) => {
             return (
-              <Image
+              <div
                 key={technology._id}
-                className="h-10 w-10 rounded-full"
-                src={urlFor(technology?.image)?.url()}
-                alt={technology?.title || "Technology"}
-                height={40}
-                width={40}
-                sizes="10vw"
-              />
+                className="flex items-center justify-center rounded-md bg-zinc-50 p-1 dark:bg-zinc-800/60"
+                title={technology?.title}
+                aria-label={technology?.title}
+              >
+                <Image
+                  src={urlFor(technology?.image)?.url()}
+                  alt={technology?.title || "Technology"}
+                  className="object-contain"
+                  height={36}
+                  width={36}
+                  sizes="36px"
+                  loading="lazy"
+                />
+              </div>
             );
           })}
         </div>
@@ -67,6 +84,6 @@ const ExperienceCard = ({ experience }: { experience: Experience }) => {
       </motion.div>
     </article>
   );
-}
+};
 
-export default ExperienceCard
+export default ExperienceCard;
