@@ -1,24 +1,52 @@
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { useState } from "react";
-import { urlFor } from '../sanity'
-import { PageInfo } from '../typings'
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import { urlFor } from "../sanity";
+import { PageInfo } from "../typings";
 
 const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
-  const [scrollFadeOpacity, setScrollFadeOpacity] = useState(1);
+  const [scrollFadeOpacity, setScrollFadeOpacity] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const element = e.currentTarget;
+  const updateFade = (element: HTMLDivElement | null) => {
+    if (!element) {
+      setScrollFadeOpacity(0);
+      return;
+    }
+
     const scrollTop = element.scrollTop;
     const scrollHeight = element.scrollHeight;
     const clientHeight = element.clientHeight;
-    const scrollBottom = scrollHeight - scrollTop - clientHeight;
+    const scrollBottom = Math.max(scrollHeight - scrollTop - clientHeight, 0);
 
     // Calculate opacity based on distance from bottom (fade out in last 50px)
     const fadeDistance = 50;
-    const opacity = Math.min(scrollBottom / fadeDistance, 1);
+    const opacity =
+      scrollHeight <= clientHeight
+        ? 0
+        : Math.min(scrollBottom / fadeDistance, 1);
     setScrollFadeOpacity(opacity);
   };
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    updateFade(e.currentTarget);
+  };
+
+  useEffect(() => {
+    // Run once on mount and whenever the content changes
+    updateFade(scrollContainerRef.current);
+
+    const ro = new ResizeObserver(() => updateFade(scrollContainerRef.current));
+    if (scrollContainerRef.current) ro.observe(scrollContainerRef.current);
+
+    const onResize = () => updateFade(scrollContainerRef.current);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", onResize);
+    };
+  }, [pageInfo?.backgroundInformation]);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -74,6 +102,7 @@ const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
                 </h4>
                 <div className="relative">
                   <div
+                    ref={scrollContainerRef}
                     onScroll={handleScroll}
                     className="scrollbarThin max-h-[400px] overflow-y-auto pr-2"
                   >
@@ -97,6 +126,6 @@ const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
       </div>
     </motion.div>
   );
-}
+};
 
-export default About
+export default About;
