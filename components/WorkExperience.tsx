@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion'
-import { Experience } from '../typings'
-import ExperienceCard from './ExperienceCard'
+import { motion } from "framer-motion";
+import { Experience } from "../typings";
+import ExperienceCard from "./ExperienceCard";
 
 const WorkExperience = ({ experiences }: { experiences: Experience[] }) => {
   return (
@@ -11,18 +11,23 @@ const WorkExperience = ({ experiences }: { experiences: Experience[] }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
       viewport={{ once: true }}
-      className="section">
+      className="section"
+    >
       <div className="sectionContainer">
         <h2 className="sectionHeading">Experience</h2>
 
-        <div className="scrollbarThin flex h-full w-full snap-x snap-mandatory space-x-5 overflow-x-auto p-10">
-          {experiences.map((experience) => {
-            return <ExperienceCard key={experience._id} experience={experience} />
-          })}
+        <div className="sectionBody">
+          <div className="scrollbarThin flex max-h-full w-full snap-x snap-mandatory space-x-5 overflow-x-auto p-10">
+            {experiences.map((experience) => {
+              return (
+                <ExperienceCard key={experience._id} experience={experience} />
+              );
+            })}
+          </div>
         </div>
       </div>
     </motion.div>
-  )
-}
+  );
+};
 
-export default WorkExperience
+export default WorkExperience;
