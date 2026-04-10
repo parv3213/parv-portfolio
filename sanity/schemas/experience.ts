@@ -50,6 +50,14 @@ export default defineType({
       of: [{type: 'reference', to: {type: 'skill'}}],
     }),
     defineField({
+      name: 'summary',
+      title: 'Card summary',
+      type: 'text',
+      rows: 3,
+      description:
+        'Short highlight or one-line description for the experience card. If empty, the first bullet under Points is used as the preview. Full bullet list appears in View Details.',
+    }),
+    defineField({
       name: 'points',
       title: 'Points',
       type: 'array',

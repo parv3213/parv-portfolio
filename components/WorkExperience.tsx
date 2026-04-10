@@ -1,32 +1,46 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Experience } from "../typings";
 import ExperienceCard from "./ExperienceCard";
+import ExperienceModal from "./ExperienceModal";
 
 const WorkExperience = ({ experiences }: { experiences: Experience[] }) => {
-  return (
-    <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
-      viewport={{ once: true }}
-      className="section"
-    >
-      <div className="sectionContainer">
-        <h2 className="sectionHeading">Experience</h2>
+  const [selectedExperience, setSelectedExperience] = useState<Experience | null>(null);
 
-        <div className="sectionBody">
-          <div className="scrollbarThin flex max-h-full w-full snap-x snap-mandatory space-x-5 overflow-x-auto p-10">
-            {experiences.map((experience) => {
-              return (
-                <ExperienceCard key={experience._id} experience={experience} />
-              );
-            })}
+  return (
+    <>
+      <motion.div
+        initial={{
+          opacity: 0,
+        }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+        viewport={{ once: true }}
+        className="section"
+      >
+        <div className="sectionContainer">
+          <h2 className="sectionHeading">Experience</h2>
+
+          <div className="sectionBody">
+            <div className="scrollbarThin flex max-h-full w-full snap-x snap-mandatory space-x-5 overflow-x-auto p-10">
+              {experiences.map((experience) => {
+                return (
+                  <ExperienceCard 
+                    key={experience._id} 
+                    experience={experience} 
+                    onViewDetails={setSelectedExperience}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+      <ExperienceModal 
+        experience={selectedExperience} 
+        onClose={() => setSelectedExperience(null)} 
+      />
+    </>
   );
 };
 

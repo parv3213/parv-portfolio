@@ -20,10 +20,20 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'progress',
-      title: 'Progress',
-      type: 'number',
-      validation: (Rule) => Rule.min(0).max(100),
+      name: 'category',
+      title: 'Category',
+      description: 'Category of the Skill (e.g. Frontend, Backend, Web3, Database, Tools)',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Frontend', value: 'Frontend'},
+          {title: 'Backend', value: 'Backend'},
+          {title: 'Web3', value: 'Web3'},
+          {title: 'Database', value: 'Database'},
+          {title: 'Tools', value: 'Tools'},
+          {title: 'Other', value: 'Other'},
+        ],
+      },
     }),
   ],
 })
