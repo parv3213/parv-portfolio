@@ -3,7 +3,8 @@ import { Project as ProjectType } from "../typings";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import SkillVisual from "./SkillVisual";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 type Props = {
   project: ProjectType;
@@ -23,7 +24,10 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
   onCloseRef.current = onClose;
   isOpenRef.current = isOpen;
 
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
     return () => {
       unlockScroll();
     };
@@ -52,7 +56,9 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
     }
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence onExitComplete={handleExitComplete}>
       {isOpen && (
         <motion.div
@@ -61,7 +67,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-6 md:p-12"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12"
         >
           {/* Backdrop */}
           <div
@@ -76,7 +82,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ type: "spring", damping: 28, stiffness: 320 }}
             onClick={(e) => e.stopPropagation()}
-            className="scrollbarThin relative max-h-[88svh] w-full overflow-y-auto overscroll-contain rounded-t-2xl bg-white p-4 shadow-2xl dark:bg-zinc-800 sm:max-h-[90vh] sm:max-w-4xl sm:rounded-2xl sm:p-6 md:p-10"
+            className="scrollbarThin relative max-h-[90vh] w-full overflow-y-auto overscroll-contain rounded-2xl bg-white p-4 shadow-2xl dark:bg-zinc-800 sm:max-w-4xl sm:p-6 md:p-10"
           >
             {/* Close Button */}
             <button
@@ -194,7 +200,8 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

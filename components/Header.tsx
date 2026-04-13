@@ -126,7 +126,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
             {/* Hamburger — mobile only */}
             <button
               onClick={() => setMobileMenuOpen((o) => !o)}
-              className="flex items-center justify-center rounded-lg p-1.5 md:hidden"
+              className="flex items-center justify-center rounded-lg p-1.5 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 md:hidden"
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
             >
