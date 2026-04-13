@@ -8,7 +8,12 @@ import BackgroundCircles from "./BackgroundCircles";
 
 const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
   const [text] = useTypewriter({
-    words: [`Hi, The Name's ${pageInfo?.name}`, "<Guy who loves to code/>"],
+    words: [
+      `Hi, The Name's ${pageInfo?.name}`,
+      "<Guy who loves to code/>",
+      "Exploring & building with AI 🤖",
+      "Always upskilling 🚀",
+    ],
     delaySpeed: 2000,
     loop: true,
   });
@@ -21,10 +26,19 @@ const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5 }}
+          className="flex flex-col items-center justify-center gap-6"
         >
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-green-500/30 bg-green-50/80 px-4 py-1.5 text-sm font-medium text-green-700 shadow-sm backdrop-blur-md dark:border-green-400/20 dark:bg-green-900/20 dark:text-green-400">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75 dark:bg-green-400"></span>
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500 dark:bg-green-400"></span>
+            </span>
+            <span>Available for Opportunities</span>
+          </div>
+
           <Image
             priority
-            className="mx-auto h-32 w-32 rounded-full object-cover"
+            className="mx-auto h-32 w-32 rounded-full object-cover shadow-lg"
             src={urlFor(pageInfo?.heroImage).url()}
             alt={pageInfo?.name || "Hero Image"}
             width={128}
