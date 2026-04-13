@@ -32,7 +32,7 @@ const ContactMe = ({ pageInfo }: { pageInfo: PageInfo }) => {
                 Let&#39;s build something together!
               </h3>
               <p className="mx-auto max-w-xl text-base leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-[17px]">
-                I'm currently seeking new opportunities and would be absolutely delighted to help you achieve your goals. Whether you're looking for a full-time team member, need part-time or contract expertise, or want a hand growing your startup—I'm ready to dive in. Let's chat!
+                I&apos;m currently seeking new opportunities and would be absolutely delighted to help you achieve your goals. Whether you&apos;re looking for a full-time team member, need part-time or contract expertise, or want a hand growing your startup—I&apos;m ready to dive in. Let&apos;s chat!
               </p>
             </div>
 
