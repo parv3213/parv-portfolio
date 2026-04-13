@@ -1,65 +1,115 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { urlFor } from "../sanity";
 import { Project as ProjectType } from "../typings";
+import ProjectModal from "./ProjectModal";
 
 const Project = ({ project }: { project: ProjectType }) => {
-  return (
-    <div className="flex h-full w-full flex-shrink-0 snap-center flex-col items-center justify-center p-8 md:p-20">
-      <motion.div
-        initial={{
-          y: -100,
-          opacity: 0,
-        }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1.2 }}
-        viewport={{ once: true }}
-        className="flex w-full max-w-6xl flex-col items-center justify-center"
-      >
-        <div className="group relative aspect-video w-full max-w-2xl cursor-pointer overflow-hidden rounded-2xl border border-gray-200/50 bg-white/50 shadow-2xl backdrop-blur-sm dark:border-gray-700/50 dark:bg-gray-800/50">
-          <Image
-            className="object-cover object-center transition-transform duration-500 group-hover:scale-110"
-            src={urlFor(project?.image).url()}
-            alt={project?.title || "Project Image"}
-            fill
-            placeholder="empty"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-          <div className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/0" />
-        </div>
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-        <div className="mt-10 max-w-4xl space-y-6 px-0 md:px-10">
-          <div className="flex flex-col items-center space-y-2">
-            <h4 className="text-center text-3xl font-bold text-gray-800 dark:text-white md:text-4xl">
+  const hasSanityAsset = Boolean(project?.image?.asset);
+  let imageUrl = hasSanityAsset ? urlFor(project.image).url() : null;
+
+  // Ignore 1x1 placeholder images
+  if (imageUrl && imageUrl.includes("-1x1.")) {
+    imageUrl = null;
+  }
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className="group flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200/50 bg-white/50 shadow-lg backdrop-blur-sm transition-all hover:shadow-xl dark:border-zinc-700/50 dark:bg-zinc-800/50"
+      >
+        {/* Image Section */}
+        {imageUrl ? (
+          <div
+            onClick={() => setIsModalOpen(true)}
+            className="relative aspect-video w-full cursor-pointer overflow-hidden bg-zinc-100 dark:bg-zinc-900"
+          >
+            <Image
+              className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+              src={imageUrl}
+              alt={project?.title || "Project Image"}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-black/10 transition-colors duration-500 group-hover:bg-transparent" />
+          </div>
+        ) : (
+          <div
+            onClick={() => setIsModalOpen(true)}
+            className="relative flex aspect-video w-full cursor-pointer flex-col items-center justify-center bg-gradient-to-br from-zinc-100 to-zinc-200 p-6 text-center dark:from-zinc-800 dark:to-zinc-900"
+          >
+            <h4 className="text-2xl font-bold text-zinc-800 dark:text-zinc-200 line-clamp-2">
               {project?.title}
             </h4>
-            <div className="h-1 w-20 rounded-full bg-[#F7AB0A]" />
+            <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/5 dark:group-hover:bg-white/5" />
           </div>
+        )}
 
-          <div className="scrollbarThin max-h-[12rem] w-full overflow-y-auto px-2 text-sm">
-            <p className="text-center text-lg leading-relaxed text-gray-600 dark:text-gray-300 md:text-left">
-              {project?.summary}
-            </p>
-          </div>
+        {/* Content Section */}
+        <div className="flex flex-1 flex-col p-6">
+          {imageUrl && (
+            <h4 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-100 line-clamp-1" title={project?.title}>
+              {project?.title}
+            </h4>
+          )}
+          
+          <p className="mb-6 flex-1 text-sm leading-relaxed text-zinc-600 line-clamp-3 dark:text-zinc-400" title={project?.summary}>
+            {project?.summary}
+          </p>
 
-          <div className="flex justify-center">
-            <Link
-              href={project?.linkToBuild}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gray-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-gray-700"
+          <div className="mt-auto flex flex-wrap items-center gap-3">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="flex-1 rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
-              <span className="absolute h-0 w-0 rounded-full bg-[#F7AB0A] transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
-              <span className="absolute inset-0 -mt-1 h-full w-full rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-700 opacity-30"></span>
-              <span className="relative transition-colors duration-300 group-hover:text-black">
-                View Project
-              </span>
-            </Link>
+              Details
+            </button>
+            {project?.linkToGithub && (
+              <Link
+                href={project?.linkToGithub}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center justify-center rounded-lg bg-zinc-200 p-2.5 text-zinc-900 transition-colors hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-600"
+                title="View Source Code on GitHub"
+              >
+                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+                </svg>
+              </Link>
+            )}
+            {project?.linkToBuild && (
+              <Link
+                href={project?.linkToBuild}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center justify-center rounded-lg bg-zinc-200 p-2.5 text-zinc-900 transition-colors hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-600"
+                title="View Live Preview"
+              >
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </Link>
+            )}
           </div>
         </div>
       </motion.div>
-    </div>
+
+      <ProjectModal
+        project={project}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+    </>
   );
 };
 

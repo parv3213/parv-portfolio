@@ -25,9 +25,40 @@ export default defineType({
       type: 'text',
     }),
     defineField({
+      name: 'technologies',
+      title: 'Technologies',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'skill'}}],
+    }),
+    defineField({
+      name: 'architectureDetails',
+      title: 'Architecture Details',
+      description: 'Discuss system design, smart contract architecture, and data flows',
+      type: 'array',
+      of: [{type: 'block'}],
+    }),
+    defineField({
+      name: 'challengesAndTradeoffs',
+      title: 'Challenges and Trade-offs',
+      description: 'Highlight edge cases, security audits, and engineering decisions',
+      type: 'array',
+      of: [{type: 'block'}],
+    }),
+    defineField({
       name: 'linkToBuild',
-      title: 'LinkToBuild',
+      title: 'Link to Live Preview',
       type: 'url',
+    }),
+    defineField({
+      name: 'linkToGithub',
+      title: 'Link to GitHub',
+      type: 'url',
+    }),
+    defineField({
+      name: 'impactRank',
+      title: 'Impact Rank',
+      description: 'Higher number means higher impact (shows up first)',
+      type: 'number',
     }),
   ],
 })

@@ -25,11 +25,12 @@
   }
 
   .section {
-    @apply mx-auto min-h-screen max-w-7xl text-zinc-900 dark:text-white;
+    @apply mx-auto h-screen max-w-7xl text-zinc-900 dark:text-white;
   }
 
+  /* Top padding: clear sticky header (~5rem) + even gap before heading — do not add per-section heading margins */
   .sectionContainer {
-    @apply flex h-full min-h-screen w-full flex-col items-center pt-20 pb-10 overflow-hidden;
+    @apply flex h-full w-full flex-col items-center pt-32 pb-10 overflow-hidden md:pt-40;
   }
 
   .scrollbarThin {

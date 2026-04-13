@@ -98,7 +98,8 @@ const Achievements = ({ achievements }: { achievements: Achievement[] }) => {
           </div>
         </div>
 
-        <div className="pointer-events-none absolute top-[28%] left-0 h-[420px] w-full -skew-y-12 bg-[#F7AB0A]/10" />
+        <div className="pointer-events-none absolute -left-20 top-[20%] z-0 h-[400px] w-[400px] rounded-full bg-[#F7AB0A]/15 blur-[100px]" />
+        <div className="pointer-events-none absolute -right-20 bottom-[10%] z-0 h-[300px] w-[300px] rounded-full bg-[#F7AB0A]/15 blur-[100px]" />
       </div>
     </motion.div>
   );

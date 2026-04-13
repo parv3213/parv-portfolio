@@ -131,7 +131,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   *[_type=="project"]{
     ...,
     technologies[]->
-  } | order(_createdAt asc)
+  } | order(impactRank desc, _createdAt asc)
 `);
   const achievements: Achievement[] = await client.fetch(groq`
   *[_type=="achievement"] | order(_createdAt asc)

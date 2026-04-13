@@ -40,10 +40,23 @@ export interface Skill extends SanityBody {
 
 export interface Project extends SanityBody {
   _type: 'project'
-  image: Image
+  image?: Image
   summary: string
   title: string
-  linkToBuild: string
+  linkToBuild?: string
+  linkToGithub?: string
+  impactRank?: number
+  technologies?: Skill[]
+  architectureDetails?: any[]
+  challengesAndTradeoffs?: any[]
+}
+
+export interface Achievement extends SanityBody {
+  _type: 'achievement'
+  title: string
+  image: Image
+  description: string
+  linkToAsset?: string
 }
 
 export interface Technology extends SanityBody {
