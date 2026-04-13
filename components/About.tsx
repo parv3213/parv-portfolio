@@ -93,12 +93,11 @@ const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
               className="space-y-6"
             >
               <div className="rounded-3xl border border-zinc-200 bg-zinc-100/80 p-6 shadow-lg backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/60 md:p-10">
-                <h4 className="mb-4 text-2xl font-semibold text-zinc-800 dark:text-zinc-100 md:text-4xl">
-                  Here is a{" "}
-                  <span className="underline decoration-[#F7AB0A]/50 decoration-4 underline-offset-4">
-                    little
-                  </span>{" "}
-                  background
+                <h4 className="mb-4 font-display text-2xl font-bold text-zinc-800 dark:text-zinc-100 md:text-4xl">
+                  A bit about{" "}
+                  <span className="underline decoration-brand/50 decoration-4 underline-offset-4">
+                    me
+                  </span>
                 </h4>
                 <div className="relative">
                   <div
