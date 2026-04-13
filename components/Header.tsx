@@ -38,7 +38,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full transition-[background-color,box-shadow,border-color] duration-300 ease-out ${shellClass}`}
+      className={`fixed top-0 z-40 w-full transition-[background-color,box-shadow,border-color] duration-300 ease-out ${shellClass}`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between p-5">
         <motion.div
