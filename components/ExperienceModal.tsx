@@ -118,7 +118,7 @@ const ExperienceModal = ({ experience, onClose }: Props) => {
                                         key={index}
                                         className="flex items-start space-x-3 text-zinc-700 dark:text-zinc-300"
                                     >
-                                        <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-yellow-600 dark:bg-yellow-500" />
+                                        <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-dark dark:bg-brand" />
                                         <span className="flex-1 text-[15px] leading-relaxed sm:text-base">{point}</span>
                                     </li>
                                 ))}

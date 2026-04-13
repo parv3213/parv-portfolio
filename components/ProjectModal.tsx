@@ -104,7 +104,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
                 <h3 className="text-center text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">
                   {project?.title}
                 </h3>
-                <div className="h-1 w-20 rounded-full bg-[#F7AB0A]" />
+                <div className="h-1 w-20 rounded-full bg-brand" />
               </div>
 
               {/* Technologies */}
@@ -161,7 +161,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
                       rel="noopener noreferrer"
                       className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-zinc-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-zinc-700 sm:w-auto"
                     >
-                      <span className="absolute h-0 w-0 rounded-full bg-[#F7AB0A] transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
+                      <span className="absolute h-0 w-0 rounded-full bg-brand transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
                       <span className="absolute inset-0 -mt-1 h-full w-full rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-700 opacity-30"></span>
                       <span className="relative flex items-center gap-2 transition-colors duration-300 group-hover:text-black">
                         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -178,7 +178,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
                       rel="noopener noreferrer"
                       className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-zinc-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-zinc-700 sm:w-auto"
                     >
-                      <span className="absolute h-0 w-0 rounded-full bg-[#F7AB0A] transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
+                      <span className="absolute h-0 w-0 rounded-full bg-brand transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
                       <span className="absolute inset-0 -mt-1 h-full w-full rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-700 opacity-30"></span>
                       <span className="relative flex items-center gap-2 transition-colors duration-300 group-hover:text-black">
                         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
