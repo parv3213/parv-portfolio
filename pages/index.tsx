@@ -27,13 +27,13 @@ const Home = ({ pageInfo, experiences, socials, projects, skills, achievements }
   return (
     <div
       id="layout-scroll"
-      className="z-0 h-screen overflow-y-scroll bg-zinc-50 text-zinc-900 scrollbar overflow-x-hidden scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700 md:snap-y md:snap-mandatory dark:bg-zinc-800"
+      className="z-0 min-h-screen overflow-y-auto overflow-x-hidden bg-zinc-50 text-zinc-900 scrollbar scrollbar-track-zinc-400/20 scrollbar-thumb-brand dark:bg-zinc-800"
     >
       <Head>
         <title>Parv | Portfolio</title>
         <meta
           name="description"
-          content="Parv is a web3 full-stack developer. Skilled in software engineering and programming."
+          content="Parv is a full-stack software engineer. Skilled in software engineering and programming."
         />
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -53,54 +53,65 @@ const Home = ({ pageInfo, experiences, socials, projects, skills, achievements }
           sizes="16x16"
           href="/favicon-16x16.png"
         />
+        {/* Open Graph */}
+        <meta property="og:title" content="Parv | Software Engineer" />
+        <meta
+          property="og:description"
+          content="Full-stack software engineer. Explore my work, experience, and skills."
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <Header socials={socials} />
 
       <main>
-        <section id="hero" className="snap-start">
+        <section id="hero">
           <Hero pageInfo={pageInfo} />
         </section>
 
-        <section id="about" className="snap-start">
+        <section id="about">
           <About pageInfo={pageInfo} />
         </section>
 
-        <section id="experience" className="snap-start">
+        <section id="experience">
           <WorkExperience experiences={experiences} />
         </section>
 
-        <section id="skills" className="snap-start">
+        <section id="skills">
           <Skills skills={skills} />
         </section>
 
-        <section id="projects" className="snap-start">
+        <section id="projects">
           <Projects projects={projects} />
         </section>
 
-        <section id="achievements" className="snap-start">
+        <section id="achievements">
           <Achievements achievements={achievements} />
         </section>
 
-        <section id="contactMe" className="snap-start">
-          <ContactMe pageInfo={pageInfo} />
+        <section id="contactMe">
+          <ContactMe pageInfo={pageInfo} socials={socials} />
         </section>
       </main>
 
-      <Link href={"#hero"} aria-label="Scroll to top">
-        <footer className="sticky bottom-5 hidden w-full cursor-pointer md:block">
-          <div className="flex items-center justify-center">
+      <footer className="border-t border-zinc-200/60 dark:border-zinc-700/60 py-8 px-4 text-center">
+        <div className="mx-auto flex max-w-7xl flex-col items-center gap-3">
+          <Link href="#hero" aria-label="Scroll to top">
             <Image
-              className="h-10 w-10 cursor-pointer rounded-full object-contain object-center grayscale filter hover:grayscale-0"
+              className="h-8 w-8 cursor-pointer rounded-full object-contain object-center grayscale filter hover:grayscale-0 transition-all duration-300"
               src={urlFor(pageInfo?.profilePic).url()}
-              alt={pageInfo?.name || "Footer Image"}
-              width={40}
-              height={40}
+              alt={pageInfo?.name || "Back to top"}
+              width={32}
+              height={32}
               sizes="10vw"
             />
-          </div>
-        </footer>
-      </Link>
+          </Link>
+          <p className="text-xs text-zinc-400 dark:text-zinc-500">
+            © {new Date().getFullYear()} {pageInfo?.name}. Built with Next.js & Sanity.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };

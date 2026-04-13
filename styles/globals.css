@@ -1,39 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 @layer components {
   .heroButton {
-    @apply px-3 py-2 md:px-6 border border-zinc-200 dark:border-[#333333] rounded-full uppercase text-[10px] sm:text-xs tracking-[0.2em] text-zinc-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A];
+    @apply px-3 py-2 md:px-6 border border-zinc-200 dark:border-[#333333] rounded-full uppercase text-[10px] sm:text-xs tracking-[0.2em] text-zinc-500 transition-all hover:border-brand/40 hover:text-brand;
   }
 
   .contractFormInput {
-    @apply rounded-sm border-b border-zinc-200 bg-zinc-200 p-2 px-4 text-zinc-500 outline-0 transition-all placeholder:text-zinc-400 focus:border-b focus:border-yellow-800 focus:text-yellow-800 hover:border-b hover:border-yellow-800
-    hover:text-yellow-800 dark:border-zinc-800 dark:bg-zinc-700 dark:text-zinc-400 dark:focus:border-yellow-500 dark:focus:text-yellow-500 dark:hover:border-yellow-500 dark:hover:text-yellow-500;
+    @apply rounded-sm border-b border-zinc-200 bg-zinc-200 p-2 px-4 text-zinc-500 outline-0 transition-all placeholder:text-zinc-400 focus:border-b focus:border-brand-dark focus:text-brand-dark hover:border-b hover:border-brand-dark
+    hover:text-brand-dark dark:border-zinc-800 dark:bg-zinc-700 dark:text-zinc-400 dark:focus:border-brand dark:focus:text-brand dark:hover:border-brand dark:hover:text-brand;
   }
 
   .sectionHeading {
-    @apply p-2 text-sm uppercase tracking-[0.4em] text-zinc-500 sm:text-xl sm:tracking-[15px] md:text-2xl md:tracking-[20px] flex-shrink-0 text-center;
-    }
-    
-    .sectionBody {
-      @apply flex flex-1 w-full items-center justify-center overflow-hidden;
+    @apply p-2 text-sm uppercase tracking-[0.4em] text-zinc-500 sm:text-xl sm:tracking-[15px] md:text-2xl md:tracking-[20px] flex-shrink-0 text-center font-sans;
+  }
+
+  .sectionBody {
+    @apply flex flex-1 w-full items-center justify-center;
   }
 
   .underline {
-    @apply decoration-yellow-700;
+    @apply decoration-brand-dark;
   }
 
+  /* Sections now flow naturally — no viewport-height locking */
   .section {
-    @apply mx-auto min-h-[100svh] max-w-7xl text-zinc-900 dark:text-white md:h-screen;
+    @apply mx-auto max-w-7xl text-zinc-900 dark:text-white;
   }
 
-  /* Top padding: clear sticky header (~5rem) + even gap before heading — do not add per-section heading margins */
   .sectionContainer {
-    @apply flex min-h-[100svh] w-full flex-col items-center overflow-visible pb-8 pt-24 md:h-full md:overflow-hidden md:pb-10 md:pt-36;
+    @apply flex w-full flex-col items-center overflow-visible pb-16 pt-24 md:pb-24 md:pt-32;
   }
 
   .scrollbarThin {
-    @apply scrollbar-thin scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700;
+    @apply scrollbar-thin scrollbar-track-zinc-400/20 scrollbar-thumb-brand;
   }
 }

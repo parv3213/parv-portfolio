@@ -29,6 +29,8 @@ export interface PageInfo extends SanityBody {
   role: string
   socials: any[]
   backgroundInformation: string
+  /** URL to a hosted resume PDF. Add as a 'url' field in the Sanity pageInfo schema. */
+  resumeUrl?: string
 }
 
 export interface Skill extends SanityBody {

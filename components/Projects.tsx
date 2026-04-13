@@ -21,7 +21,7 @@ const Projects = ({ projects }: { projects: ProjectType[] }) => {
           </div>
         </div>
 
-        <div className="pointer-events-none absolute top-[30%] left-0 z-0 h-[500px] w-full -skew-y-12 bg-gradient-to-b from-[#F7AB0A]/20 to-transparent" />
+        <div className="pointer-events-none absolute top-[30%] left-0 z-0 h-[500px] w-full -skew-y-12 bg-gradient-to-b from-brand/20 to-transparent" />
       </div>
     </motion.div>
   );
