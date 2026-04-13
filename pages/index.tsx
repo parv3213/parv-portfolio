@@ -10,8 +10,9 @@ import Hero from "../components/Hero";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import WorkExperience from "../components/WorkExperience";
+import Achievements from "../components/Achievements";
 import { client, urlFor } from "../sanity";
-import { Experience, PageInfo, Project, Skill, Social } from "../typings";
+import { Experience, PageInfo, Project, Skill, Social, Achievement } from "../typings";
 
 type Props = {
   pageInfo: PageInfo;
@@ -19,11 +20,15 @@ type Props = {
   socials: Social[];
   projects: Project[];
   skills: Skill[];
+  achievements: Achievement[];
 };
 
-const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
+const Home = ({ pageInfo, experiences, socials, projects, skills, achievements }: Props) => {
   return (
-    <div className="z-0	h-screen snap-y snap-mandatory overflow-y-scroll bg-zinc-50 text-zinc-900 scrollbar overflow-x-hidden scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700 dark:bg-zinc-800">
+    <div
+      id="layout-scroll"
+      className="z-0 h-screen snap-y snap-mandatory overflow-y-scroll scroll-pt-28 bg-zinc-50 text-zinc-900 scrollbar overflow-x-hidden scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700 dark:bg-zinc-800 md:scroll-pt-32"
+    >
       <Head>
         <title>Parv | Portfolio</title>
         <meta
@@ -73,6 +78,10 @@ const Home = ({ pageInfo, experiences, socials, projects, skills }: Props) => {
           <Projects projects={projects} />
         </section>
 
+        <section id="achievements" className="snap-start">
+          <Achievements achievements={achievements} />
+        </section>
+
         <section id="contactMe" className="snap-center">
           <ContactMe pageInfo={pageInfo} />
         </section>
@@ -119,7 +128,13 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   *[_type=="skill"]
 `);
   const projects: Project[] = await client.fetch(groq`
-  *[_type=="project"] | order(_createdAt asc)
+  *[_type=="project"]{
+    ...,
+    technologies[]->
+  } | order(_createdAt asc)
+`);
+  const achievements: Achievement[] = await client.fetch(groq`
+  *[_type=="achievement"] | order(_createdAt asc)
 `);
 
   return {
@@ -129,6 +144,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       socials,
       skills,
       projects,
+      achievements,
     },
   };
 };

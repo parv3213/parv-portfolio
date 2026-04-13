@@ -38,15 +38,15 @@ const Skills = ({ skills }: { skills: SkillType[] }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="section min-h-screen relative"
+      className="section relative h-screen"
     >
-      <div className="sectionContainer max-w-[2000px] xl:px-10 justify-center">
-        <h2 className="sectionHeading mt-16 md:mt-24">Skills</h2>
+      <div className="sectionContainer relative isolate max-w-[2000px] justify-center xl:px-10">
+        <h2 className="sectionHeading">Skills</h2>
 
-        <div className="flex flex-col items-center justify-center w-full mt-10 space-y-8">
+        <div className="mt-10 flex w-full flex-col items-center justify-center space-y-8">
           {/* Category Tabs */}
           {categories.length > 1 && (
-            <div className="flex flex-wrap justify-center gap-2 md:gap-4 px-4 z-20">
+            <div className="flex flex-wrap justify-center gap-2 px-4 md:gap-4">
               {categories.map((category) => (
                 <button
                   key={category}
@@ -65,26 +65,22 @@ const Skills = ({ skills }: { skills: SkillType[] }) => {
           )}
 
           {/* Skills Grid with AnimatePresence */}
-          <div className="w-full min-h-[400px]">
-            <motion.div 
-              layout
-              className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 sm:gap-5 p-5 place-items-center"
-            >
+          <div className="scrollbarThin w-full max-h-[60vh] overflow-y-auto px-2 pb-10">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 sm:gap-5 p-5 place-items-center">
               <AnimatePresence mode="popLayout">
                 {filteredSkills?.map((skill) => (
                   <motion.div
                     key={skill._id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.3 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <Skill directionLeft={true} skill={skill} />
+                    <Skill skill={skill} />
                   </motion.div>
                 ))}
               </AnimatePresence>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
