@@ -35,22 +35,34 @@ export interface Skill extends SanityBody {
   _type: 'skill'
   title: string
   image: Image
-  progress: number
+  category?: string
 }
 
 export interface Project extends SanityBody {
   _type: 'project'
-  image: Image
+  image?: Image
   summary: string
   title: string
-  linkToBuild: string
+  linkToBuild?: string
+  linkToGithub?: string
+  impactRank?: number
+  technologies?: Skill[]
+  architectureDetails?: any[]
+  challengesAndTradeoffs?: any[]
+}
+
+export interface Achievement extends SanityBody {
+  _type: 'achievement'
+  title: string
+  image: Image
+  description: string
+  linkToAsset?: string
 }
 
 export interface Technology extends SanityBody {
   _type: 'skill'
   title: string
   image: Image
-  progress: number
 }
 
 export interface Experience extends SanityBody {
@@ -61,6 +73,8 @@ export interface Experience extends SanityBody {
   dateEnded: string
   isCurrentlyWorkingHere: boolean
   jobTitle: string
+  /** Shown on the card; falls back to first point if omitted */
+  summary?: string
   points: string[]
   technologies: Technology[]
   companyUrl: string

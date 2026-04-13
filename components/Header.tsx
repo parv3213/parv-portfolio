@@ -8,125 +8,155 @@ import { Social } from '../typings'
 const Header = ({ socials }: { socials: Social[] }) => {
   const { theme, setTheme, resolvedTheme } = useTheme()
   const [loaded, setLoaded] = useState(false)
+  const [heroBackdrop, setHeroBackdrop] = useState(true)
+
   useEffect(() => setLoaded(true), [])
 
+  useEffect(() => {
+    const scrollRoot = document.getElementById("layout-scroll")
+    const hero = document.getElementById("hero")
+    if (!scrollRoot || !hero) return
+
+    const updateHeroBackdrop = () => {
+      const rect = hero.getBoundingClientRect()
+      // Hero still dominates the upper viewport (landing); switch to section bar once it has scrolled well past the header.
+      setHeroBackdrop(rect.bottom > 120 && rect.top < window.innerHeight * 0.55)
+    }
+
+    updateHeroBackdrop()
+    scrollRoot.addEventListener("scroll", updateHeroBackdrop, { passive: true })
+    window.addEventListener("resize", updateHeroBackdrop)
+    return () => {
+      scrollRoot.removeEventListener("scroll", updateHeroBackdrop)
+      window.removeEventListener("resize", updateHeroBackdrop)
+    }
+  }, [])
+
+  const shellClass = heroBackdrop
+    ? "border-b border-zinc-200/35 bg-gradient-to-b from-white/90 via-white/75 to-white/40 shadow-none backdrop-blur-md dark:border-zinc-800/40 dark:from-zinc-900 dark:via-zinc-900 dark:to-zinc-900 dark:shadow-none dark:backdrop-blur-none"
+    : "border-b border-zinc-200/80 bg-zinc-50/90 shadow-sm backdrop-blur-md dark:border-zinc-700/80 dark:bg-zinc-800/90"
+
   return (
-    <header className="sticky top-0 z-20 mx-auto flex max-w-7xl items-center justify-between p-5">
-      <motion.div
-        initial={{
-          x: -500,
-          opacity: 0,
-          scale: 0.5,
-        }}
-        animate={{
-          x: 0,
-          opacity: 1,
-          scale: 1,
-        }}
-        transition={{
-          duration: 1.5,
-        }}
-        className="flex items-center"
-      >
-        {socials.map((social) => {
-          return (
-            <SocialIcon
-              key={social?._id}
-              url={social?.url}
-              fgColor={
-                theme === "dark" || resolvedTheme === "dark"
-                  ? "gray"
-                  : "rgb(113 113 122)"
-              }
-              bgColor="transparent"
-              className="transition-all duration-150 ease-in-out hover:scale-105"
-              aria-label={social?.title || "Social Link"}
-            />
-          );
-        })}
-      </motion.div>
-
-      <div className="mr-4 flex items-center justify-center space-x-4">
-        <Link
-          href="#contactMe"
-          className="transition-all duration-150 ease-in-out hover:scale-[1.03]"
-          aria-label="Contact Me"
+    <header
+      className={`fixed top-0 z-40 w-full transition-[background-color,box-shadow,border-color] duration-300 ease-out ${shellClass}`}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between p-5">
+        <motion.div
+          initial={{
+            x: -500,
+            opacity: 0,
+            scale: 0.5,
+          }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{
+            duration: 1.5,
+          }}
+          className="flex items-center"
         >
-          <motion.div
-            initial={{
-              x: 500,
-              opacity: 0,
-              scale: 0.5,
-            }}
-            animate={{
-              x: 0,
-              opacity: 1,
-              scale: 1,
-            }}
-            transition={{
-              duration: 1.5,
-            }}
-            className="flex cursor-pointer items-center"
-          >
-            {/* Mail Icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke={
-                theme === "dark" || resolvedTheme === "dark"
-                  ? "gray"
-                  : "rgb(113 113 122)"
-              }
-              className="mr-1 h-6 w-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+          {socials.map((social) => {
+            return (
+              <SocialIcon
+                key={social?._id}
+                url={social?.url}
+                fgColor={
+                  theme === "dark" || resolvedTheme === "dark"
+                    ? "gray"
+                    : "rgb(113 113 122)"
+                }
+                bgColor="transparent"
+                className="transition-all duration-150 ease-in-out hover:scale-105"
+                aria-label={social?.title || "Social Link"}
               />
-            </svg>
-          </motion.div>
-        </Link>
+            );
+          })}
+        </motion.div>
 
-        {loaded ? (
-          <button
-            onClick={() =>
-              setTheme(
-                theme === "dark" || resolvedTheme === "dark" ? "light" : "dark"
-              )
-            }
-            className="flex cursor-pointer items-center justify-center rounded-lg"
-            aria-label="Toggle Theme"
+        <div className="mr-4 flex items-center justify-center space-x-4">
+          <Link
+            href="#contactMe"
+            className="transition-all duration-150 ease-in-out hover:scale-[1.03]"
+            aria-label="Contact Me"
           >
-            {theme === "dark" || resolvedTheme === "dark" ? (
-              // Light Icon
+            <motion.div
+              initial={{
+                x: 500,
+                opacity: 0,
+                scale: 0.5,
+              }}
+              animate={{
+                x: 0,
+                opacity: 1,
+                scale: 1,
+              }}
+              transition={{
+                duration: 1.5,
+              }}
+              className="flex cursor-pointer items-center"
+            >
+              {/* Mail Icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
+                fill="none"
                 viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-6 w-6 fill-zinc-400 hover:fill-zinc-100"
-              >
-                <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
-              </svg>
-            ) : (
-              // Dark Icon
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-6 w-6 fill-zinc-400 hover:fill-zinc-900"
+                strokeWidth={2}
+                stroke={
+                  theme === "dark" || resolvedTheme === "dark"
+                    ? "gray"
+                    : "rgb(113 113 122)"
+                }
+                className="mr-1 h-6 w-6"
               >
                 <path
-                  fillRule="evenodd"
-                  d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
-                  clipRule="evenodd"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
                 />
               </svg>
-            )}
-          </button>
-        ) : null}
+            </motion.div>
+          </Link>
+
+          {loaded ? (
+            <button
+              onClick={() =>
+                setTheme(
+                  theme === "dark" || resolvedTheme === "dark" ? "light" : "dark"
+                )
+              }
+              className="flex cursor-pointer items-center justify-center rounded-lg"
+              aria-label="Toggle Theme"
+            >
+              {theme === "dark" || resolvedTheme === "dark" ? (
+                // Light Icon
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-6 w-6 fill-zinc-400 hover:fill-zinc-100"
+                >
+                  <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+                </svg>
+              ) : (
+                // Dark Icon
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-6 w-6 fill-zinc-400 hover:fill-zinc-900"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              )}
+            </button>
+          ) : null}
+        </div>
       </div>
     </header>
   );

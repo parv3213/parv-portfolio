@@ -3,7 +3,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "sanity:populate": "node scripts/populate-sanity-content.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -24,6 +25,7 @@
     "yarn": "^1.22.19"
   },
   "devDependencies": {
+    "@sanity/client": "^7.20.0",
     "@types/node": "18.11.3",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
