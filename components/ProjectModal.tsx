@@ -76,12 +76,12 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ type: "spring", damping: 28, stiffness: 320 }}
             onClick={(e) => e.stopPropagation()}
-            className="scrollbarThin relative max-h-[88svh] w-full overflow-y-auto overscroll-contain rounded-t-2xl bg-white p-4 shadow-2xl dark:bg-gray-800 sm:max-h-[90vh] sm:max-w-4xl sm:rounded-2xl sm:p-6 md:p-10"
+            className="scrollbarThin relative max-h-[88svh] w-full overflow-y-auto overscroll-contain rounded-t-2xl bg-white p-4 shadow-2xl dark:bg-zinc-800 sm:max-h-[90vh] sm:max-w-4xl sm:rounded-2xl sm:p-6 md:p-10"
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute right-3 top-3 rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white sm:right-4 sm:top-4"
+              className="absolute right-3 top-3 rounded-full p-2 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-white sm:right-4 sm:top-4"
             >
               <svg
                 className="h-6 w-6"
@@ -101,7 +101,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
             <div className="space-y-8">
               {/* Header */}
               <div className="flex flex-col items-center space-y-4">
-                <h3 className="text-center text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+                <h3 className="text-center text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">
                   {project?.title}
                 </h3>
                 <div className="h-1 w-20 rounded-full bg-[#F7AB0A]" />
@@ -130,10 +130,10 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
               {/* Architecture Details */}
               {project?.architectureDetails && (
                 <div className="space-y-4">
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-[#F7AB0A] sm:text-2xl">
+                  <h4 className="text-xl font-bold text-zinc-900 dark:text-brand sm:text-2xl">
                     Architecture & Design
                   </h4>
-                  <div className="prose prose-sm max-w-none break-words text-gray-600 dark:prose-invert dark:text-gray-300 sm:prose-base">
+                  <div className="prose prose-sm max-w-none break-words text-zinc-600 dark:prose-invert dark:text-zinc-300 sm:prose-base">
                     <PortableText value={project.architectureDetails} />
                   </div>
                 </div>
@@ -142,10 +142,10 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
               {/* Challenges and Tradeoffs */}
               {project?.challengesAndTradeoffs && (
                 <div className="space-y-4">
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-[#F7AB0A] sm:text-2xl">
+                  <h4 className="text-xl font-bold text-zinc-900 dark:text-brand sm:text-2xl">
                     Challenges & Trade-offs
                   </h4>
-                  <div className="prose prose-sm max-w-none break-words text-gray-600 dark:prose-invert dark:text-gray-300 sm:prose-base">
+                  <div className="prose prose-sm max-w-none break-words text-zinc-600 dark:prose-invert dark:text-zinc-300 sm:prose-base">
                     <PortableText value={project.challengesAndTradeoffs} />
                   </div>
                 </div>
@@ -159,7 +159,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
                       href={project.linkToGithub}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-gray-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-gray-700 sm:w-auto"
+                      className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-zinc-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-zinc-700 sm:w-auto"
                     >
                       <span className="absolute h-0 w-0 rounded-full bg-[#F7AB0A] transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
                       <span className="absolute inset-0 -mt-1 h-full w-full rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-700 opacity-30"></span>
@@ -176,7 +176,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
                       href={project.linkToBuild}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-gray-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-gray-700 sm:w-auto"
+                      className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-zinc-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-zinc-700 sm:w-auto"
                     >
                       <span className="absolute h-0 w-0 rounded-full bg-[#F7AB0A] transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
                       <span className="absolute inset-0 -mt-1 h-full w-full rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-700 opacity-30"></span>
