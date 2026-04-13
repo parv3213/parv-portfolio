@@ -27,7 +27,7 @@ const Home = ({ pageInfo, experiences, socials, projects, skills, achievements }
   return (
     <div
       id="layout-scroll"
-      className="z-0 h-screen snap-y snap-mandatory overflow-y-scroll bg-zinc-50 text-zinc-900 scrollbar overflow-x-hidden scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700 dark:bg-zinc-800"
+      className="z-0 h-screen overflow-y-scroll bg-zinc-50 text-zinc-900 scrollbar overflow-x-hidden scrollbar-track-zinc-400/20 scrollbar-thumb-yellow-700 md:snap-y md:snap-mandatory dark:bg-zinc-800"
     >
       <Head>
         <title>Parv | Portfolio</title>
@@ -88,7 +88,7 @@ const Home = ({ pageInfo, experiences, socials, projects, skills, achievements }
       </main>
 
       <Link href={"#hero"} aria-label="Scroll to top">
-        <footer className="sticky bottom-5 w-full cursor-pointer">
+        <footer className="sticky bottom-5 hidden w-full cursor-pointer md:block">
           <div className="flex items-center justify-center">
             <Image
               className="h-10 w-10 cursor-pointer rounded-full object-contain object-center grayscale filter hover:grayscale-0"

@@ -19,12 +19,12 @@ const Achievements = ({ achievements }: { achievements: Achievement[] }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="section relative h-screen"
+      className="section relative"
     >
       <div className="sectionContainer relative mx-auto max-w-[2000px] justify-center px-4 md:px-10">
         <h2 className="sectionHeading z-30">Achievements &amp; publications</h2>
 
-        <div className="scrollbarThin relative z-20 mt-10 flex w-full max-h-[65vh] flex-col items-center overflow-y-auto px-2 pb-20">
+        <div className="scrollbarThin relative z-20 mt-8 flex w-full max-h-[72svh] flex-col items-center overflow-y-auto px-2 pb-12 md:mt-10 md:max-h-[65vh] md:pb-20">
           <div className="grid w-full max-w-7xl grid-cols-1 gap-6 md:grid-cols-2">
             {achievements?.map((achievement, index) => {
               const cover = coverImageUrl(achievement.image);

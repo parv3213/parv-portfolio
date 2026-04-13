@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { urlFor } from "../sanity";
 import { Project as ProjectType } from "../typings";
 import ProjectModal from "./ProjectModal";
 
 const Project = ({ project }: { project: ProjectType }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const closeModal = useCallback(() => setIsModalOpen(false), []);
 
   const hasSanityAsset = Boolean(project?.image?.asset);
   let imageUrl = hasSanityAsset ? urlFor(project.image).url() : null;
@@ -68,7 +69,7 @@ const Project = ({ project }: { project: ProjectType }) => {
           <div className="mt-auto flex flex-wrap items-center gap-3">
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex-1 rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+              className="w-full rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-zinc-800 sm:flex-1 sm:w-auto dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               Details
             </button>
@@ -104,11 +105,7 @@ const Project = ({ project }: { project: ProjectType }) => {
         </div>
       </motion.div>
 
-      <ProjectModal
-        project={project}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      <ProjectModal project={project} isOpen={isModalOpen} onClose={closeModal} />
     </>
   );
 };

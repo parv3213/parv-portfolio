@@ -3,6 +3,7 @@ import { Project as ProjectType } from "../typings";
 import { PortableText } from "@portabletext/react";
 import Link from "next/link";
 import SkillVisual from "./SkillVisual";
+import { useEffect, useRef } from "react";
 
 type Props = {
   project: ProjectType;
@@ -10,16 +11,61 @@ type Props = {
   onClose: () => void;
 };
 
+const unlockScroll = () => {
+  const scrollRoot = document.getElementById("layout-scroll");
+  document.body.classList.remove("overflow-hidden");
+  scrollRoot?.classList.remove("overflow-hidden");
+};
+
 const ProjectModal = ({ project, isOpen, onClose }: Props) => {
+  const onCloseRef = useRef(onClose);
+  const isOpenRef = useRef(isOpen);
+  onCloseRef.current = onClose;
+  isOpenRef.current = isOpen;
+
+  useEffect(() => {
+    return () => {
+      unlockScroll();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const scrollRoot = document.getElementById("layout-scroll");
+    document.body.classList.add("overflow-hidden");
+    scrollRoot?.classList.add("overflow-hidden");
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onCloseRef.current();
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [isOpen]);
+
+  const handleExitComplete = () => {
+    if (!isOpenRef.current) {
+      unlockScroll();
+    }
+  };
+
   return (
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={handleExitComplete}>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12">
+        <motion.div
+          key={project?._id ?? "project-modal"}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-50 flex items-end justify-center p-0 sm:items-center sm:p-6 md:p-12"
+        >
           {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
+            role="presentation"
             onClick={onClose}
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
           />
@@ -28,13 +74,14 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="scrollbarThin relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl dark:bg-gray-800 md:p-10"
+            transition={{ type: "spring", damping: 28, stiffness: 320 }}
+            onClick={(e) => e.stopPropagation()}
+            className="scrollbarThin relative max-h-[88svh] w-full overflow-y-auto overscroll-contain rounded-t-2xl bg-white p-4 shadow-2xl dark:bg-gray-800 sm:max-h-[90vh] sm:max-w-4xl sm:rounded-2xl sm:p-6 md:p-10"
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute right-4 top-4 rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              className="absolute right-3 top-3 rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white sm:right-4 sm:top-4"
             >
               <svg
                 className="h-6 w-6"
@@ -54,7 +101,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
             <div className="space-y-8">
               {/* Header */}
               <div className="flex flex-col items-center space-y-4">
-                <h3 className="text-3xl font-bold text-gray-900 dark:text-white">
+                <h3 className="text-center text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
                   {project?.title}
                 </h3>
                 <div className="h-1 w-20 rounded-full bg-[#F7AB0A]" />
@@ -83,10 +130,10 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
               {/* Architecture Details */}
               {project?.architectureDetails && (
                 <div className="space-y-4">
-                  <h4 className="text-2xl font-bold text-gray-900 dark:text-[#F7AB0A]">
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-[#F7AB0A] sm:text-2xl">
                     Architecture & Design
                   </h4>
-                  <div className="prose prose-lg max-w-none text-gray-600 dark:prose-invert dark:text-gray-300">
+                  <div className="prose prose-sm max-w-none break-words text-gray-600 dark:prose-invert dark:text-gray-300 sm:prose-base">
                     <PortableText value={project.architectureDetails} />
                   </div>
                 </div>
@@ -95,10 +142,10 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
               {/* Challenges and Tradeoffs */}
               {project?.challengesAndTradeoffs && (
                 <div className="space-y-4">
-                  <h4 className="text-2xl font-bold text-gray-900 dark:text-[#F7AB0A]">
+                  <h4 className="text-xl font-bold text-gray-900 dark:text-[#F7AB0A] sm:text-2xl">
                     Challenges & Trade-offs
                   </h4>
-                  <div className="prose prose-lg max-w-none text-gray-600 dark:prose-invert dark:text-gray-300">
+                  <div className="prose prose-sm max-w-none break-words text-gray-600 dark:prose-invert dark:text-gray-300 sm:prose-base">
                     <PortableText value={project.challengesAndTradeoffs} />
                   </div>
                 </div>
@@ -112,7 +159,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
                       href={project.linkToGithub}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gray-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-gray-700"
+                      className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-gray-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-gray-700 sm:w-auto"
                     >
                       <span className="absolute h-0 w-0 rounded-full bg-[#F7AB0A] transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
                       <span className="absolute inset-0 -mt-1 h-full w-full rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-700 opacity-30"></span>
@@ -129,7 +176,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
                       href={project.linkToBuild}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-gray-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-gray-700"
+                      className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-lg bg-gray-800 px-8 py-3 font-medium tracking-tighter text-white dark:bg-gray-700 sm:w-auto"
                     >
                       <span className="absolute h-0 w-0 rounded-full bg-[#F7AB0A] transition-all duration-500 ease-out group-hover:h-56 group-hover:w-56"></span>
                       <span className="absolute inset-0 -mt-1 h-full w-full rounded-lg bg-gradient-to-b from-transparent via-transparent to-gray-700 opacity-30"></span>
@@ -145,7 +192,7 @@ const ProjectModal = ({ project, isOpen, onClose }: Props) => {
               )}
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       )}
     </AnimatePresence>
   );

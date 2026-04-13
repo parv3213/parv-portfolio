@@ -38,12 +38,12 @@ const Skills = ({ skills }: { skills: SkillType[] }) => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="section relative h-screen"
+      className="section relative"
     >
       <div className="sectionContainer relative isolate max-w-[2000px] justify-center xl:px-10">
         <h2 className="sectionHeading">Skills</h2>
 
-        <div className="mt-10 flex w-full flex-col items-center justify-center space-y-8">
+        <div className="mt-8 flex w-full flex-col items-center justify-center space-y-6 md:mt-10 md:space-y-8">
           {/* Category Tabs */}
           {categories.length > 1 && (
             <div className="flex flex-wrap justify-center gap-2 px-4 md:gap-4">
@@ -65,7 +65,7 @@ const Skills = ({ skills }: { skills: SkillType[] }) => {
           )}
 
           {/* Skills Grid with AnimatePresence */}
-          <div className="scrollbarThin w-full max-h-[60vh] overflow-y-auto px-2 pb-10">
+          <div className="scrollbarThin w-full max-h-[70svh] overflow-y-auto px-1 pb-8 md:max-h-[60vh] md:px-2 md:pb-10">
             <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 sm:gap-5 p-5 place-items-center">
               <AnimatePresence mode="popLayout">
                 {filteredSkills?.map((skill) => (

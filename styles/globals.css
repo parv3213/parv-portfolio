@@ -4,7 +4,7 @@
 
 @layer components {
   .heroButton {
-    @apply px-3 md:px-6 py-2 border border-zinc-200 dark:border-[#333333] rounded-full uppercase text-xs tracking-widest text-zinc-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A];
+    @apply px-3 py-2 md:px-6 border border-zinc-200 dark:border-[#333333] rounded-full uppercase text-[10px] sm:text-xs tracking-[0.2em] text-zinc-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A];
   }
 
   .contractFormInput {
@@ -13,7 +13,7 @@
   }
 
   .sectionHeading {
-    @apply p-2 text-xl uppercase tracking-[15px] text-zinc-500 sm:text-2xl sm:tracking-[20px] flex-shrink-0;
+    @apply p-2 text-sm uppercase tracking-[0.4em] text-zinc-500 sm:text-xl sm:tracking-[15px] md:text-2xl md:tracking-[20px] flex-shrink-0 text-center;
     }
     
     .sectionBody {
@@ -25,12 +25,12 @@
   }
 
   .section {
-    @apply mx-auto h-screen max-w-7xl text-zinc-900 dark:text-white;
+    @apply mx-auto min-h-[100svh] max-w-7xl text-zinc-900 dark:text-white md:h-screen;
   }
 
   /* Top padding: clear sticky header (~5rem) + even gap before heading — do not add per-section heading margins */
   .sectionContainer {
-    @apply flex h-full w-full flex-col items-center pt-32 pb-10 overflow-hidden md:pt-40;
+    @apply flex min-h-[100svh] w-full flex-col items-center overflow-visible pb-8 pt-24 md:h-full md:overflow-hidden md:pb-10 md:pt-36;
   }
 
   .scrollbarThin {

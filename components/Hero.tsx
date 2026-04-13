@@ -18,10 +18,10 @@ const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
     loop: true,
   });
   return (
-    <div className="dark:via-zinc-950 relative flex h-screen flex-col items-center justify-center space-y-8 overflow-hidden bg-gradient-to-b from-white via-white to-zinc-50 text-center dark:from-zinc-900 dark:to-black">
+    <div className="dark:via-zinc-950 relative flex min-h-[100svh] flex-col items-center justify-center space-y-6 overflow-hidden bg-gradient-to-b from-white via-white to-zinc-50 px-4 pb-8 pt-24 text-center dark:from-zinc-900 dark:to-black sm:space-y-8 md:h-screen md:pt-20">
       <BackgroundCircles />
 
-      <div className="z-20 flex flex-col items-center justify-center space-y-8">
+      <div className="z-20 flex flex-col items-center justify-center space-y-6 sm:space-y-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -48,15 +48,15 @@ const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
         </motion.div>
 
         <div className="z-20">
-          <h2 className="pb-2 text-sm uppercase tracking-[15px] text-zinc-500">
+          <h2 className="pb-2 text-[10px] uppercase tracking-[0.35em] text-zinc-500 sm:text-xs sm:tracking-[0.55em] md:text-sm md:tracking-[15px]">
             {pageInfo?.role}
           </h2>
-          <h1 className="px-10 text-3xl font-semibold lg:text-6xl">
+          <h1 className="px-2 text-2xl font-semibold leading-tight sm:px-8 sm:text-3xl lg:text-6xl">
             <span className="mr-3 text-zinc-900 dark:text-zinc-50">{text}</span>
             <Cursor cursorColor="#F7AB0A" />
           </h1>
 
-          <div className="pt-5">
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-5 sm:gap-3">
             <Link href="#about" className="heroButton">
               About
             </Link>
