@@ -42,6 +42,11 @@ export default defineType({
       title: 'Email',
     }),
     defineField({
+      name: 'resumeUrl',
+      type: 'url',
+      title: 'Resume URL',
+    }),
+    defineField({
       name: 'socials',
       title: 'Socials',
       type: 'array',
