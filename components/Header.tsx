@@ -1,4 +1,4 @@
-import { Mail, Menu, Moon, Sun, X } from 'lucide-react'
+import { Menu, Moon, SendHorizontal, Sun, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
@@ -105,7 +105,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
               className="mr-1 hidden items-center transition-all duration-150 ease-in-out hover:scale-[1.03] md:flex"
               aria-label="Contact Me"
             >
-              <Mail className="h-5 w-5 sm:h-6 sm:w-6" color={iconColor} strokeWidth={1.5} />
+              <SendHorizontal className="h-5 w-5 sm:h-6 sm:w-6" color={iconColor} strokeWidth={1.5} />
             </Link>
 
             {/* Theme toggle */}

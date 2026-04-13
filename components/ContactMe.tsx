@@ -1,4 +1,4 @@
-import { Mail } from "lucide-react";
+import { SendHorizontal } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCallback, useState } from "react";
 import { PageInfo, Social } from "../typings";
@@ -58,7 +58,7 @@ const ContactMe = ({ pageInfo, socials }: Props) => {
                 href={`mailto:${pageInfo?.email}`}
                 className="group inline-flex items-center gap-2.5 rounded-2xl bg-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-brand/90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-zinc-900 sm:text-base"
               >
-                <Mail className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
+                <SendHorizontal className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
                 {pageInfo?.email}
               </a>
 
