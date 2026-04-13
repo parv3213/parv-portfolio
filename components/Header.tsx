@@ -1,9 +1,10 @@
+import { Mail, Menu, Moon, Sun, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { SocialIcon } from 'react-social-icons'
 import { Social } from '../typings'
+import SocialLink from './SocialLink'
 
 const NAV_LINKS = [
   { href: '#about', label: 'About' },
@@ -81,13 +82,12 @@ const Header = ({ socials }: { socials: Social[] }) => {
             className="flex items-center"
           >
             {socials.map((social) => (
-              <SocialIcon
+              <SocialLink
                 key={social?._id}
-                url={social?.url}
-                fgColor={iconColor}
-                bgColor="transparent"
-                className="h-9 w-9 transition-all duration-150 ease-in-out hover:scale-105 sm:h-10 sm:w-10"
-                aria-label={social?.title || 'Social Link'}
+                social={social}
+                color={iconColor}
+                size={22}
+                className="p-2 transition-all duration-150 ease-in-out hover:scale-110"
               />
             ))}
           </motion.div>
@@ -105,20 +105,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
               className="mr-1 hidden items-center transition-all duration-150 ease-in-out hover:scale-[1.03] md:flex"
               aria-label="Contact Me"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke={iconColor}
-                className="h-5 w-5 sm:h-6 sm:w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                />
-              </svg>
+              <Mail className="h-5 w-5 sm:h-6 sm:w-6" color={iconColor} strokeWidth={1.5} />
             </Link>
 
             {/* Theme toggle */}
@@ -129,13 +116,9 @@ const Header = ({ socials }: { socials: Social[] }) => {
                 aria-label="Toggle Theme"
               >
                 {isDark ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 fill-zinc-400 hover:fill-zinc-100 sm:h-6 sm:w-6">
-                    <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
-                  </svg>
+                  <Sun className="h-5 w-5 text-zinc-400 hover:text-zinc-100 sm:h-6 sm:w-6" strokeWidth={1.5} />
                 ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5 fill-zinc-400 hover:fill-zinc-900 sm:h-6 sm:w-6">
-                    <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clipRule="evenodd" />
-                  </svg>
+                  <Moon className="h-5 w-5 text-zinc-400 hover:text-zinc-900 sm:h-6 sm:w-6" strokeWidth={1.5} />
                 )}
               </button>
             )}
@@ -148,19 +131,11 @@ const Header = ({ socials }: { socials: Social[] }) => {
               aria-expanded={mobileMenuOpen}
             >
               <span className="sr-only">{mobileMenuOpen ? 'Close menu' : 'Open menu'}</span>
-              <svg
-                className="h-6 w-6 text-zinc-600 dark:text-zinc-300"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-              >
                 {mobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  <X className="h-6 w-6" strokeWidth={1.5} />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                  <Menu className="h-6 w-6" strokeWidth={1.5} />
                 )}
-              </svg>
             </button>
           </motion.div>
         </div>
@@ -201,9 +176,7 @@ const Header = ({ socials }: { socials: Social[] }) => {
                   className="rounded-lg p-1 text-zinc-500 hover:bg-zinc-200/60 dark:text-zinc-400 dark:hover:bg-zinc-800"
                   aria-label="Close menu"
                 >
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+                  <X className="h-5 w-5" strokeWidth={1.5} />
                 </button>
               </div>
 
@@ -231,13 +204,12 @@ const Header = ({ socials }: { socials: Social[] }) => {
               <div className="border-t border-zinc-200/80 px-5 py-4 dark:border-zinc-800">
                 <div className="flex items-center gap-1">
                   {socials.map((social) => (
-                    <SocialIcon
+                    <SocialLink
                       key={social?._id}
-                      url={social?.url}
-                      fgColor={iconColor}
-                      bgColor="transparent"
-                      className="h-9 w-9"
-                      aria-label={social?.title || 'Social Link'}
+                      social={social}
+                      color={iconColor}
+                      size={24}
+                      className="p-2 transition-all duration-150 ease-in-out hover:scale-110"
                     />
                   ))}
                 </div>

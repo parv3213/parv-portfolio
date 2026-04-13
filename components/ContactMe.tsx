@@ -1,7 +1,8 @@
+import { Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { useCallback, useState } from "react";
-import { SocialIcon } from "react-social-icons";
 import { PageInfo, Social } from "../typings";
+import SocialLink from "./SocialLink";
 
 type Props = {
   pageInfo: PageInfo;
@@ -57,9 +58,7 @@ const ContactMe = ({ pageInfo, socials }: Props) => {
                 href={`mailto:${pageInfo?.email}`}
                 className="group inline-flex items-center gap-2.5 rounded-2xl bg-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-brand/90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-zinc-900 sm:text-base"
               >
-                <svg className="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+                <Mail className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
                 {pageInfo?.email}
               </a>
 
@@ -97,23 +96,14 @@ const ContactMe = ({ pageInfo, socials }: Props) => {
             {socials && socials.length > 0 && (
               <div className="flex flex-wrap items-center justify-center gap-2">
                 {socials.map((social) => (
-                  <a
+                  <SocialLink
                     key={social._id}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.title}
+                    social={social}
+                    size={20}
                     className="group flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm font-medium text-zinc-600 shadow-sm transition-all hover:border-brand/40 hover:bg-zinc-50 hover:text-brand dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:border-brand/40 dark:hover:text-brand"
                   >
-                    <SocialIcon
-                      url={social.url}
-                      fgColor="currentColor"
-                      bgColor="transparent"
-                      style={{ height: 20, width: 20 }}
-                      className="flex-shrink-0"
-                    />
                     {social.title}
-                  </a>
+                  </SocialLink>
                 ))}
               </div>
             )}
