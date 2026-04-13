@@ -77,12 +77,30 @@ const Hero = ({ pageInfo }: { pageInfo: PageInfo }) => {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="flex flex-wrap items-center justify-center gap-2 pt-6 sm:gap-3"
+            className="flex flex-col items-center gap-4 pt-6"
           >
-            <Link href="#about" className="heroButton">About</Link>
-            <Link href="#experience" className="heroButton">Experience</Link>
-            <Link href="#skills" className="heroButton">Skills</Link>
-            <Link href="#projects" className="heroButton">Projects</Link>
+            {/* Section nav links */}
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              <Link href="#about" className="heroButton">About</Link>
+              <Link href="#experience" className="heroButton">Experience</Link>
+              <Link href="#skills" className="heroButton">Skills</Link>
+              <Link href="#projects" className="heroButton">Projects</Link>
+            </div>
+
+            {/* Resume CTA — only renders once resumeUrl is set in Sanity */}
+            {pageInfo?.resumeUrl && (
+              <a
+                href={pageInfo.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.15em] text-white shadow-md transition-all hover:bg-brand/90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-zinc-900"
+              >
+                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                </svg>
+                Download Resume
+              </a>
+            )}
           </motion.div>
         </div>
       </div>
