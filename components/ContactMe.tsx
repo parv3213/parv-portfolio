@@ -1,106 +1,127 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { SocialIcon } from "react-social-icons";
-import { PageInfo } from "../typings";
+import { PageInfo, Social } from "../typings";
 
-const ContactMe = ({ pageInfo }: { pageInfo: PageInfo }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+type Props = {
+  pageInfo: PageInfo;
+  socials: Social[];
+};
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    window.location.href = `mailto:${pageInfo?.email}?subject=${subject}&body=Hi, my name is ${name}. ${message} (${email})`;
-  };
+const ContactMe = ({ pageInfo, socials }: Props) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = useCallback(async () => {
+    if (!pageInfo?.email) return;
+    try {
+      await navigator.clipboard.writeText(pageInfo.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback: select text — handled by the mailto link below
+    }
+  }, [pageInfo?.email]);
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.2 }}
+      transition={{ duration: 1.0 }}
       viewport={{ once: true }}
-      className="section relative md:!h-auto md:!min-h-0"
+      className="section relative"
     >
-      <div className="sectionContainer relative isolate mx-auto max-w-[2000px] justify-center px-4 md:!h-auto md:!min-h-0 md:!overflow-visible md:px-10">
+      <div className="sectionContainer relative isolate mx-auto max-w-[2000px] justify-center px-4 md:px-10">
         <h2 className="sectionHeading relative z-10">Contact</h2>
 
         <div className="relative z-10 mt-8 flex w-full flex-col items-center px-2 pb-12 md:mt-10 md:pb-20">
-          <div className="mx-auto flex w-full max-w-2xl flex-col items-center justify-center gap-6 rounded-3xl bg-zinc-100/90 p-6 shadow-lg backdrop-blur-sm dark:border dark:border-zinc-800 dark:bg-zinc-900/50 md:gap-8 md:p-12">
-            <div className="space-y-3 text-center md:space-y-4">
-              <h3 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-2xl md:text-3xl">
-                Let&#39;s build something together!
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="mx-auto flex w-full max-w-2xl flex-col items-center justify-center gap-8 rounded-3xl bg-zinc-100/90 p-8 shadow-lg backdrop-blur-sm dark:border dark:border-zinc-800 dark:bg-zinc-900/50 md:gap-10 md:p-14"
+          >
+            {/* Headline */}
+            <div className="space-y-3 text-center">
+              <h3 className="font-display text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-3xl md:text-4xl">
+                Let&apos;s work together
               </h3>
-              <p className="mx-auto max-w-xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-base md:text-[17px]">
-                I&apos;m currently seeking new opportunities and would be absolutely delighted to help you achieve your goals. Whether you&apos;re looking for a full-time team member, need part-time or contract expertise, or want a hand growing your startup—I&apos;m ready to dive in. Let&apos;s chat!
+              <p className="mx-auto max-w-md text-sm leading-relaxed text-zinc-500 dark:text-zinc-400 sm:text-base">
+                I&apos;m open to new opportunities — full-time, contract, or collaboration. Reach out directly.
               </p>
             </div>
 
-            <div className="flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full bg-white px-4 py-2.5 shadow-sm dark:bg-zinc-800 sm:space-x-3 sm:px-6 sm:py-3">
-              <SocialIcon
-                network="email"
-                fgColor="currentColor"
-                bgColor="transparent"
-                style={{ height: 28, width: 28 }}
-                className="text-[#F7AB0A] dark:text-[#F7AB0A]"
-              />
-              <p className="min-w-0 break-words text-center text-sm font-medium text-zinc-800 dark:text-zinc-200 sm:text-base md:text-lg">
-                {pageInfo?.email}
-              </p>
-            </div>
-
-            <form
-              className="flex w-full flex-col space-y-4"
-              onSubmit={(e) => handleSubmit(e)}
-            >
-              <div className="flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
-                <input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  type="text"
-                  placeholder="Name"
-                  className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-800 shadow-sm placeholder:text-zinc-400 focus:border-[#F7AB0A] focus:outline-none focus:ring-1 focus:ring-[#F7AB0A] dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 md:px-5 md:py-4"
-                />
-                <input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  placeholder="Email"
-                  className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-800 shadow-sm placeholder:text-zinc-400 focus:border-[#F7AB0A] focus:outline-none focus:ring-1 focus:ring-[#F7AB0A] dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 md:px-5 md:py-4"
-                />
-              </div>
-              <input
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-                type="text"
-                placeholder="Subject"
-                className="w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-800 shadow-sm placeholder:text-zinc-400 focus:border-[#F7AB0A] focus:outline-none focus:ring-1 focus:ring-[#F7AB0A] dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 md:px-5 md:py-4"
-              />
-              <textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                placeholder="Message"
-                className="w-full resize-none rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-800 shadow-sm placeholder:text-zinc-400 focus:border-[#F7AB0A] focus:outline-none focus:ring-1 focus:ring-[#F7AB0A] dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 md:px-5 md:py-4"
-                rows={3}
-              />
-              <button
-                type="submit"
-                className="group mt-1 flex w-full items-center justify-center gap-2 rounded-xl bg-[#F7AB0A] px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all focus:outline-none focus:ring-2 focus:ring-[#F7AB0A] focus:ring-offset-2 hover:bg-[#F7AB0A]/90 hover:shadow-lg sm:mt-2 sm:px-8 sm:py-4 sm:text-base dark:focus:ring-offset-zinc-900"
+            {/* Email CTA */}
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
+              <a
+                href={`mailto:${pageInfo?.email}`}
+                className="group inline-flex items-center gap-2.5 rounded-2xl bg-brand px-6 py-3.5 text-sm font-semibold text-white shadow-md transition-all hover:bg-brand/90 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 dark:focus:ring-offset-zinc-900 sm:text-base"
               >
-                <span>Send Message</span>
-                <svg
-                  className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                <svg className="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
+                {pageInfo?.email}
+              </a>
+
+              <button
+                onClick={handleCopyEmail}
+                title="Copy email address"
+                className="inline-flex items-center gap-2 rounded-2xl border border-zinc-200 bg-white px-4 py-3.5 text-sm font-medium text-zinc-600 shadow-sm transition-all hover:border-zinc-300 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-600"
+              >
+                {copied ? (
+                  <>
+                    <svg className="h-4 w-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    Copy
+                  </>
+                )}
               </button>
-            </form>
-          </div>
+            </div>
+
+            {/* Divider */}
+            <div className="flex w-full items-center gap-4">
+              <div className="flex-1 border-t border-zinc-200 dark:border-zinc-700" />
+              <span className="text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500">or find me on</span>
+              <div className="flex-1 border-t border-zinc-200 dark:border-zinc-700" />
+            </div>
+
+            {/* Social Links */}
+            {socials && socials.length > 0 && (
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                {socials.map((social) => (
+                  <a
+                    key={social._id}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.title}
+                    className="group flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-4 py-2.5 text-sm font-medium text-zinc-600 shadow-sm transition-all hover:border-brand/40 hover:bg-zinc-50 hover:text-brand dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:border-brand/40 dark:hover:text-brand"
+                  >
+                    <SocialIcon
+                      url={social.url}
+                      fgColor="currentColor"
+                      bgColor="transparent"
+                      style={{ height: 20, width: 20 }}
+                      className="flex-shrink-0"
+                    />
+                    {social.title}
+                  </a>
+                ))}
+              </div>
+            )}
+          </motion.div>
         </div>
+
+        {/* Background glow */}
+        <div className="pointer-events-none absolute left-1/2 top-1/3 z-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-brand/8 blur-[120px] dark:bg-brand/5" />
       </div>
     </motion.div>
   );
