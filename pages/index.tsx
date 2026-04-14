@@ -27,7 +27,7 @@ const Home = ({ pageInfo, experiences, socials, projects, skills, achievements }
   return (
     <div
       id="layout-scroll"
-      className="z-0 min-h-screen overflow-y-auto overflow-x-hidden bg-zinc-50 text-zinc-900 scrollbar scrollbar-track-zinc-400/20 scrollbar-thumb-brand dark:bg-zinc-800"
+      className="z-0 min-h-screen overflow-y-auto overflow-x-hidden bg-zinc-50 text-zinc-900 dark:bg-zinc-800"
     >
       <Head>
         <title>Parv | Portfolio</title>

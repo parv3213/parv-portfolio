@@ -13,7 +13,7 @@ const Projects = ({ projects }: { projects: ProjectType[] }) => {
       <div className="sectionContainer relative isolate mx-auto max-w-[2000px] px-4 md:px-10 justify-center">
         <h2 className="sectionHeading relative z-10">Projects</h2>
 
-        <div className="scrollbarThin relative z-10 mt-8 flex w-full max-h-[72svh] flex-col items-center overflow-y-auto px-2 pb-12 md:mt-10 md:max-h-[65vh] md:pb-20">
+        <div className="relative z-10 mt-8 flex w-full flex-col items-center px-2 pb-12 md:mt-10 md:pb-20">
           <div className="grid w-full max-w-7xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {projects?.map((project) => (
               <Project key={project?._id} project={project} />

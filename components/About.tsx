@@ -103,7 +103,7 @@ const About = ({ pageInfo }: { pageInfo: PageInfo }) => {
                   <div
                     ref={scrollContainerRef}
                     onScroll={handleScroll}
-                    className="scrollbarThin max-h-[400px] overflow-y-auto pr-2"
+                    className="pr-2"
                   >
                     <div
                       className="text-justify text-sm leading-relaxed text-zinc-600 dark:text-zinc-300 md:text-lg"

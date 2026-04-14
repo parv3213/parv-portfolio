@@ -70,7 +70,7 @@ const WorkExperience = ({ experiences }: { experiences: Experience[] }) => {
             {/* Scrollable cards */}
             <div
               ref={scrollRef}
-              className="scrollbarThin flex w-full snap-x snap-mandatory space-x-5 overflow-x-auto p-10"
+              className="flex w-full snap-x snap-mandatory space-x-5 overflow-x-auto p-10"
             >
               {experiences.map((experience) => (
                 <ExperienceCard

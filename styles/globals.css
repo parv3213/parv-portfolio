@@ -41,7 +41,10 @@
     @apply flex w-full flex-col items-center overflow-visible pb-16 pt-24 md:pb-24 md:pt-32;
   }
 
+  /* Use native scrollbars — cleaner and hidden by default on mobile */
+  /* Standard scrollbars — cleaner and hidden by default on mobile */
   .scrollbarThin {
-    @apply scrollbar-thin scrollbar-track-zinc-400/20 scrollbar-thumb-brand;
+    scrollbar-width: thin;
+    -ms-overflow-style: auto;
   }
 }
