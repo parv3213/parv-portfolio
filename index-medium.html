@@ -33,6 +33,12 @@
 .case .body p { margin: 0 0 var(--s-4); font-size: var(--fs-body); line-height: 1.6; color: var(--ink-2); text-wrap: pretty; max-width: 58ch; }
 .case .body .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: var(--s-3); }
 .case .body .tags span { font-family: var(--font-mono); font-size: 11px; padding: 2px 7px; border: 1px solid var(--rule); background: var(--bone-2); color: var(--ink-2); }
+.case .body .links { margin-top: var(--s-4); padding-top: var(--s-3); border-top: 1px dashed var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; font-family: var(--font-mono); font-size: 12px; }
+.case .body .links .lab { color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; font-size: 10px; }
+.case .body .links a { color: var(--ink-2); border-bottom: 1px solid var(--rule); padding-bottom: 1px; transition: color 160ms, border-color 160ms; }
+.case .body .links a:hover { color: var(--accent-ink); border-bottom-color: var(--accent); }
+.case .body .links .sep { color: var(--ink-4); }
+.case .body .links .note { color: var(--ink-4); font-size: 11px; }
 .case .side { border: 1px solid var(--rule); background: var(--bone-2); padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-5); }
 .case .side .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
 .case .side .metrics .m { display: flex; flex-direction: column; gap: 2px; }
@@ -165,6 +171,12 @@
       <p>Joined Sperax to rebuild an over-collateralized stablecoin on a state-based clean slate — token, VaultCore, rebase, oracle router, collateral, Uniswap V3 strategies, with The Graph subgraphs and TypeScript/Go backends on top. Same tenure also shipped Demeter (V3 farms-as-a-service — Genesis partners GMX, PlutusDAO, Gains, Vela) and Chaquen (on-chain fantasy sports, ~27K Polygon users).</p>
       <p>The Quantstamp batch hit the whole repo — approvals, input validation, event emission, rebase/redeem edge cases — alongside 18–35% gas reductions on hot paths. CI grew solhint, gas-diff, and coverage gates, with state-machine diagrams in-repo so reviewers didn't have to read bytecode.</p>
       <div class="tags"><span>Solidity 0.8</span><span>Foundry</span><span>OpenZeppelin</span><span>The Graph</span><span>Slither</span><span>GitHub Actions</span></div>
+      <div class="links">
+        <span class="lab">→ Live</span>
+        <a href="https://github.com/Sperax/USDs-v2" target="_blank" rel="noopener noreferrer">github.com/Sperax/USDs-v2</a>
+        <span class="sep">·</span>
+        <a href="https://sperax.io/" target="_blank" rel="noopener noreferrer">sperax.io</a>
+      </div>
     </div>
     <aside class="side">
       <div class="metrics">
@@ -198,6 +210,10 @@
       <p>Campaign platform for restaurant marketing — media gallery, video uploads, role-based approvals, async notifications. Built across Go, Node, and React. The core upgrade swapped a Google-Drive-backed media flow for direct-to-Azure-Blob: chunked client sessions, concurrency control, fault-tolerant processing, SAS download URLs, lifecycle cleanup.</p>
       <p>SendGrid became the email spine for video campaigns; batching and throughput passes consolidated the send pipeline onto one instrumented path. AI-assisted segmentation (chat UI + CSV bulk import) pulled manual work from hours into minutes.</p>
       <div class="tags"><span>Go</span><span>Node</span><span>React</span><span>Azure Blob</span><span>SendGrid</span><span>Postgres</span></div>
+      <div class="links">
+        <span class="lab">→ Live</span>
+        <a href="https://tavolo.ai/" target="_blank" rel="noopener noreferrer">tavolo.ai</a>
+      </div>
     </div>
     <aside class="side">
       <div class="metrics">
@@ -233,6 +249,12 @@
       <p>Most portfolios get written once and quietly rot. Mine is an artifact of a pipeline that treats my engineering career as a living database — Git history is the source of truth, five Claude subagents curate typed records, idempotent syncs fan out to Sanity, which publishes this site.</p>
       <p>Playwright crawlers pull LinkedIn, Wellfound, web3.career, and cryptojobslist against persisted auth. Credentialed writes stay draft-only — agents queue JSON, I press send. 183 repos ingested, 121 outreach drafts queued, four products shipped in the ~10 weeks since the pipeline has been running.</p>
       <div class="tags"><span>TypeScript</span><span>Python</span><span>Claude</span><span>Playwright</span><span>Sanity</span><span>Git</span></div>
+      <div class="links">
+        <span class="lab">→ Live</span>
+        <a href="https://www.parv3213.online/" target="_blank" rel="noopener noreferrer">parv3213.online</a>
+        <span class="sep">·</span>
+        <span class="note">auto-synced</span>
+      </div>
     </div>
     <aside class="side">
       <div class="metrics">
