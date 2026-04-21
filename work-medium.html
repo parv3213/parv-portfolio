@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Work — Parv Garg</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="medium.css">
+<style>
+.filters { display: flex; flex-wrap: wrap; gap: 6px; padding: var(--s-5) 0; border-bottom: 1px solid var(--rule); font-family: var(--font-mono); font-size: var(--fs-small); align-items: baseline; }
+.filters .lab { font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; margin-right: 8px; }
+.filters button { font-family: var(--font-mono); font-size: 12px; padding: 5px 10px; border: 1px solid var(--rule); background: var(--bone); color: var(--ink-2); cursor: pointer; transition: all 160ms; }
+.filters button:hover { border-color: var(--ink); color: var(--ink); }
+.filters button[aria-pressed="true"] { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+.filters .spacer { flex: 1; }
+.filters .count { color: var(--ink-3); font-size: 12px; }
+
+.ledger { border-bottom: 1px solid var(--rule); }
+.ledger .row { display: grid; grid-template-columns: 50px 1fr 160px 230px 120px 24px; gap: var(--s-5); align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 14px; transition: background 160ms, padding 160ms; }
+.ledger .row:last-child { border-bottom: 0; }
+.ledger .row:hover { background: var(--bone-2); padding-left: 10px; padding-right: 10px; margin: 0 -10px; }
+.ledger .row.head { font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; background: var(--bone-2); padding: 10px 0; }
+.ledger .row.head:hover { padding: 10px 0; margin: 0; }
+.ledger .row .idx { font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); }
+.ledger .row .tl { color: var(--ink); font-weight: 500; letter-spacing: -0.005em; }
+.ledger .row .tl .sub { display: block; color: var(--ink-3); font-weight: 400; font-size: 12px; margin-top: 2px; font-family: var(--font-mono); line-height: 1.5; }
+.ledger .row .co { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); }
+.ledger .row .st { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 3px; }
+.ledger .row .st span { border: 1px solid var(--rule); padding: 1px 5px; }
+.ledger .row .ot { font-family: var(--font-mono); font-size: 12px; color: var(--accent-ink); text-align: right; font-weight: 500; }
+.ledger .row .ar { color: var(--ink-4); font-family: var(--font-mono); font-size: 14px; text-align: right; transition: color 160ms, transform 160ms; }
+.ledger .row:hover .ar { color: var(--accent); transform: translateX(3px); }
+
+.yearband { padding: 20px 0 10px; font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 120px 1fr auto; gap: var(--s-4); align-items: baseline; }
+.yearband .yr { color: var(--ink); font-size: 13px; letter-spacing: 0; font-family: var(--font-sans); font-weight: 500; text-transform: none; }
+.yearband .count { color: var(--ink-4); }
+
+.intro { padding: var(--s-6) 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 140px 1fr 280px; gap: var(--s-7); align-items: start; }
+.intro .lab { font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; padding-top: 4px; }
+.intro p { margin: 0; font-size: var(--fs-lede); line-height: 1.6; color: var(--ink-2); max-width: 62ch; text-wrap: pretty; }
+.intro .facts { border: 1px solid var(--rule); background: var(--bone-2); padding: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); line-height: 1.7; }
+.intro .facts div { display: grid; grid-template-columns: 90px 1fr; gap: 6px; padding: 3px 0; border-bottom: 1px dashed var(--rule); }
+.intro .facts div:last-child { border-bottom: 0; }
+.intro .facts .k { font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; }
+.intro .facts strong { color: var(--ink); font-weight: 500; }
+
+@media (max-width: 960px) {
+  .intro { grid-template-columns: 1fr; }
+  .ledger .row { grid-template-columns: 40px 1fr 90px; gap: 10px; }
+  .ledger .row .co, .ledger .row .st, .ledger .row .ar { display: none; }
+  .ledger .row.head .co, .ledger .row.head .st, .ledger .row.head .ar { display: none; }
+}
+</style>
+</head>
+<body data-dark="0" data-screen-label="02 Work">
+
+<div class="page">
+  <header class="topbar">
+    <a class="mark" href="index-medium.html"><span class="dot"></span>parv3213.online</a>
+    <nav>
+      <a href="index-medium.html">Index</a>
+      <a href="work-medium.html" aria-current="page">Work</a>
+      <a href="resume-medium.html">Résumé</a>
+      <a href="contact-medium.html">Contact</a>
+      <button class="mode-toggle" aria-label="Toggle dark mode">Dark</button>
+    </nav>
+  </header>
+
+  <section class="phead">
+    <div class="num">§ 02 / Work</div>
+    <h1>A full <em>ledger</em> — <span class="muted">14 projects, five years, sorted newest first.</span></h1>
+    <aside class="aside">
+      <div class="avail"><span class="pip"></span><span>Live ledger · <strong>auto-synced</strong></span></div>
+      <hr>
+      <div><span class="k">Total</span><strong>14</strong> shipped projects</div>
+      <div><span class="k">Years</span>2020 — 2026</div>
+      <div><span class="k">Phases</span>Somish → Freelance → Sperax → Tavolo → Indie</div>
+    </aside>
+  </section>
+
+  <section class="ticker">
+    <div class="c"><span class="k">TVL under contract</span><span class="v"><span class="acc">~$10M</span></span></div>
+    <div class="c"><span class="k">Audit findings · 0 critical</span><span class="v">50<span class="u">+</span></span></div>
+    <div class="c"><span class="k">Longest tenure</span><span class="v">~2<span class="u">&nbsp;yrs</span> at Sperax</span></div>
+    <div class="c"><span class="k">Production apps</span><span class="v">14 <span class="u">total</span></span></div>
+  </section>
+
+  <section class="intro">
+    <div class="lab">§ 02.0 / About the list</div>
+    <p>Every production project I've shipped since 2020 — clients, contracts, and things I put into the world under my own name. Short form on purpose; the three linked from the home page carry the long writeups. Auto-built from Git history and role records, so the list updates itself.</p>
+    <div class="facts">
+      <div><span class="k">Newest</span><strong>Profile Intelligence Pipeline</strong></div>
+      <div><span class="k">Oldest</span>Somish dashboards</div>
+      <div><span class="k">Sorted</span>Newest first</div>
+      <div><span class="k">Filter</span>By stack below</div>
+    </div>
+  </section>
+
+  <div class="filters">
+    <span class="lab">Filter</span>
+    <button aria-pressed="true" data-f="all">All · 14</button>
+    <button aria-pressed="false" data-f="contracts">Contracts · 6</button>
+    <button aria-pressed="false" data-f="fullstack">Full-stack · 10</button>
+    <button aria-pressed="false" data-f="ai">AI · 2</button>
+    <button aria-pressed="false" data-f="oss">OSS · 1</button>
+    <button aria-pressed="false" data-f="defi">DeFi · 5</button>
+    <span class="spacer"></span>
+    <span class="count" id="ct">Showing 14 of 14</span>
+  </div>
+
+  <div class="ledger" id="lg">
+    <div class="row head">
+      <div>#</div><div>Project</div><div>Client</div><div>Stack</div><div style="text-align:right">Outcome</div><div></div>
+    </div>
+
+    <div class="yearband"><span class="yr">2026</span><span>Independent</span><span class="count">04 entries</span></div>
+
+    <a class="row" id="p14" href="index-medium.html#case-03" data-tags="ai fullstack oss">
+      <div class="idx">14</div>
+      <div class="tl">Profile Intelligence Pipeline<span class="sub">5 Claude subagents, Playwright crawlers, Sanity sync. Draft-only for credentialed writes.</span></div>
+      <div class="co">Personal</div>
+      <div class="st"><span>TypeScript</span><span>Python</span><span>Claude</span><span>Playwright</span></div>
+      <div class="ot">183 / 121</div>
+      <div class="ar">→</div>
+    </a>
+
+    <a class="row" id="p13" href="https://bikers-pride.vercel.app/" target="_blank" rel="noopener noreferrer" data-tags="fullstack">
+      <div class="idx">13</div>
+      <div class="tl">Bikers Pride — cycling design studio<span class="sub">Fit calculator, product configurator, JSON-backed typed content pipeline.</span></div>
+      <div class="co">Client · cycling</div>
+      <div class="st"><span>Next.js 16</span><span>React 19</span><span>Tailwind 4</span><span>Zustand</span></div>
+      <div class="ot">live on Vercel</div>
+      <div class="ar">→</div>
+    </a>
+
+    <a class="row" id="p12" href="https://tinywins.parv3213.online/" target="_blank" rel="noopener noreferrer" data-tags="fullstack">
+      <div class="idx">12</div>
+      <div class="tl">TinyWins — gamified habit tracker<span class="sub">Canvas tree renderer, XP / levels, good-vs-bad behavior towers.</span></div>
+      <div class="co">Personal</div>
+      <div class="st"><span>Next.js</span><span>Firebase</span><span>Canvas</span><span>Tailwind</span></div>
+      <div class="ot">43 commits · Apr 2026</div>
+      <div class="ar">→</div>
+    </a>
+
+    <a class="row" id="p11" href="https://github.com/parv3213/csv-intelligence-layer" target="_blank" rel="noopener noreferrer" data-tags="oss fullstack">
+      <div class="idx">11</div>
+      <div class="tl">CSV Intelligence Layer<span class="sub">Schema-first CSV ingest API · streaming worker · Drizzle · S3.</span></div>
+      <div class="co">OSS · MIT</div>
+      <div class="st"><span>TypeScript</span><span>Drizzle</span><span>Vercel</span><span>S3</span></div>
+      <div class="ot">v1 · Jan 2026</div>
+      <div class="ar">→</div>
+    </a>
+
+    <div class="yearband"><span class="yr">2025 — 2026</span><span>Tavolo contract</span><span class="count">01 entry</span></div>
+
+    <a class="row" id="p10" href="index-medium.html#case-02" data-tags="fullstack">
+      <div class="idx">10</div>
+      <div class="tl">Tavolo — B2B video &amp; email campaigns<span class="sub">Azure Blob direct, SendGrid spine, AI segmentation · hours → minutes.</span></div>
+      <div class="co">Contract · Tavolo</div>
+      <div class="st"><span>Go</span><span>Node</span><span>React</span><span>Azure</span><span>SendGrid</span></div>
+      <div class="ot">70+ B2B customers</div>
+      <div class="ar">→</div>
+    </a>
+
+    <div class="yearband"><span class="yr">2023 — 2025</span><span>Sperax</span><span class="count">03 entries</span></div>
+
+    <a class="row" id="p09" href="index-medium.html#case-01" data-tags="contracts defi">
+      <div class="idx">09</div>
+      <div class="tl">USDs V2 — over-collateralized stablecoin<span class="sub">State-based rebuild; closed 50+ findings; 18–35% gas cuts.</span></div>
+      <div class="co">Sperax</div>
+      <div class="st"><span>Solidity</span><span>Foundry</span><span>OZ</span><span>The Graph</span></div>
+      <div class="ot">$36M+ minted</div>
+      <div class="ar">→</div>
+    </a>
+
+    <a class="row" id="p08" href="https://github.com/Sperax" target="_blank" rel="noopener noreferrer" data-tags="contracts defi">
+      <div class="idx">08</div>
+      <div class="tl">Demeter — Uniswap V3 farms-as-a-service<span class="sub">BaseFarm multicall, V3 farm upgrades, ARB LTIPP grant. Genesis: GMX · PlutusDAO · Gains · Vela.</span></div>
+      <div class="co">Sperax</div>
+      <div class="st"><span>Solidity</span><span>Foundry</span><span>Uniswap V3</span></div>
+      <div class="ot">~$274M peak TVL</div>
+      <div class="ar">→</div>
+    </a>
+
+    <a class="row" id="p07" href="https://www.youtube.com/@Chaquendotio" target="_blank" rel="noopener noreferrer" data-tags="contracts fullstack">
+      <div class="idx">07</div>
+      <div class="tl">Chaquen — on-chain fantasy sports<span class="sub">League / contest contracts on Polygon, Chaquen Predict, realtime leaderboards.</span></div>
+      <div class="co">Sperax / Chaquen</div>
+      <div class="st"><span>Solidity</span><span>Polygon</span><span>Subgraph</span><span>Node</span><span>Redis</span></div>
+      <div class="ot">~27K users</div>
+      <div class="ar">→</div>
+    </a>
+
+    <div class="yearband"><span class="yr">2021 — 2023</span><span>Freelance Web3</span><span class="count">05 entries</span></div>
+
+    <a class="row" id="p06" href="#" data-tags="fullstack contracts">
+      <div class="idx">06</div>
+      <div class="tl">Quest Chains — gamified quest platform<span class="sub">Quest + NFT reward contracts · onboarding and retention flows.</span></div>
+      <div class="co">Quest Chains</div>
+      <div class="st"><span>Solidity</span><span>Next.js</span><span>GraphQL</span><span>Node</span></div>
+      <div class="ot">live NFT quests</div>
+      <div class="ar">→</div>
+    </a>
+
+    <a class="row" id="p05" href="#" data-tags="fullstack contracts">
+      <div class="idx">05</div>
+      <div class="tl">Rigor Finance — on-chain construction lending<span class="sub">Vendor disbursement + payment workflows · Bain / DCG seed.</span></div>
+      <div class="co">Rigor Finance</div>
+      <div class="st"><span>Solidity</span><span>Node</span><span>React</span></div>
+      <div class="ot">$5M loans on-chain</div>
+      <div class="ar">→</div>
+    </a>
+
+    <a class="row" id="p04" href="#" data-tags="fullstack defi">
+      <div class="idx">04</div>
+      <div class="tl">PlotX — decentralized prediction markets<span class="sub">Gasless meta-tx on Polygon · trades from $1 · Polygon / Hashed seed.</span></div>
+      <div class="co">PlotX</div>
+      <div class="st"><span>React</span><span>Solidity</span><span>Polygon</span></div>
+      <div class="ot">80K+ users peak</div>
+      <div class="ar">→</div>
+    </a>
+
+    <a class="row" id="p03" href="#" data-tags="contracts defi">
+      <div class="idx">03</div>
+      <div class="tl">MeTokens — personal token protocol<span class="sub">Bonded-curve AMM, ENS-linked creator tokens, Ethereum mainnet.</span></div>
+      <div class="co">MeTokens</div>
+      <div class="st"><span>Solidity</span><span>Hardhat</span></div>
+      <div class="ot">mainnet live</div>
+      <div class="ar">→</div>
+    </a>
+
+    <a class="row" id="p02" href="#" data-tags="fullstack contracts">
+      <div class="idx">02</div>
+      <div class="tl">Bites &amp; 10+ production dApps<span class="sub">Assorted Web3 + full-stack via Upwork and direct engagements.</span></div>
+      <div class="co">Freelance · various</div>
+      <div class="st"><span>Solidity</span><span>React</span><span>Node</span></div>
+      <div class="ot">10+ dApps shipped</div>
+      <div class="ar">→</div>
+    </a>
+
+    <div class="yearband"><span class="yr">2020 — 2021</span><span>Somish · first FTE</span><span class="count">01 entry</span></div>
+
+    <a class="row" id="p01" href="#" data-tags="fullstack">
+      <div class="idx">01</div>
+      <div class="tl">Somish — blockchain &amp; prediction-market dashboards<span class="sub">React dashboards and Node services for production workflows.</span></div>
+      <div class="co">Somish Blockchain Labs</div>
+      <div class="st"><span>React</span><span>Node</span><span>Solidity</span></div>
+      <div class="ot">1 yr prod delivery</div>
+      <div class="ar">→</div>
+    </a>
+  </div>
+
+  <div class="sync">
+    <span class="pip"></span>
+    <span>Ledger auto-built from Git history and role records. <strong>Profile last updated: 2026-04-21</strong></span>
+  </div>
+
+  <footer class="foot">
+    <div class="name"><strong>Parv Garg</strong> — Bengaluru / remote · parv3213@gmail.com · UTC+05:30</div>
+    <ul>
+      <li><span class="k">GH</span><a href="https://github.com/parv3213">github.com/parv3213</a></li>
+      <li><span class="k">LI</span><a href="https://www.linkedin.com/in/parv3213">linkedin.com/in/parv3213</a></li>
+      <li><span class="k">CV</span><a href="resume-medium.html">résumé</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+(function () {
+  const KEY = "parv-dark";
+  const saved = localStorage.getItem(KEY);
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const dark = saved === "1" || (saved === null && prefersDark);
+  if (dark) document.body.setAttribute("data-dark", "1");
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest(".mode-toggle");
+    if (!t) return;
+    const on = document.body.getAttribute("data-dark") === "1";
+    document.body.setAttribute("data-dark", on ? "0" : "1");
+    localStorage.setItem(KEY, on ? "0" : "1");
+  });
+})();
+
+// filters
+(function(){
+  const buttons = document.querySelectorAll('.filters button');
+  const rows = document.querySelectorAll('#lg .row:not(.head)');
+  const bands = document.querySelectorAll('#lg .yearband');
+  const ct = document.getElementById('ct');
+  buttons.forEach(btn => btn.addEventListener('click', () => {
+    buttons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+    const f = btn.getAttribute('data-f');
+    let shown = 0;
+    rows.forEach(r => {
+      const tags = (r.getAttribute('data-tags') || '').split(' ');
+      const match = f === 'all' || tags.includes(f);
+      r.style.display = match ? '' : 'none';
+      if (match) shown++;
+    });
+    // hide empty yearbands
+    bands.forEach(band => {
+      let next = band.nextElementSibling;
+      let hasVisible = false;
+      while (next && !next.classList.contains('yearband')) {
+        if (next.classList.contains('row') && next.style.display !== 'none') { hasVisible = true; break; }
+        next = next.nextElementSibling;
+      }
+      band.style.display = hasVisible ? '' : 'none';
+    });
+    ct.textContent = `Showing ${shown} of ${rows.length}`;
+  }));
+})();
+</script>
+</body>
+</html>

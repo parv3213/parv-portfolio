@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Parv Garg — Senior Full-Stack Engineer (Web3 · Applied AI)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Senior full-stack engineer. Five years shipping production SaaS, EVM protocols, and AI-augmented pipelines end to end.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="medium.css">
+<style>
+/* index-medium: hero, case, ledger preview */
+.hero { display: grid; grid-template-columns: 140px 1fr 280px; gap: var(--s-7); align-items: end; padding: var(--s-9) 0 var(--s-7); border-bottom: 1px solid var(--rule); }
+.hero .num { font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; padding-bottom: 6px; }
+.hero h1 { margin: 0; font-size: clamp(36px, 4.4vw, 62px); font-weight: 400; letter-spacing: var(--track-tighter); line-height: 1.06; max-width: 22ch; text-wrap: balance; }
+.hero h1 em { font-style: normal; color: var(--accent-ink); font-weight: 500; }
+.hero h1 .muted { color: var(--ink-3); }
+.hero .aside { padding: 16px; border: 1px solid var(--rule); background: var(--bone-2); font-family: var(--font-mono); font-size: var(--fs-small); color: var(--ink-2); line-height: 1.6; display: flex; flex-direction: column; gap: 10px; }
+.hero .aside .k { font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; display: block; margin-bottom: 2px; }
+.hero .aside .avail { display: flex; align-items: baseline; gap: 8px; }
+.hero .aside .avail .pip { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: pulse 2.4s ease-in-out infinite; transform: translateY(-1px); flex-shrink: 0; }
+.hero .aside strong { color: var(--ink); font-weight: 500; }
+.hero .aside hr { margin: 2px 0; border: 0; border-top: 1px solid var(--rule); }
+
+/* Case */
+.case { display: grid; grid-template-columns: 140px 1fr 340px; gap: var(--s-7); padding: var(--s-7) 0; border-top: 1px solid var(--rule); align-items: start; }
+.case .idx { font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--ink-3); letter-spacing: 0.02em; line-height: 1.6; }
+.case .idx .no { display: block; font-size: 32px; color: var(--ink); font-weight: 400; line-height: 1; margin-bottom: 8px; letter-spacing: -0.02em; font-family: var(--font-sans); }
+.case .idx .yr { display: block; font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; }
+.case .idx .role { color: var(--ink-3); margin-top: 6px; }
+.case .body h3 { margin: 0 0 var(--s-4); font-size: var(--fs-h3); font-weight: 500; letter-spacing: var(--track-tight); line-height: 1.22; text-wrap: balance; max-width: 22ch; }
+.case .body p { margin: 0 0 var(--s-4); font-size: var(--fs-body); line-height: 1.6; color: var(--ink-2); text-wrap: pretty; max-width: 58ch; }
+.case .body .tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: var(--s-3); }
+.case .body .tags span { font-family: var(--font-mono); font-size: 11px; padding: 2px 7px; border: 1px solid var(--rule); background: var(--bone-2); color: var(--ink-2); }
+.case .side { border: 1px solid var(--rule); background: var(--bone-2); padding: var(--s-5); display: flex; flex-direction: column; gap: var(--s-5); }
+.case .side .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); }
+.case .side .metrics .m { display: flex; flex-direction: column; gap: 2px; }
+.case .side .metrics .m .n { font-family: var(--font-mono); font-size: 22px; font-weight: 500; letter-spacing: -0.01em; color: var(--ink); line-height: 1.05; }
+.case .side .metrics .m .n .u { font-size: 12px; color: var(--ink-3); margin-left: 2px; font-weight: 400; }
+.case .side .metrics .m .n .acc { color: var(--accent-ink); }
+.case .side .metrics .m .k { font-family: var(--font-mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.02em; line-height: 1.35; margin-top: 2px; }
+.case .side .viz { border-top: 1px solid var(--rule); padding-top: var(--s-4); display: flex; flex-direction: column; gap: 8px; }
+.case .side .viz .vh { font-family: var(--font-mono); font-size: 9px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; }
+
+/* Mini bars (Quantstamp severity viz) */
+.bars { display: flex; flex-direction: column; gap: 5px; font-family: var(--font-mono); }
+.bars .r { display: grid; grid-template-columns: 40px 1fr 22px; gap: 8px; align-items: center; font-size: 10px; }
+.bars .r .l { color: var(--ink-4); text-transform: uppercase; letter-spacing: 0.06em; font-size: 9px; }
+.bars .r .bar { position: relative; height: 9px; background: var(--bone); border: 1px solid var(--rule); }
+.bars .r .bar span { position: absolute; inset: -1px auto -1px 0; background: var(--ink-3); }
+.bars .r .bar.acc span { background: var(--accent); }
+.bars .r .v { color: var(--ink-2); text-align: right; font-size: 10px; }
+
+/* Sparkline */
+.spark { width: 100%; height: 78px; display: block; }
+.spark .g { stroke: var(--bone); }
+.spark .a { stroke: var(--rule); }
+.spark .b-l { stroke: var(--ink-3); fill: none; stroke-width: 1.3; }
+.spark .a-l { stroke: var(--accent); fill: none; stroke-width: 2; }
+.spark .cut { stroke: var(--accent); stroke-dasharray: 2 3; }
+.spark-foot { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 9px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; }
+
+/* Pipe diagram (agent graph) */
+.pipe-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+.pipe-row .n { padding: 10px 4px; background: var(--bone); border: 1px solid var(--rule); text-align: center; font-family: var(--font-mono); font-size: 10px; color: var(--ink-2); letter-spacing: 0.02em; }
+.pipe-row .n.acc { background: var(--accent-wash); color: var(--accent-ink); border-color: var(--accent); }
+.pipe-row .n .k { display: block; color: var(--ink-4); font-size: 8px; letter-spacing: var(--track-wider); text-transform: uppercase; margin-bottom: 3px; }
+.pipe-row .n.acc .k { color: var(--accent-ink); opacity: 0.75; }
+.pipe-lanes { margin-top: 8px; display: grid; grid-template-columns: 52px 1fr 44px; gap: 6px 8px; font-family: var(--font-mono); font-size: 10px; align-items: center; }
+.pipe-lanes .ll { color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; font-size: 9px; }
+.pipe-lanes .bar { position: relative; height: 7px; background: var(--bone); border: 1px solid var(--rule); }
+.pipe-lanes .bar span { position: absolute; inset: -1px auto -1px 0; background: var(--accent); }
+.pipe-lanes .val { color: var(--ink-3); text-align: right; font-size: 10px; }
+
+/* Ledger preview */
+.ledger { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.ledger .row { display: grid; grid-template-columns: 50px 1fr 160px 200px 130px 24px; align-items: baseline; gap: var(--s-5); padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 14px; transition: background 160ms; }
+.ledger .row:last-child { border-bottom: 0; }
+.ledger .row:hover { background: var(--bone-2); padding-left: 8px; padding-right: 8px; margin-left: -8px; margin-right: -8px; }
+.ledger .row.head { font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; background: var(--bone-2); padding: 10px 0; }
+.ledger .row.head:hover { background: var(--bone-2); padding-left: 0; padding-right: 0; margin: 0; }
+.ledger .row .idx { font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); }
+.ledger .row .tl { color: var(--ink); font-weight: 500; letter-spacing: -0.005em; }
+.ledger .row .co { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); }
+.ledger .row .st { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 3px; }
+.ledger .row .st span { border: 1px solid var(--rule); padding: 1px 5px; }
+.ledger .row .ot { font-family: var(--font-mono); font-size: 12px; color: var(--accent-ink); text-align: right; font-weight: 500; }
+.ledger .row .ar { color: var(--ink-4); font-family: var(--font-mono); font-size: 14px; text-align: right; transition: color 160ms, transform 160ms; }
+.ledger .row:hover .ar { color: var(--accent); transform: translateX(3px); }
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr; gap: var(--s-5); padding: var(--s-7) 0 var(--s-5); }
+  .hero .aside { order: 3; }
+  .case { grid-template-columns: 1fr; gap: var(--s-4); }
+  .case .side { order: 3; }
+  .ledger .row { grid-template-columns: 40px 1fr 90px; gap: 10px; }
+  .ledger .row .co, .ledger .row .st, .ledger .row .ar { display: none; }
+  .ledger .row.head .co, .ledger .row.head .st, .ledger .row.head .ar { display: none; }
+}
+</style>
+</head>
+<body data-dark="0" data-screen-label="Home (medium)">
+
+<div class="page">
+
+  <header class="topbar">
+    <a class="mark" href="index-medium.html"><span class="dot"></span>parv3213.online</a>
+    <nav>
+      <a href="index-medium.html" aria-current="page">Index</a>
+      <a href="work-medium.html">Work</a>
+      <a href="resume-medium.html">Résumé</a>
+      <a href="contact-medium.html">Contact</a>
+      <button class="mode-toggle" aria-label="Toggle dark mode">Dark</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="num">§ 00 / Index</div>
+    <h1>Architected Sperax's <em>~$10M TVL stack</em> — <span class="muted">stablecoin, farms, and on-chain fantasy sports, end-to-end from contracts through backends.</span></h1>
+    <aside class="aside">
+      <div class="avail"><span class="pip"></span><span>Open now — <strong>senior FT</strong> + select contract</span></div>
+      <hr>
+      <div><span class="k">Based</span>Bengaluru · UTC+05:30</div>
+      <div><span class="k">Reach</span><a href="mailto:parv3213@gmail.com" style="border-bottom:1px solid var(--rule)">parv3213@gmail.com</a></div>
+      <div><span class="k">Notice</span><strong>none</strong> · joining immediately</div>
+    </aside>
+  </section>
+
+  <!-- Ticker -->
+  <section class="ticker">
+    <div class="c"><span class="k">TVL stack · Sperax</span><span class="v"><span class="acc">~$10M</span></span></div>
+    <div class="c"><span class="k">USDs minted · lifetime</span><span class="v">$36<span class="u">M+</span></span></div>
+    <div class="c"><span class="k">B2B customers · Tavolo</span><span class="v">70<span class="u">+</span></span></div>
+    <div class="c"><span class="k">Git repos · pipeline</span><span class="v">183</span></div>
+  </section>
+
+  <!-- Credentials -->
+  <div class="creds">
+    <span class="lab">CV</span>
+    <span><strong>5 years</strong> shipping SaaS + EVM</span><span class="sep">·</span>
+    <span>ex-<strong>Sperax</strong> / <strong>Tavolo</strong> / <strong>Somish</strong></span><span class="sep">·</span>
+    <span>patent <strong>IN 202041018639</strong></span><span class="sep">·</span>
+    <span>book chapter, <strong>Bitcoin and Blockchain</strong> (2020)</span><span class="sep">·</span>
+    <span>Bengaluru · available <strong>immediately</strong></span>
+  </div>
+
+  <!-- Selected work -->
+  <div class="sec-head">
+    <div class="num">§ 01 / <b>Selected work</b></div>
+    <h2>Three projects, picked for the <em>outcome</em>.</h2>
+    <div class="jump"><a href="#ledger">Every project →</a></div>
+  </div>
+
+  <!-- Case 01 — USDs V2 / Sperax -->
+  <article class="case">
+    <div class="idx">
+      <span class="no">01</span>
+      <span class="yr">2023 — 2025</span>
+      <span class="role">Senior full-stack (protocol)</span>
+    </div>
+    <div class="body">
+      <h3>Architecting USDs V2, then closing the Quantstamp batch.</h3>
+      <p>Joined Sperax to rebuild an over-collateralized stablecoin on a state-based clean slate — token, VaultCore, rebase, oracle router, collateral, Uniswap V3 strategies, with The Graph subgraphs and TypeScript/Go backends on top. Same tenure also shipped Demeter (V3 farms-as-a-service — Genesis partners GMX, PlutusDAO, Gains, Vela) and Chaquen (on-chain fantasy sports, ~27K Polygon users).</p>
+      <p>The Quantstamp batch hit the whole repo — approvals, input validation, event emission, rebase/redeem edge cases — alongside 18–35% gas reductions on hot paths. CI grew solhint, gas-diff, and coverage gates, with state-machine diagrams in-repo so reviewers didn't have to read bytecode.</p>
+      <div class="tags"><span>Solidity 0.8</span><span>Foundry</span><span>OpenZeppelin</span><span>The Graph</span><span>Slither</span><span>GitHub Actions</span></div>
+    </div>
+    <aside class="side">
+      <div class="metrics">
+        <div class="m"><span class="n"><span class="acc">$36</span><span class="u">M+</span></span><span class="k">Cumulative USDs minted</span></div>
+        <div class="m"><span class="n">50<span class="u">+</span></span><span class="k">Quantstamp-class findings closed</span></div>
+        <div class="m"><span class="n">18–35<span class="u">%</span></span><span class="k">Gas reductions on hot paths</span></div>
+        <div class="m"><span class="n">~$274<span class="u">M</span></span><span class="k">Demeter 3rd-party peak TVL</span></div>
+      </div>
+      <div class="viz">
+        <div class="vh">Fig. 01 — Quantstamp findings by severity · USDs V2 · Nov 2023</div>
+        <div class="bars">
+          <div class="r"><span class="l">Crit</span><div class="bar acc"><span style="width:0%"></span></div><span class="v">0</span></div>
+          <div class="r"><span class="l">High</span><div class="bar acc"><span style="width:19%"></span></div><span class="v">4</span></div>
+          <div class="r"><span class="l">Med</span><div class="bar"><span style="width:14%"></span></div><span class="v">3</span></div>
+          <div class="r"><span class="l">Low</span><div class="bar"><span style="width:100%"></span></div><span class="v">21</span></div>
+          <div class="r"><span class="l">Info</span><div class="bar"><span style="width:19%"></span></div><span class="v">4</span></div>
+        </div>
+      </div>
+    </aside>
+  </article>
+
+  <!-- Case 02 — Tavolo -->
+  <article class="case">
+    <div class="idx">
+      <span class="no">02</span>
+      <span class="yr">2025 — 2026</span>
+      <span class="role">Full-stack · contract</span>
+    </div>
+    <div class="body">
+      <h3>A B2B video-and-email platform, shipped end-to-end.</h3>
+      <p>Campaign platform for restaurant marketing — media gallery, video uploads, role-based approvals, async notifications. Built across Go, Node, and React. The core upgrade swapped a Google-Drive-backed media flow for direct-to-Azure-Blob: chunked client sessions, concurrency control, fault-tolerant processing, SAS download URLs, lifecycle cleanup.</p>
+      <p>SendGrid became the email spine for video campaigns; batching and throughput passes consolidated the send pipeline onto one instrumented path. AI-assisted segmentation (chat UI + CSV bulk import) pulled manual work from hours into minutes.</p>
+      <div class="tags"><span>Go</span><span>Node</span><span>React</span><span>Azure Blob</span><span>SendGrid</span><span>Postgres</span></div>
+    </div>
+    <aside class="side">
+      <div class="metrics">
+        <div class="m"><span class="n"><span class="acc">70</span><span class="u">+</span></span><span class="k">B2B customers on platform</span></div>
+        <div class="m"><span class="n">&lt;1<span class="u">%</span></span><span class="k">Monthly churn (investor cite)</span></div>
+        <div class="m"><span class="n">$1.2<span class="u">M</span></span><span class="k">Seed · O'Leary Ventures</span></div>
+        <div class="m"><span class="n">3<span class="u">×</span></span><span class="k">Customer ROI (Tavolo cite)</span></div>
+      </div>
+      <div class="viz">
+        <div class="vh">Fig. 02 — Manual segmentation time · before / after AI</div>
+        <svg class="spark" viewBox="0 0 320 78" preserveAspectRatio="none">
+          <line class="a" x1="0" y1="74" x2="320" y2="74"/>
+          <line class="g" x1="0" y1="26" x2="320" y2="26"/>
+          <line class="g" x1="0" y1="50" x2="320" y2="50"/>
+          <path class="b-l" d="M0,14 L20,16 L40,10 L60,18 L80,12 L100,16 L120,8 L140,14 L160,10 L180,12 L195,12"/>
+          <path class="a-l" d="M195,12 L210,66 L230,70 L250,71 L270,70 L290,70 L320,70"/>
+          <line class="cut" x1="200" y1="0" x2="200" y2="78"/>
+        </svg>
+        <div class="spark-foot"><span>before · hours</span><span>AI segmenter</span><span>after · minutes</span></div>
+      </div>
+    </aside>
+  </article>
+
+  <!-- Case 03 — Profile Intelligence Pipeline -->
+  <article class="case">
+    <div class="idx">
+      <span class="no">03</span>
+      <span class="yr">2026 →</span>
+      <span class="role" style="color:var(--accent-ink)">Live · powers this site</span>
+    </div>
+    <div class="body">
+      <h3>An AI pipeline that runs my own career operations.</h3>
+      <p>Most portfolios get written once and quietly rot. Mine is an artifact of a pipeline that treats my engineering career as a living database — Git history is the source of truth, five Claude subagents curate typed records, idempotent syncs fan out to Sanity, which publishes this site.</p>
+      <p>Playwright crawlers pull LinkedIn, Wellfound, web3.career, and cryptojobslist against persisted auth. Credentialed writes stay draft-only — agents queue JSON, I press send. 183 repos ingested, 121 outreach drafts queued, four products shipped in the ~10 weeks since the pipeline has been running.</p>
+      <div class="tags"><span>TypeScript</span><span>Python</span><span>Claude</span><span>Playwright</span><span>Sanity</span><span>Git</span></div>
+    </div>
+    <aside class="side">
+      <div class="metrics">
+        <div class="m"><span class="n"><span class="acc">183</span></span><span class="k">Git repos curated</span></div>
+        <div class="m"><span class="n">5</span><span class="k">Skill-scoped agents</span></div>
+        <div class="m"><span class="n">121</span><span class="k">Outreach drafts queued</span></div>
+        <div class="m"><span class="n">4 / 10<span class="u">&nbsp;wk</span></span><span class="k">Products shipped</span></div>
+      </div>
+      <div class="viz">
+        <div class="vh">Fig. 03 — Skill-scoped agent graph</div>
+        <div class="pipe-row">
+          <div class="n"><span class="k">01</span>Curator</div>
+          <div class="n"><span class="k">02</span>Recruiter</div>
+          <div class="n acc"><span class="k">03</span>Discovery</div>
+          <div class="n"><span class="k">04</span>Hunter</div>
+          <div class="n"><span class="k">05</span>Outreach</div>
+        </div>
+        <div class="pipe-lanes">
+          <div class="ll">ingest</div><div class="bar"><span style="width:82%"></span></div><div class="val">183</div>
+          <div class="ll">score</div><div class="bar"><span style="width:64%"></span></div><div class="val">121</div>
+          <div class="ll">human</div><div class="bar"><span style="width:12%"></span></div><div class="val">send</div>
+        </div>
+      </div>
+    </aside>
+  </article>
+
+  <!-- Ledger preview -->
+  <div class="sec-head" id="ledger">
+    <div class="num">§ 02 / <b>Work index</b></div>
+    <h2>The long tail — <em>fourteen</em> more worth recording.</h2>
+    <div class="jump"><a href="work-medium.html">Full list →</a></div>
+  </div>
+
+  <div class="ledger">
+    <div class="row head">
+      <div>#</div><div>Project</div><div>Client / Context</div><div>Stack</div><div style="text-align:right">Outcome</div><div></div>
+    </div>
+    <a class="row" href="work-medium.html#p14"><div class="idx">14</div><div class="tl">Profile Intelligence Pipeline</div><div class="co">Personal · 2026</div><div class="st"><span>TypeScript</span><span>Claude</span><span>Playwright</span></div><div class="ot">183 / 121</div><div class="ar">→</div></a>
+    <a class="row" href="work-medium.html#p13"><div class="idx">13</div><div class="tl">Bikers Pride — cycling design studio</div><div class="co">Client · 2026</div><div class="st"><span>Next.js 16</span><span>React 19</span><span>Tailwind 4</span></div><div class="ot">live on Vercel</div><div class="ar">→</div></a>
+    <a class="row" href="work-medium.html#p10"><div class="idx">10</div><div class="tl">Tavolo — B2B video &amp; email</div><div class="co">Contract · 2025–26</div><div class="st"><span>Go</span><span>Node</span><span>React</span><span>Azure</span></div><div class="ot">70+ customers</div><div class="ar">→</div></a>
+    <a class="row" href="work-medium.html#p09"><div class="idx">09</div><div class="tl">USDs V2 — over-collateralized stablecoin</div><div class="co">Sperax · 2023–25</div><div class="st"><span>Solidity</span><span>Foundry</span><span>OZ</span><span>Graph</span></div><div class="ot">$36M+ minted</div><div class="ar">→</div></a>
+    <a class="row" href="work-medium.html#p08"><div class="idx">08</div><div class="tl">Demeter — Uniswap V3 liquidity farms</div><div class="co">Sperax · 2023–25</div><div class="st"><span>Solidity</span><span>Foundry</span><span>UniV3</span></div><div class="ot">~$274M peak</div><div class="ar">→</div></a>
+    <a class="row" href="work-medium.html#p04"><div class="idx">04</div><div class="tl">PlotX — decentralized prediction markets</div><div class="co">Freelance · 2022</div><div class="st"><span>React</span><span>Solidity</span><span>Polygon</span></div><div class="ot">80K+ users</div><div class="ar">→</div></a>
+  </div>
+
+  <!-- Sync line -->
+  <div class="sync">
+    <span class="pip"></span>
+    <span>Content auto-syncs from a pipeline I built. <strong>Last sync: today</strong> · profile last updated <strong>2026-04-21</strong></span>
+  </div>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <div class="name"><strong>Parv Garg</strong> — Bengaluru / remote · parv3213@gmail.com · UTC+05:30</div>
+    <ul>
+      <li><span class="k">GH</span><a href="https://github.com/parv3213">github.com/parv3213</a></li>
+      <li><span class="k">LI</span><a href="https://www.linkedin.com/in/parv3213">linkedin.com/in/parv3213</a></li>
+      <li><span class="k">CV</span><a href="resume-medium.html">résumé</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script>
+(function () {
+  const KEY = "parv-dark";
+  const saved = localStorage.getItem(KEY);
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const dark = saved === "1" || (saved === null && prefersDark);
+  if (dark) document.body.setAttribute("data-dark", "1");
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest(".mode-toggle");
+    if (!t) return;
+    const on = document.body.getAttribute("data-dark") === "1";
+    document.body.setAttribute("data-dark", on ? "0" : "1");
+    localStorage.setItem(KEY, on ? "0" : "1");
+  });
+})();
+</script>
+
+</body>
+</html>
