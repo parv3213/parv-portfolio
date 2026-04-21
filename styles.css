@@ -302,9 +302,10 @@ footer.foot ul .k { color: var(--ink-4); font-family: var(--font-mono); font-siz
   body { background: #fff; color: #000; font-size: 10.5pt; }
   .topbar, .nav, .sync-line, footer.foot, .resume-head .pdfbtn { display: none !important; }
   .page { max-width: none; padding: 0; }
-  .resume-head, .resume-summary, .resume-section { page-break-inside: avoid; grid-template-columns: 110px 1fr; gap: 14pt; padding: 10pt 0; border-color: #999; }
+  .resume-head, .resume-summary, .resume-section { grid-template-columns: 110px 1fr; gap: 14pt; padding: 10pt 0; border-color: #999; }
+  .resume-head, .resume-summary { page-break-inside: avoid; }
   .resume-head h1 { font-size: 22pt; }
-  .role { grid-template-columns: 80pt 1fr 100pt; padding: 8pt 0; border-color: #ccc; }
+  .role { grid-template-columns: 80pt 1fr 100pt; padding: 8pt 0; border-color: #ccc; page-break-inside: avoid; }
   .role .body h3 { font-size: 13pt; }
   .role .body .company { color: #000; }
   .role .body li { font-size: 10pt; }
