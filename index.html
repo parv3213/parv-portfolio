@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Parv Garg — Senior Full-Stack Engineer (Web3 · Applied AI)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Senior full-stack engineer. Five years shipping production SaaS, EVM protocols, and AI-augmented pipelines end to end.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-hero="sans" data-dark="0">
+
+<div class="page">
+
+  <header class="topbar">
+    <a class="mark" href="index.html"><span class="dot"></span>parv3213.online</a>
+    <nav class="nav">
+      <a href="index.html" aria-current="page">Index</a>
+      <a href="work.html">Work</a>
+      <a href="resume.html">Résumé</a>
+      <a href="contact.html">Contact</a>
+      <button class="mode-toggle" aria-label="Toggle dark mode">Dark</button>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-head">
+    <div class="hero-label">
+      <span class="rule-short" aria-hidden="true"></span>
+      <span class="eyebrow">Senior full-stack engineer · Web3 &amp; applied AI</span>
+    </div>
+    <h1 id="hero-head" class="hero-headline">
+      Architected Sperax's <em>~$10M TVL stack</em> — stablecoin, farms, on-chain fantasy sports — <span class="muted">end-to-end from contracts through subgraphs to backends.</span>
+    </h1>
+    <aside class="hero-metric" aria-label="Headline number">
+      <div class="num">~27K</div>
+      <div class="unit">Chaquen users served</div>
+      <div class="context">$36M+ cumulative USDs minted · 50+ Quantstamp-class findings closed · 18–35% gas reductions.</div>
+    </aside>
+  </section>
+
+  <section class="credentials" aria-label="Credentials">
+    <span class="lab">CV</span>
+    <span><strong>5 years</strong> shipping production SaaS + EVM protocols</span>
+    <span class="sep">·</span>
+    <span>ex-<strong>Sperax</strong> / <strong>Tavolo</strong> / <strong>Somish</strong></span>
+    <span class="sep">·</span>
+    <span>patent <strong>IN 202041018639</strong></span>
+    <span class="sep">·</span>
+    <span>Bengaluru · available <strong>immediately</strong></span>
+  </section>
+
+  <section class="section">
+    <header class="section-head">
+      <div class="num">§ 01 / Selected work</div>
+      <div>
+        <h2>Three projects, picked for the outcome.</h2>
+        <p class="lede">One from each phase: a TVL-critical protocol rebuild at Sperax, a B2B SaaS product owned end-to-end at Tavolo, and an applied-AI pipeline from the current independent phase. The long tail lives on the <a href="work.html" class="link">work index</a>.</p>
+      </div>
+    </header>
+
+    <!-- CASE 01 — USDs V2 / Sperax -->
+    <article class="case" id="case-01">
+      <aside class="case-meta" aria-label="Case metadata">
+        <div class="block"><span class="k">No.</span><span class="v">01</span></div>
+        <div class="block"><span class="k">Year</span><span class="v">2023 — 2025</span></div>
+        <div class="block"><span class="k">Role</span><span class="v">Senior full-stack (protocol)</span></div>
+        <div class="block"><span class="k">Org</span><span class="v">Sperax</span></div>
+        <div class="block"><span class="k">Stack</span>
+          <div class="tags"><span>Solidity 0.8</span><span>Foundry</span><span>OpenZeppelin</span><span>Slither</span><span>The Graph</span><span>GitHub Actions</span></div>
+        </div>
+      </aside>
+      <div class="case-body">
+        <h3>Architecting USDs V2, then closing the Quantstamp batch.</h3>
+        <div class="case-prose">
+          <p>Joined Sperax in late 2023 onto V2 — the clean-slate, state-based rebuild of an over-collateralized stablecoin with dripper/rebase economics, an oracle router, and Uniswap V3–based strategies. Owned the implementation end-to-end across token, vault, rebase, oracle, collateral, and strategy modules, with The Graph subgraphs and TypeScript/Go backends layered on top. Same tenure also covered Demeter (Uniswap V3 farms-as-a-service — Genesis partners GMX, PlutusDAO, Gains, Vela) and Chaquen (on-chain fantasy sports, ~27K users on Polygon).</p>
+          <p>The Quantstamp batch then hit the whole USDs repo: approvals, input validation, event emission, rebase/redeem edge cases — alongside gas work on storage layout, caching hot slots, and execution paths. CI grew solhint, gas-diff, coverage gates, and sequential-flow diagrams in-repo so reviewers could walk the state machine without reading bytecode.</p>
+        </div>
+        <figure class="artifact">
+          <div class="artifact-frame"><div class="d-contracts">
+            <div class="grid">
+              <div class="col">
+                <div class="lab">Core</div>
+                <div class="mod acc">USDs.sol <span class="ln">token</span></div>
+                <div class="mod acc">VaultCore.sol <span class="ln">mint/redeem</span></div>
+              </div>
+              <div class="col">
+                <div class="lab">Economics &amp; oracle</div>
+                <div class="mod acc">RebaseManager.sol <span class="ln">rebase</span></div>
+                <div class="mod acc">Dripper.sol <span class="ln">yield</span></div>
+                <div class="mod acc">OracleRouter.sol <span class="ln">feeds</span></div>
+                <div class="mod acc">CollateralManager.sol <span class="ln">LTV</span></div>
+              </div>
+              <div class="col">
+                <div class="lab">Strategies &amp; CI</div>
+                <div class="mod acc">UniV3Strategy.sol <span class="ln">v3 LP</span></div>
+                <div class="mod">Foundry fuzz <span class="ln">suite</span></div>
+                <div class="mod">Slither · Mythril <span class="ln">static</span></div>
+                <div class="mod">solhint · gas-diff <span class="ln">CI gate</span></div>
+              </div>
+            </div>
+            <div class="legend">
+              <span><span class="sw acc"></span>contracts I own</span>
+              <span><span class="sw"></span>tooling &amp; CI</span>
+            </div>
+          </div></div>
+          <figcaption><span>Fig. 01 — USDs V2 module map</span><span>Whole repo audited · remediated</span></figcaption>
+        </figure>
+        <div class="case-links">
+          <a class="link" href="https://github.com/Sperax/USDs-v2">github.com/Sperax/USDs-v2</a>
+          <span class="sep">·</span>
+          <a class="link" href="https://sperax.io/">sperax.io</a>
+        </div>
+        <div class="metric-row">
+          <div class="cell"><span class="n">$36<span class="u">M+</span></span><span class="k">Cumulative USDs minted (lifetime)</span></div>
+          <div class="cell"><span class="n">50<span class="u">+</span></span><span class="k">Quantstamp-class findings closed</span></div>
+          <div class="cell"><span class="n">18–35<span class="u">%</span></span><span class="k">Gas reductions on hot paths</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 02 — Boomerang / Tavolo -->
+    <article class="case" id="case-02">
+      <aside class="case-meta">
+        <div class="block"><span class="k">No.</span><span class="v">02</span></div>
+        <div class="block"><span class="k">Year</span><span class="v">2025 — 2026</span></div>
+        <div class="block"><span class="k">Role</span><span class="v">Full-stack, contract</span></div>
+        <div class="block"><span class="k">Org</span><span class="v">Tavolo</span></div>
+        <div class="block"><span class="k">Stack</span>
+          <div class="tags"><span>Go</span><span>Node</span><span>React</span><span>Azure Blob</span><span>SendGrid</span><span>Postgres</span></div>
+        </div>
+      </aside>
+      <div class="case-body">
+        <h3>A B2B video-and-email campaign platform, shipped end-to-end.</h3>
+        <div class="case-prose">
+          <p>Boomerang is Tavolo's campaign product for restaurant marketing: media gallery, video uploads, email delivery, role-based workflows, and regional behavior. I owned it across Go, Node, and React — multi-step approvals, RBAC, collaborative editing, async notifications, and a first-class media path.</p>
+          <p>The core upgrade was swapping a Google-Drive-backed flow for direct-to-Azure-Blob uploads: chunked client sessions, concurrency control, fault-tolerant processing, SAS download URLs, cache-invalidation fixes, and gallery lifecycle cleanup. SendGrid became the email spine for video campaigns; batching and throughput passes pulled the send pipeline onto a single well-instrumented path. Also shipped AI-assisted customer segmentation (chat UI + CSV bulk import) that cut manual segmentation from hours to minutes.</p>
+        </div>
+        <figure class="artifact">
+          <div class="artifact-frame"><div class="d-contracts">
+            <div class="grid">
+              <div class="col">
+                <div class="lab">Frontend — React</div>
+                <div class="mod acc">Campaign builder <span class="ln">UI</span></div>
+                <div class="mod acc">Gallery &amp; uploads <span class="ln">UI</span></div>
+                <div class="mod acc">Approvals dashboard <span class="ln">RBAC</span></div>
+              </div>
+              <div class="col">
+                <div class="lab">Backend — Go / Node</div>
+                <div class="mod acc">Upload orchestrator <span class="ln">SAS</span></div>
+                <div class="mod acc">Notification worker <span class="ln">async</span></div>
+                <div class="mod acc">Roles &amp; permissions <span class="ln">RBAC</span></div>
+                <div class="mod acc">Campaign service <span class="ln">core</span></div>
+              </div>
+              <div class="col">
+                <div class="lab">Infra</div>
+                <div class="mod">Azure Blob <span class="ln">direct</span></div>
+                <div class="mod">SendGrid <span class="ln">email</span></div>
+                <div class="mod">PostgreSQL <span class="ln">state</span></div>
+              </div>
+            </div>
+            <div class="legend">
+              <span><span class="sw acc"></span>services I own</span>
+              <span><span class="sw"></span>managed infra</span>
+            </div>
+          </div></div>
+          <figcaption><span>Fig. 02 — Boomerang architecture</span><span>Go · Node · React · Azure</span></figcaption>
+        </figure>
+        <div class="case-links">
+          <a class="link" href="https://tavolo.ai/">tavolo.ai</a>
+        </div>
+        <div class="metric-row">
+          <div class="cell"><span class="n">70<span class="u">+</span></span><span class="k">B2B customers on the platform</span></div>
+          <div class="cell"><span class="n">&lt;1<span class="u">%</span></span><span class="k">Monthly churn (Atland investor post)</span></div>
+          <div class="cell"><span class="n">$1.2<span class="u">M</span></span><span class="k">Seed, co-led by Kevin O'Leary / O'Leary Ventures</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 03 — Profile Intelligence Pipeline -->
+    <article class="case" id="case-03">
+      <aside class="case-meta">
+        <div class="block"><span class="k">No.</span><span class="v">03</span></div>
+        <div class="block"><span class="k">Year</span><span class="v">2026 — now</span></div>
+        <div class="block"><span class="k">Role</span><span class="v">Solo — design, infra, evals</span></div>
+        <div class="block"><span class="k">Status</span><span class="v">In production. Powers this site.</span></div>
+        <div class="block"><span class="k">Stack</span>
+          <div class="tags"><span>TypeScript</span><span>Python</span><span>Claude</span><span>Playwright</span><span>Sanity</span><span>Git</span></div>
+        </div>
+      </aside>
+      <div class="case-body">
+        <h3>An AI pipeline that runs my own career operations.</h3>
+        <div class="case-prose">
+          <p>Most portfolios are written once and quietly rot. Mine is an artifact of a pipeline that treats my engineering career as a living database: Git history is the source of truth, Claude subagents curate typed profile records, and idempotent syncs fan out to Sanity, LinkedIn, and a job-hunt feed. Built during the independent phase that also shipped TinyWins, Bikers Pride, and CSV Intelligence Layer — four products in roughly ten weeks.</p>
+          <p>Five skill-scoped agents, one concern each: profile curator, recruiter-lens review, company discovery, job hunter, outreach drafting. Playwright crawls LinkedIn, Wellfound, web3.career, and cryptojobslist against a persisted auth profile. Credentialed actions (sends, DMs) stay human-in-the-loop: agents draft JSON, I run the send. The portfolio you're reading is a pure function of that database.</p>
+        </div>
+        <figure class="artifact">
+          <div class="artifact-frame"><div class="d-contracts">
+            <div class="grid">
+              <div class="col">
+                <div class="lab">Sources</div>
+                <div class="mod">183 Git repos <span class="ln">history</span></div>
+                <div class="mod">LinkedIn <span class="ln">Playwright</span></div>
+                <div class="mod">web3.career · Wellfound <span class="ln">Playwright</span></div>
+              </div>
+              <div class="col">
+                <div class="lab">Skill-scoped agents</div>
+                <div class="mod acc">Profile curator <span class="ln">ingest</span></div>
+                <div class="mod acc">Recruiter lens <span class="ln">review</span></div>
+                <div class="mod acc">Company discovery <span class="ln">enrich</span></div>
+                <div class="mod acc">Job hunter <span class="ln">score</span></div>
+                <div class="mod acc">Outreach draft <span class="ln">write</span></div>
+              </div>
+              <div class="col">
+                <div class="lab">Sinks</div>
+                <div class="mod">Sanity (parv3213.online) <span class="ln">auto</span></div>
+                <div class="mod">LinkedIn posts &amp; DMs <span class="ln">human</span></div>
+                <div class="mod">Outreach drafts · queued <span class="ln">human</span></div>
+              </div>
+            </div>
+            <div class="legend">
+              <span><span class="sw acc"></span>Claude skills</span>
+              <span><span class="sw"></span>I/O boundary</span>
+            </div>
+          </div></div>
+          <figcaption><span>Fig. 03 — Skill-scoped agent graph</span><span>Idempotent · draft-only for credentialed writes</span></figcaption>
+        </figure>
+        <div class="case-links">
+          <a class="link" href="https://www.parv3213.online/">parv3213.online (auto-synced)</a>
+        </div>
+        <div class="metric-row">
+          <div class="cell"><span class="n">183</span><span class="k">Git repos the curator ingests</span></div>
+          <div class="cell"><span class="n">121</span><span class="k">Outreach drafts queued for review</span></div>
+          <div class="cell"><span class="n">5</span><span class="k">Skill-scoped Claude subagents</span></div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="all-work">
+    <p class="blurb">The long tail — Demeter farms, Chaquen fantasy sports, OptiFAI vaults, freelance Web3 (Quest Chains, Rigor, PlotX, MeTokens, Bites), open-source (CSV Intelligence Layer), personal products (TinyWins, Bikers Pride) — lives on a single dense page. No cards, no grid.</p>
+    <a href="work.html" class="cta">Every project, compact <span class="arr">→</span></a>
+  </section>
+
+  <div class="sync-line" title="Content auto-syncs from the profile-intelligence pipeline.">
+    <span class="pip" aria-hidden="true"></span>
+    <span>Content auto-syncs from a pipeline I built. <strong>Last sync: today</strong> · profile last updated <strong>2026-04-21</strong></span>
+  </div>
+
+  <footer class="foot">
+    <div class="name">
+      <div><strong>Parv Garg</strong> — Bengaluru / remote</div>
+      <div style="margin-top:6px;color:var(--ink-4);font-family:var(--font-mono);font-size:12px;">parv3213@gmail.com</div>
+    </div>
+    <ul>
+      <li><span class="k">CV</span><a href="resume.html">résumé</a></li>
+      <li><span class="k">GH</span><a href="https://github.com/parv3213">github.com/parv3213</a></li>
+      <li><span class="k">LI</span><a href="https://www.linkedin.com/in/parv3213">linkedin.com/in/parv3213</a></li>
+      <li><span class="k">EM</span><a href="mailto:parv3213@gmail.com">parv3213@gmail.com</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

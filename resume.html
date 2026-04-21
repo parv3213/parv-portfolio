@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Résumé — Parv Garg</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-hero="sans" data-dark="0">
+
+<div class="page">
+  <header class="topbar">
+    <a class="mark" href="index.html"><span class="dot"></span>parv3213.online</a>
+    <nav class="nav">
+      <a href="index.html">Index</a>
+      <a href="work.html">Work</a>
+      <a href="resume.html" aria-current="page">Résumé</a>
+      <a href="contact.html">Contact</a>
+      <button class="mode-toggle" aria-label="Toggle dark mode">Dark</button>
+    </nav>
+  </header>
+
+  <section class="resume-head">
+    <div class="num">§ 03 / Résumé</div>
+    <div>
+      <h1>Parv Garg — <em>Senior Full-Stack Engineer</em>, SaaS platforms &amp; EVM protocols.</h1>
+    </div>
+    <button class="pdfbtn" onclick="window.print()">Print / PDF</button>
+  </section>
+
+  <section class="resume-summary">
+    <div class="lab">Summary</div>
+    <p>Five years shipping production SaaS and user-facing platforms (React, Next.js, Node.js, TypeScript, Go, Postgres) with deep EVM protocol work where the role has called for it — stablecoins, liquidity farms, on-chain fantasy sports, subgraphs, and audit-driven hardening. End-to-end ownership from contracts through subgraphs to APIs when the product is protocol-adjacent; B2B SaaS engineering — approvals, RBAC, media pipelines, segmentation — when it isn't. Prefer state-based designs to computational ones, small modules to clever ones, and measurable outcomes to surface polish.</p>
+  </section>
+
+  <section class="resume-section">
+    <div class="lab">Experience</div>
+    <div>
+      <div class="role">
+        <div class="yrs">2026 — now<br>Bengaluru / remote</div>
+        <div class="body">
+          <h3>Independent Engineer — Open Source &amp; Applied AI</h3>
+          <div class="company">Independent · Bengaluru / remote</div>
+          <ul>
+            <li>Shipped <b>four products in ~10 weeks</b> following the Tavolo contract: Profile Intelligence Pipeline, TinyWins, Bikers Pride, CSV Intelligence Layer.</li>
+            <li><b>Profile Intelligence Pipeline</b> — Git-as-source-of-truth career database; five skill-scoped Claude subagents (profile curator, recruiter-lens, company discovery, job hunter, outreach draft); Playwright crawlers for LinkedIn / Wellfound / web3.career / cryptojobslist; idempotent sync to Sanity. Draft-only boundary for credentialed writes. Powers this site.</li>
+            <li><b>TinyWins</b> (43 commits, Apr 2026) — gamified habit tracker: Next.js App Router, Firebase Auth + Firestore, canvas tree renderer w/ zoom and retina crispness, XP/level system, good-vs-bad behavior towers.</li>
+            <li><b>Bikers Pride</b> (15 commits, Apr 2026) — Next.js 16 + React 19 + Tailwind 4 design studio for a Bhopal cycling brand; fit calculator, product configurator, JSON-backed content pipeline with build-time typed generation.</li>
+            <li><b>CSV Intelligence Layer</b> (open-source, Dec 2025 – Jan 2026) — schema-first CSV ingest: streaming parser, Drizzle migrations, worker/service split, S3-compatible storage, public Vercel playground.</li>
+            <li>Publishing architecture writeups on applied AI in Web3 (agent marketplaces, cryptoeconomic security, inference verification).</li>
+          </ul>
+        </div>
+        <div class="stack"><span>TypeScript</span><span>Next.js</span><span>Python</span><span>Claude</span><span>Playwright</span><span>Firebase</span></div>
+      </div>
+
+      <div class="role">
+        <div class="yrs">2025 — 2026<br>Remote · contract</div>
+        <div class="body">
+          <h3>Full-Stack Engineer (Contract)</h3>
+          <div class="company">Tavolo · B2B restaurant marketing SaaS ($1.2M seed, co-led by Kevin O'Leary / O'Leary Ventures)</div>
+          <ul>
+            <li>Owned the <b>Boomerang</b> campaign product across Go, Node, and React — multi-step approvals, RBAC, collaborative editing, async notifications, stricter validation, CI-enforced TypeScript and tests. Platform serves <b>70+ B2B customers</b>; Tavolo publicly cites <b>&lt;1% monthly churn</b>, <b>~3× customer ROI</b>, 50% repeat-order lift.</li>
+            <li>Replaced Google-Drive media path with <b>Azure Blob direct upload</b>: chunked client sessions, concurrency control, fault-tolerant processing, SAS-based download URLs, gallery lifecycle cleanup.</li>
+            <li>Built the SendGrid email spine for video campaigns; batching + throughput passes consolidated the send pipeline onto a single instrumented path. Multi-region + Slack integrations alongside.</li>
+            <li>Shipped AI-assisted customer segmentation (chat UI + CSV bulk import) — <b>cut manual segmentation from hours to minutes</b>.</li>
+          </ul>
+        </div>
+        <div class="stack"><span>Go</span><span>Node.js</span><span>React</span><span>Azure Blob</span><span>SendGrid</span><span>Postgres</span></div>
+      </div>
+
+      <div class="role">
+        <div class="yrs">2023 — 2025<br>Remote</div>
+        <div class="body">
+          <h3>Senior Full-Stack Engineer (Blockchain · Full-Stack)</h3>
+          <div class="company">SperaxDAO / Sperax · multi-chain DeFi (USDs stablecoin, Demeter farms, Chaquen fantasy sports)</div>
+          <ul>
+            <li>Architected <b>USDs V2</b>, the state-based over-collateralized stablecoin rebuild — token, VaultCore, RebaseManager/Dripper, OracleRouter, CollateralManager, Uniswap V3 strategies; The Graph subgraphs + TypeScript/Go backends on top.</li>
+            <li>Closed the <b>Quantstamp batch</b> across the whole repo — <b>50+</b> findings (approvals, input validation, event emission, rebase/redeem edge cases) — and delivered <b>18–35%</b> gas reductions on hot paths via storage, caching, and execution tuning. CI grew solhint, gas-diff, and coverage gates.</li>
+            <li>Built <b>Demeter</b> farms-as-a-service (Uniswap V3): BaseFarm multicall, gas optimizations, UniV3 farm upgrades, CI gas reporting. Genesis partners <b>GMX, PlutusDAO, Gains, Vela, Layer2DAO</b>; Demeter 2.0 backed by an <b>ARB LTIPP grant</b> (250.5K ARB + 32M SPA / 10 wks). Third-party DeSyn Safe peaked <b>~$274M TVL</b> on Demeter infra.</li>
+            <li>Delivered <b>Chaquen</b> (on-chain fantasy sports) end-to-end — league / contest contracts on Polygon, pay-to-play flows, prediction ("Chaquen Predict"), real-time leaderboards. TypeScript APIs w/ JWT + Redis + The Graph; ~640 commits across two repos. <b>~27K users</b>.</li>
+            <li>Also shipped <b>OptiFAI</b> (UUPS vault manager, OZ Foundry upgrades, mock Aave strategy, Arbitrum Sepolia pipeline).</li>
+            <li>Sperax ecosystem reached on the order of <b>~$10M</b> TVL at peak; USDs V2 saw <b>$36M+</b> cumulative minted since launch.</li>
+          </ul>
+        </div>
+        <div class="stack"><span>Solidity 0.8</span><span>Foundry</span><span>OpenZeppelin</span><span>The Graph</span><span>Uniswap V3</span><span>Polygon</span></div>
+      </div>
+
+      <div class="role">
+        <div class="yrs">2021 — 2023<br>Remote · contract</div>
+        <div class="body">
+          <h3>Freelance Full-Stack / Web3 Developer</h3>
+          <div class="company">Independent · Quest Chains · Rigor Finance · PlotX · MeTokens · Bites · Upwork + direct</div>
+          <ul>
+            <li>Delivered <b>10+ production applications</b> across gamification, construction lending, prediction markets, and creator-economy protocols.</li>
+            <li><b>Quest Chains</b> — gamified quest + NFT reward pipelines (React / Next.js / Node.js / GraphQL indexing / Solidity) for onboarding and retention.</li>
+            <li><b>Rigor Finance</b> — transparent vendor payments and automated on-chain disbursements for construction lending with blockchain settlement.</li>
+            <li>Audits and gas optimization cited at <b>~20–30%</b> on some engagements; concurrent delivery across multiple clients.</li>
+          </ul>
+        </div>
+        <div class="stack"><span>Solidity</span><span>Next.js</span><span>Node.js</span><span>GraphQL</span><span>Hardhat</span></div>
+      </div>
+
+      <div class="role">
+        <div class="yrs">2020 — 2021<br>Delhi, India</div>
+        <div class="body">
+          <h3>Software Developer (Full-Stack · Blockchain)</h3>
+          <div class="company">Somish Blockchain Labs · blockchain &amp; prediction-market products</div>
+          <ul>
+            <li>Built React dashboards and Node.js backends for prediction-market and lending-adjacent production workflows.</li>
+            <li>First full-time role; 1-year tenure covering user-facing dashboards and the supporting service layer.</li>
+          </ul>
+        </div>
+        <div class="stack"><span>React</span><span>Node.js</span><span>Solidity</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="resume-section">
+    <div class="lab">Skills</div>
+    <div class="skills-grid">
+      <div class="col"><h4>Full-stack</h4><ul>
+        <li><span>TypeScript · JavaScript</span><span class="yrs">5y</span></li>
+        <li><span>React · Next.js · React Query</span><span class="yrs">5y</span></li>
+        <li><span>Node.js · GraphQL · REST</span><span class="yrs">5y</span></li>
+        <li><span>Go</span><span class="yrs">1y</span></li>
+        <li><span>PostgreSQL · Redis · MongoDB</span><span class="yrs">5y</span></li>
+        <li><span>Tailwind CSS</span><span class="yrs">4y</span></li>
+      </ul></div>
+      <div class="col"><h4>Smart contracts · Web3</h4><ul>
+        <li><span>Solidity 0.5 — 0.8</span><span class="yrs">5y</span></li>
+        <li><span>Foundry · Hardhat</span><span class="yrs">4y</span></li>
+        <li><span>OpenZeppelin · UUPS upgrades</span><span class="yrs">5y</span></li>
+        <li><span>The Graph (subgraphs)</span><span class="yrs">3y</span></li>
+        <li><span>Slither · Mythril · solhint</span><span class="yrs">3y</span></li>
+        <li><span>Viem · Ethers · EIP-712 / permit</span><span class="yrs">4y</span></li>
+      </ul></div>
+      <div class="col"><h4>Applied AI · Infra</h4><ul>
+        <li><span>Claude (subagents, skills, Code)</span><span class="yrs">1y</span></li>
+        <li><span>Playwright (auth-persisted crawlers)</span><span class="yrs">2y</span></li>
+        <li><span>Sanity · Firebase · Chart.js</span><span class="yrs">3y</span></li>
+        <li><span>Azure Blob · SendGrid · S3</span><span class="yrs">2y</span></li>
+        <li><span>Docker · CI/CD · AWS ECS · Vercel</span><span class="yrs">4y</span></li>
+        <li><span>Sentry · JWT · RBAC</span><span class="yrs">5y</span></li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section class="resume-section">
+    <div class="lab">Writing &amp; Patents</div>
+    <div>
+      <div class="role"><div class="yrs">2020</div><div class="body"><h3>"Solidity Essentials" — chapter in <i>Bitcoin and Blockchain</i></h3><div class="company">Book chapter · EVM &amp; Solidity primitives</div><ul><li>Co-authored chapter on Solidity fundamentals for an introductory blockchain text.</li></ul></div><div class="stack"><span>Writing</span></div></div>
+      <div class="role"><div class="yrs">2020</div><div class="body"><h3>Indian Patent 202041018639</h3><div class="company">Blockchain-based tracking for counterfeit medical supplies</div><ul><li>On-chain chain-of-custody for medical-supply tracking.</li></ul></div><div class="stack"><span>Patent</span></div></div>
+    </div>
+  </section>
+
+  <section class="resume-section">
+    <div class="lab">Education</div>
+    <div>
+      <div class="role"><div class="yrs">Undergrad</div><div class="body"><h3>B.Tech, Computer Science</h3><div class="company">Undergraduate · India</div><ul><li>Shipped the first production Web3 projects in parallel to coursework — seeded the 2021 freelance track.</li></ul></div><div class="stack"><span>CSE</span></div></div>
+    </div>
+  </section>
+
+  <section class="resume-section">
+    <div class="lab">Job search</div>
+    <div>
+      <p style="margin:0;font-size:var(--fs-body);line-height:1.65;color:var(--ink-2);max-width:62ch;">
+        Current CTC <b style="color:var(--ink)">~₹32L</b> · expected <b style="color:var(--ink)">~₹35L</b> · notice period <b style="color:var(--ink)">none</b>, can join immediately. Base Bengaluru; open to <b style="color:var(--ink)">remote, hybrid, or on-site</b> anywhere in India. Open to full-time senior roles (SaaS / platform / Web3) and selective contract / audit engagements. Tavolo contract ended Feb 2026.
+      </p>
+    </div>
+  </section>
+
+  <div class="sync-line"><span class="pip"></span><span>Résumé assembled from role records and git history. <strong>Last updated: 2026-04-21</strong></span></div>
+
+  <footer class="foot">
+    <div class="name">
+      <div><strong>Parv Garg</strong> — Bengaluru / remote</div>
+      <div style="margin-top:6px;color:var(--ink-4);font-family:var(--font-mono);font-size:12px;">parv3213@gmail.com · +91 · UTC+05:30</div>
+    </div>
+    <ul>
+      <li><span class="k">CV</span><a href="javascript:window.print()">print</a></li>
+      <li><span class="k">GH</span><a href="https://github.com/parv3213">github.com/parv3213</a></li>
+      <li><span class="k">LI</span><a href="https://www.linkedin.com/in/parv3213">linkedin.com/in/parv3213</a></li>
+      <li><span class="k">EM</span><a href="mailto:parv3213@gmail.com">parv3213@gmail.com</a></li>
+    </ul>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
