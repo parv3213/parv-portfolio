@@ -32,6 +32,7 @@
 .pane .notch { color: var(--ink-3); font-family: var(--font-mono); font-size: 11px; line-height: 1.6; margin-top: var(--s-3); padding-top: var(--s-3); border-top: 1px solid var(--rule); }
 
 .proto { padding: var(--s-6) 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 140px 1fr; gap: var(--s-7); }
+.proto--flush { border-top: 0; padding: 0; }
 .proto .lab { font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; padding-top: 4px; }
 .proto h3 { margin: 0 0 var(--s-4); font-size: var(--fs-h4); font-weight: 500; letter-spacing: var(--track-tight); }
 .proto ol { margin: 0; padding: 0; list-style: none; counter-reset: step; }
@@ -110,7 +111,7 @@
   </section>
 
   <section class="grid-2">
-    <div class="proto" style="border-top: 0; padding: 0;">
+    <div class="proto proto--flush">
       <div class="lab">§ 04.2 / How to write</div>
       <div>
         <h3>A brief that gets a same-day reply.</h3>
@@ -152,21 +153,6 @@
   </footer>
 </div>
 
-<script>
-(function () {
-  const KEY = "parv-dark";
-  const saved = localStorage.getItem(KEY);
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const dark = saved === "1" || (saved === null && prefersDark);
-  if (dark) document.body.setAttribute("data-dark", "1");
-  document.addEventListener("click", (e) => {
-    const t = e.target.closest(".mode-toggle");
-    if (!t) return;
-    const on = document.body.getAttribute("data-dark") === "1";
-    document.body.setAttribute("data-dark", on ? "0" : "1");
-    localStorage.setItem(KEY, on ? "0" : "1");
-  });
-})();
-</script>
+<script src="app-medium.js"></script>
 </body>
 </html>

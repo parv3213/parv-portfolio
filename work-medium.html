@@ -100,12 +100,12 @@
 
   <div class="filters">
     <span class="lab">Filter</span>
-    <button aria-pressed="true" data-f="all">All · 14</button>
-    <button aria-pressed="false" data-f="contracts">Contracts · 6</button>
-    <button aria-pressed="false" data-f="fullstack">Full-stack · 10</button>
-    <button aria-pressed="false" data-f="ai">AI · 2</button>
-    <button aria-pressed="false" data-f="oss">OSS · 1</button>
-    <button aria-pressed="false" data-f="defi">DeFi · 5</button>
+    <button aria-pressed="true" data-f="all">All</button>
+    <button aria-pressed="false" data-f="contracts">Contracts</button>
+    <button aria-pressed="false" data-f="fullstack">Full-stack</button>
+    <button aria-pressed="false" data-f="ai">AI</button>
+    <button aria-pressed="false" data-f="oss">OSS</button>
+    <button aria-pressed="false" data-f="defi">DeFi</button>
     <span class="spacer"></span>
     <span class="count" id="ct">Showing 14 of 14</span>
   </div>
@@ -267,22 +267,8 @@
   </footer>
 </div>
 
+<script src="app-medium.js"></script>
 <script>
-(function () {
-  const KEY = "parv-dark";
-  const saved = localStorage.getItem(KEY);
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const dark = saved === "1" || (saved === null && prefersDark);
-  if (dark) document.body.setAttribute("data-dark", "1");
-  document.addEventListener("click", (e) => {
-    const t = e.target.closest(".mode-toggle");
-    if (!t) return;
-    const on = document.body.getAttribute("data-dark") === "1";
-    document.body.setAttribute("data-dark", on ? "0" : "1");
-    localStorage.setItem(KEY, on ? "0" : "1");
-  });
-})();
-
 // filters
 (function(){
   const buttons = document.querySelectorAll('.filters button');

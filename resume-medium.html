@@ -280,21 +280,6 @@
   </footer>
 </div>
 
-<script>
-(function () {
-  const KEY = "parv-dark";
-  const saved = localStorage.getItem(KEY);
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const dark = saved === "1" || (saved === null && prefersDark);
-  if (dark) document.body.setAttribute("data-dark", "1");
-  document.addEventListener("click", (e) => {
-    const t = e.target.closest(".mode-toggle");
-    if (!t) return;
-    const on = document.body.getAttribute("data-dark") === "1";
-    document.body.setAttribute("data-dark", on ? "0" : "1");
-    localStorage.setItem(KEY, on ? "0" : "1");
-  });
-})();
-</script>
+<script src="app-medium.js"></script>
 </body>
 </html>
