@@ -4,188 +4,283 @@
 <meta charset="utf-8">
 <title>Résumé — Parv Garg</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' font-family='monospace'%3Ep%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="font" type="font/woff2" href="fonts/geist-latin.woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<style>
+.phead .pdfbtn { font-family: var(--font-mono); font-size: var(--fs-small); padding: 10px 14px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; transition: all var(--dur) var(--ease); letter-spacing: 0.02em; align-self: end; margin-bottom: 6px; }
+.phead .pdfbtn:hover { background: var(--ink); color: var(--bone); }
+
+.summary { padding: var(--s-6) 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 140px 1fr 280px; gap: var(--s-7); }
+.summary .lab { font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; padding-top: 4px; }
+.summary p { margin: 0; font-size: var(--fs-lede); line-height: 1.6; max-width: 62ch; color: var(--ink-2); text-wrap: pretty; }
+.summary .facts { border: 1px solid var(--rule); background: var(--bone-2); padding: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); line-height: 1.7; }
+.summary .facts .k { font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; margin-right: 4px; }
+.summary .facts strong { color: var(--ink); font-weight: 500; }
+.summary .facts div { display: grid; grid-template-columns: 62px 1fr; gap: 6px; padding: 3px 0; border-bottom: 1px dashed var(--rule); }
+.summary .facts div:last-child { border-bottom: 0; }
+
+.rs { padding: var(--s-7) 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 140px 1fr; gap: var(--s-7); }
+.rs .lab { font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; padding-top: 4px; }
+.rs h2 { margin: 0 0 var(--s-5); font-size: var(--fs-h3); font-weight: 500; letter-spacing: var(--track-tight); }
+
+.role { padding: var(--s-5) 0; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 96px 1fr 130px; gap: var(--s-5); align-items: baseline; }
+.role:first-of-type { border-top: 0; padding-top: 0; }
+.role .yrs { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--ink-3); line-height: 1.5; }
+.role .body h3 { margin: 0 0 4px; font-size: var(--fs-h4); font-weight: 500; letter-spacing: var(--track-tight); }
+.role .body .company { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--accent-ink); margin-bottom: var(--s-3); line-height: 1.5; }
+.role .body ul { margin: 0; padding: 0; list-style: none; }
+.role .body li { position: relative; padding-left: 18px; font-size: var(--fs-body); line-height: 1.55; color: var(--ink-2); margin-bottom: 6px; text-wrap: pretty; max-width: 64ch; }
+.role .body li::before { content: "›"; position: absolute; left: 0; color: var(--accent); font-family: var(--font-mono); }
+.role .body li b { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums; }
+.role .stack { font-family: var(--font-mono); font-size: 10px; color: var(--ink-3); line-height: 1.7; text-align: right; letter-spacing: 0.02em; }
+.role .stack span { display: block; }
+
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s-5) var(--s-6); }
+.skills-grid .col h4 { margin: 0 0 var(--s-3); font-family: var(--font-mono); font-size: var(--fs-micro); color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; font-weight: 500; }
+.skills-grid .col ul { margin: 0; padding: 0; list-style: none; }
+.skills-grid .col li { font-size: var(--fs-small); color: var(--ink-2); line-height: 1.7; display: flex; justify-content: space-between; gap: var(--s-3); border-bottom: 1px dashed var(--rule); padding: 3px 0; }
+.skills-grid .col li:last-child { border-bottom: 0; }
+.skills-grid .col li .yrs { font-family: var(--font-mono); color: var(--ink-4); font-size: 11px; }
+
+.misc ul { list-style: none; padding: 0; margin: 0; }
+.misc li { padding: 12px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 100px 1fr auto; gap: var(--s-5); align-items: baseline; }
+.misc li:last-child { border-bottom: 0; }
+.misc li .yr { font-family: var(--font-mono); font-size: var(--fs-small); color: var(--ink-4); }
+.misc li .ttl { font-size: var(--fs-body); color: var(--ink); font-weight: 500; }
+.misc li .sub { font-size: var(--fs-small); color: var(--ink-3); margin-top: 2px; line-height: 1.45; }
+.misc li .kind { font-family: var(--font-mono); font-size: 10px; color: var(--ink-3); letter-spacing: var(--track-wider); text-transform: uppercase; border: 1px solid var(--rule); padding: 3px 7px; }
+
+.js-note { font-size: var(--fs-body); line-height: 1.65; color: var(--ink-2); max-width: 62ch; margin: 0; }
+.js-note b { color: var(--ink); font-weight: 500; }
+
+@media (max-width: 960px) {
+  .summary, .rs { grid-template-columns: 1fr; gap: var(--s-4); }
+  .role { grid-template-columns: 1fr; gap: var(--s-3); }
+  .role .stack { text-align: left; }
+  .role .stack span { display: inline; margin-right: 10px; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .misc li { grid-template-columns: 1fr; gap: 4px; }
+}
+@media print {
+  @page { margin: 16mm 14mm; size: A4; }
+  body { background: #fff; color: #000; font-size: 10.5pt; }
+  .topbar, .sync, .foot, .phead .pdfbtn, .phead .aside, .summary .facts { display: none !important; }
+  .page { max-width: none; padding: 0; }
+  .phead { grid-template-columns: 100px 1fr; padding: 0 0 10pt; border-color: #999; }
+  .phead h1 { font-size: 22pt; }
+  .summary { grid-template-columns: 100px 1fr; gap: 14pt; padding: 10pt 0; }
+  .rs { grid-template-columns: 100px 1fr; gap: 14pt; padding: 10pt 0; }
+  .role { page-break-inside: avoid; grid-template-columns: 80pt 1fr 100pt; padding: 8pt 0; border-color: #ccc; }
+  .role .body h3 { font-size: 13pt; } .role .body .company { color: #000; } .role .body li { font-size: 10pt; }
+  a { color: #000; border: 0 !important; }
+}
+</style>
 </head>
-<body data-hero="sans" data-dark="0">
+<body data-dark="0" data-screen-label="03 Résumé">
 
 <div class="page">
   <header class="topbar">
     <a class="mark" href="index.html"><span class="dot"></span>parv3213.online</a>
-    <nav class="nav">
+    <nav>
       <a href="index.html">Index</a>
       <a href="work.html">Work</a>
       <a href="resume.html" aria-current="page">Résumé</a>
       <a href="contact.html">Contact</a>
-      <button class="mode-toggle" aria-label="Toggle dark mode">Dark</button>
+      <button class="mode-toggle" type="button">Dark</button>
     </nav>
   </header>
 
-  <section class="resume-head">
+  <main>
+  <section class="phead">
     <div class="num">§ 03 / Résumé</div>
-    <div>
-      <h1>Parv Garg — <em>Senior Full-Stack Engineer</em>, SaaS platforms &amp; EVM protocols.</h1>
+    <h1><em>Parv Garg</em> — Senior full-stack engineer. <span class="muted">Five years shipping production SaaS, EVM protocols, and AI-augmented pipelines, end-to-end.</span></h1>
+    <button class="pdfbtn" onclick="window.print()">Print / PDF ↓</button>
+  </section>
+
+  <section class="summary">
+    <div class="lab">§ 03.1 / Summary</div>
+    <p>Five years shipping production SaaS and user-facing platforms — React, Next.js, Node, TypeScript, Go, Postgres — with deep EVM protocol work when the role has called for it: stablecoins, liquidity farms, on-chain fantasy sports, subgraphs, audit-driven hardening. End-to-end ownership from contracts through subgraphs to APIs when the product is protocol-adjacent; B2B SaaS engineering — approvals, RBAC, media pipelines, segmentation — when it isn't. Prefer state-based designs to computational ones, small modules to clever ones, and measurable outcomes to surface polish.</p>
+    <div class="facts">
+      <div><span class="k">Years</span><strong>5 production</strong></div>
+      <div><span class="k">Stack</span>TS · Go · Solidity · PG</div>
+      <div><span class="k">Based</span>Bengaluru, IN</div>
+      <div><span class="k">Remote</span>Remote / hybrid / on-site (India)</div>
+      <div><span class="k">Status</span><strong style="color:var(--accent-ink)">Open — notice none</strong></div>
     </div>
-    <button class="pdfbtn" onclick="window.print()">Print / PDF</button>
   </section>
 
-  <section class="resume-summary">
-    <div class="lab">Summary</div>
-    <p>Five years shipping production SaaS and user-facing platforms (React, Next.js, Node.js, TypeScript, Go, Postgres) with deep EVM protocol work where the role has called for it — stablecoins, liquidity farms, on-chain fantasy sports, subgraphs, and audit-driven hardening. End-to-end ownership from contracts through subgraphs to APIs when the product is protocol-adjacent; B2B SaaS engineering — approvals, RBAC, media pipelines, segmentation — when it isn't. Prefer state-based designs to computational ones, small modules to clever ones, and measurable outcomes to surface polish.</p>
-  </section>
-
-  <section class="resume-section">
-    <div class="lab">Experience</div>
+  <section class="rs">
+    <div class="lab">§ 03.2 / Experience</div>
     <div>
       <!-- role:independent-engineer -->
-      <div class="role">
-        <div class="yrs">2026 — now<br>Bengaluru / remote</div>
+      <article class="role">
+        <div class="yrs">2026 —<br>now</div>
         <div class="body">
           <h3>Independent Engineer — Open Source &amp; Applied AI</h3>
           <div class="company">Independent · Bengaluru / remote</div>
           <ul>
-            <li>Shipped <b>four products in ~10 weeks</b> following the Tavolo contract: Profile Intelligence Pipeline, TinyWins, Bikers Pride, CSV Intelligence Layer.</li>
-            <li><b>Profile Intelligence Pipeline</b> — Git-as-source-of-truth career database; five skill-scoped Claude subagents (profile curator, recruiter-lens, company discovery, job hunter, outreach draft); Playwright crawlers for LinkedIn / Wellfound / web3.career / cryptojobslist; idempotent sync to Sanity. Draft-only boundary for credentialed writes. Powers this site.</li>
-            <li><b>TinyWins</b> (43 commits, Apr 2026) — gamified habit tracker: Next.js App Router, Firebase Auth + Firestore, canvas tree renderer w/ zoom and retina crispness, XP/level system, good-vs-bad behavior towers.</li>
-            <li><b>Bikers Pride</b> (15 commits, Apr 2026) — Next.js 16 + React 19 + Tailwind 4 design studio for a Bhopal cycling brand; fit calculator, product configurator, JSON-backed content pipeline with build-time typed generation.</li>
-            <li><b>CSV Intelligence Layer</b> (open-source, Dec 2025 – Jan 2026) — schema-first CSV ingest: streaming parser, Drizzle migrations, worker/service split, S3-compatible storage, public Vercel playground.</li>
-            <li>Publishing architecture writeups on applied AI in Web3 (agent marketplaces, cryptoeconomic security, inference verification).</li>
+            <li>Shipped <b>four products in ~10 weeks</b> following the Tavolo contract — Profile Intelligence Pipeline, TinyWins, Bikers Pride, CSV Intelligence Layer.</li>
+            <li><b>Profile Intelligence Pipeline</b> — Git-as-source-of-truth career DB; five skill-scoped Claude subagents (curator, recruiter-lens, company discovery, job hunter, outreach draft); Playwright crawlers with persisted auth; idempotent sync to Sanity. Draft-only boundary for credentialed writes. Powers this site.</li>
+            <li><b>TinyWins</b> (43 commits, Apr 2026) — Next.js habit tracker: Firebase Auth + Firestore, canvas tree renderer w/ zoom + retina crispness, XP system, good-vs-bad behavior towers.</li>
+            <li><b>Bikers Pride</b> (15 commits, Apr 2026) — Next.js 16 + React 19 + Tailwind 4 design studio for a Bhopal cycling brand; fit calculator, product configurator, JSON-backed typed content pipeline.</li>
+            <li><b>CSV Intelligence Layer</b> (OSS, Dec 2025 – Jan 2026) — schema-first CSV ingest: streaming parser, Drizzle migrations, worker/service split, S3-compatible storage, Vercel playground.</li>
+            <li>Publishing architecture writeups on applied AI in Web3 — agent marketplaces, cryptoeconomic security, inference verification.</li>
           </ul>
         </div>
         <div class="stack"><span>TypeScript</span><span>Next.js</span><span>Python</span><span>Claude</span><span>Playwright</span><span>Firebase</span></div>
-      </div>
+      </article>
 
       <!-- role:tavolo-fullstack-contract -->
-      <div class="role">
-        <div class="yrs">2025 — 2026<br>Remote · contract</div>
+      <article class="role">
+        <div class="yrs">2025 —<br>2026</div>
         <div class="body">
           <h3>Full-Stack Engineer (Contract)</h3>
-          <div class="company">Tavolo · B2B restaurant marketing SaaS ($1.2M seed, co-led by Kevin O'Leary / O'Leary Ventures)</div>
+          <div class="company">Tavolo · B2B restaurant marketing SaaS · $1.2M seed (Kevin O'Leary / O'Leary Ventures)</div>
           <ul>
-            <li>Owned the <b>Tavolo</b> campaign product across Go, Node, and React — multi-step approvals, RBAC, collaborative editing, async notifications, stricter validation, CI-enforced TypeScript and tests. Platform serves <b>70+ B2B customers</b>; Tavolo publicly cites <b>&lt;1% monthly churn</b>, <b>~3× customer ROI</b>, 50% repeat-order lift.</li>
-            <li>Replaced Google-Drive media path with <b>Azure Blob direct upload</b>: chunked client sessions, concurrency control, fault-tolerant processing, SAS-based download URLs, gallery lifecycle cleanup.</li>
-            <li>Built the SendGrid email spine for video campaigns; batching + throughput passes consolidated the send pipeline onto a single instrumented path. Multi-region + Slack integrations alongside.</li>
-            <li>Shipped AI-assisted customer segmentation (chat UI + CSV bulk import) — <b>cut manual segmentation from hours to minutes</b>.</li>
+            <li>Owned the <b>Tavolo campaign product</b> across Go, Node, React — multi-step approvals, RBAC, collaborative editing, async notifications, stricter validation, CI-enforced TS + tests. Platform serves <b>70+ B2B customers</b>; Tavolo publicly cites <b>&lt;1% monthly churn</b>, <b>~3× customer ROI</b>, 50% repeat-order lift.</li>
+            <li>Replaced the Google-Drive media path with <b>Azure Blob direct upload</b> — chunked sessions, concurrency control, fault-tolerant processing, SAS download URLs, gallery lifecycle cleanup.</li>
+            <li>Built the <b>SendGrid email spine</b> for video campaigns; batching + throughput passes consolidated the send pipeline onto one instrumented path. Multi-region + Slack integrations alongside.</li>
+            <li>Shipped <b>AI-assisted customer segmentation</b> (chat UI + CSV bulk import) — cut manual segmentation from <b>hours to minutes</b>.</li>
           </ul>
         </div>
         <div class="stack"><span>Go</span><span>Node.js</span><span>React</span><span>Azure Blob</span><span>SendGrid</span><span>Postgres</span></div>
-      </div>
+      </article>
 
       <!-- role:sperax-senior-fullstack -->
-      <div class="role">
-        <div class="yrs">2023 — 2025<br>Remote</div>
+      <article class="role">
+        <div class="yrs">2023 —<br>2025</div>
         <div class="body">
           <h3>Senior Full-Stack Engineer (Blockchain · Full-Stack)</h3>
-          <div class="company">SperaxDAO / Sperax · multi-chain DeFi (USDs stablecoin, Demeter farms, Chaquen fantasy sports)</div>
+          <div class="company">SperaxDAO / Sperax · multi-chain DeFi — USDs stablecoin, Demeter farms, Chaquen fantasy sports</div>
           <ul>
-            <li>Architected <b>USDs V2</b>, the state-based over-collateralized stablecoin rebuild — token, VaultCore, RebaseManager/Dripper, OracleRouter, CollateralManager, Uniswap V3 strategies; The Graph subgraphs + TypeScript/Go backends on top.</li>
-            <li>Closed the <b>Quantstamp batch</b> across the whole repo — <b>50+</b> findings (approvals, input validation, event emission, rebase/redeem edge cases) — and delivered <b>18–35%</b> gas reductions on hot paths via storage, caching, and execution tuning. CI grew solhint, gas-diff, and coverage gates.</li>
-            <li>Built <b>Demeter</b> farms-as-a-service (Uniswap V3): BaseFarm multicall, gas optimizations, UniV3 farm upgrades, CI gas reporting. Genesis partners <b>GMX, PlutusDAO, Gains, Vela, Layer2DAO</b>; Demeter 2.0 backed by an <b>ARB LTIPP grant</b> (250.5K ARB + 32M SPA / 10 wks). Third-party DeSyn Safe peaked <b>~$274M TVL</b> on Demeter infra.</li>
-            <li>Delivered <b>Chaquen</b> (on-chain fantasy sports) end-to-end — league / contest contracts on Polygon, pay-to-play flows, prediction ("Chaquen Predict"), real-time leaderboards. TypeScript APIs w/ JWT + Redis + The Graph; ~640 commits across two repos. <b>~27K users</b>.</li>
-            <li>Also shipped <b>OptiFAI</b> (UUPS vault manager, OZ Foundry upgrades, mock Aave strategy, Arbitrum Sepolia pipeline).</li>
-            <li>Sperax ecosystem reached on the order of <b>~$10M</b> TVL at peak; USDs V2 saw <b>$36M+</b> cumulative minted since launch.</li>
+            <li>Architected <b>USDs V2</b>, the state-based over-collateralized stablecoin rebuild — token, VaultCore, RebaseManager/Dripper, OracleRouter, CollateralManager, UniV3 strategies; The Graph subgraphs + TS/Go backends on top.</li>
+            <li>Closed the <b>Quantstamp batch</b> across the whole repo — <b>50+</b> findings (approvals, input validation, event emission, rebase/redeem edges) — and delivered <b>18–35%</b> gas reductions via storage, caching, and execution tuning. CI grew solhint, gas-diff, coverage gates.</li>
+            <li>Built <b>Demeter</b> farms-as-a-service (Uniswap V3): BaseFarm multicall, gas cuts, V3 farm upgrades, CI gas reporting. Genesis partners <b>GMX, PlutusDAO, Gains, Vela, Layer2DAO</b>; Demeter 2.0 backed by an <b>ARB LTIPP grant</b> (250.5K ARB + 32M SPA / 10 wks). Third-party DeSyn Safe peaked <b>~$274M TVL</b> on Demeter infra.</li>
+            <li>Delivered <b>Chaquen</b> end-to-end — league/contest contracts on Polygon, pay-to-play flows, Chaquen Predict, realtime leaderboards. TS APIs w/ JWT + Redis + The Graph; <b>~640 commits</b> across two repos. <b>~27K users</b>.</li>
+            <li>Also shipped <b>OptiFAI</b> — UUPS vault manager, OZ Foundry upgrades, mock Aave strategy, Arbitrum Sepolia pipeline.</li>
+            <li>Sperax ecosystem reached on the order of <b>~$10M TVL</b> at peak; USDs V2 saw <b>$36M+</b> cumulative minted since launch.</li>
           </ul>
         </div>
         <div class="stack"><span>Solidity 0.8</span><span>Foundry</span><span>OpenZeppelin</span><span>The Graph</span><span>Uniswap V3</span><span>Polygon</span></div>
-      </div>
+      </article>
 
       <!-- role:freelance-web3 -->
-      <div class="role">
-        <div class="yrs">2021 — 2023<br>Remote · contract</div>
+      <article class="role">
+        <div class="yrs">2021 —<br>2023</div>
         <div class="body">
           <h3>Freelance Full-Stack / Web3 Developer</h3>
           <div class="company">Independent · Quest Chains · Rigor Finance · PlotX · MeTokens · Bites · Upwork + direct</div>
           <ul>
             <li>Delivered <b>10+ production applications</b> across gamification, construction lending, prediction markets, and creator-economy protocols.</li>
-            <li><b>Quest Chains</b> — gamified quest + NFT reward pipelines (React / Next.js / Node.js / GraphQL indexing / Solidity) for onboarding and retention.</li>
-            <li><b>Rigor Finance</b> — transparent vendor payments and automated on-chain disbursements for construction lending with blockchain settlement.</li>
+            <li><b>Quest Chains</b> — gamified quest + NFT reward pipelines (React / Next.js / Node / GraphQL / Solidity) for onboarding and retention.</li>
+            <li><b>Rigor Finance</b> — transparent vendor payments and automated on-chain disbursements for construction lending.</li>
+            <li><b>PlotX</b> — gasless meta-transactions on Polygon for cross-chain prediction markets; trades from $1. 80K+ users at peak.</li>
             <li>Audits and gas optimization cited at <b>~20–30%</b> on some engagements; concurrent delivery across multiple clients.</li>
           </ul>
         </div>
         <div class="stack"><span>Solidity</span><span>Next.js</span><span>Node.js</span><span>GraphQL</span><span>Hardhat</span></div>
-      </div>
+      </article>
 
       <!-- role:somish-software-dev -->
-      <div class="role">
-        <div class="yrs">2020 — 2021<br>Delhi, India</div>
+      <article class="role">
+        <div class="yrs">2020 —<br>2021</div>
         <div class="body">
           <h3>Software Developer (Full-Stack · Blockchain)</h3>
           <div class="company">Somish Blockchain Labs · blockchain &amp; prediction-market products</div>
           <ul>
-            <li>Built React dashboards and Node.js backends for prediction-market and lending-adjacent production workflows.</li>
+            <li>Built React dashboards and Node backends for prediction-market and lending-adjacent production workflows.</li>
             <li>First full-time role; 1-year tenure covering user-facing dashboards and the supporting service layer.</li>
           </ul>
         </div>
         <div class="stack"><span>React</span><span>Node.js</span><span>Solidity</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="rs">
+    <div class="lab">§ 03.3 / Skills</div>
+    <div class="skills-grid">
+      <div class="col">
+        <h4>Full-stack</h4>
+        <ul>
+          <li><span>TypeScript · JavaScript</span><span class="yrs">5y</span></li>
+          <li><span>React · Next.js · React Query</span><span class="yrs">5y</span></li>
+          <li><span>Node.js · GraphQL · REST</span><span class="yrs">5y</span></li>
+          <li><span>Go</span><span class="yrs">1y</span></li>
+          <li><span>PostgreSQL · Redis · MongoDB</span><span class="yrs">5y</span></li>
+          <li><span>Tailwind CSS</span><span class="yrs">4y</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Smart contracts · Web3</h4>
+        <ul>
+          <li><span>Solidity 0.5 — 0.8</span><span class="yrs">5y</span></li>
+          <li><span>Foundry · Hardhat</span><span class="yrs">4y</span></li>
+          <li><span>OpenZeppelin · UUPS upgrades</span><span class="yrs">5y</span></li>
+          <li><span>The Graph (subgraphs)</span><span class="yrs">3y</span></li>
+          <li><span>Slither · Mythril · solhint</span><span class="yrs">3y</span></li>
+          <li><span>Viem · Ethers · EIP-712 / permit</span><span class="yrs">4y</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Applied AI · Infra</h4>
+        <ul>
+          <li><span>Claude (subagents, skills, Code)</span><span class="yrs">1y</span></li>
+          <li><span>Playwright (auth-persisted crawlers)</span><span class="yrs">2y</span></li>
+          <li><span>Sanity · Firebase · Chart.js</span><span class="yrs">3y</span></li>
+          <li><span>Azure Blob · SendGrid · S3</span><span class="yrs">2y</span></li>
+          <li><span>Docker · CI/CD · AWS ECS · Vercel</span><span class="yrs">4y</span></li>
+          <li><span>Sentry · JWT · RBAC</span><span class="yrs">5y</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section class="resume-section">
-    <div class="lab">Skills</div>
-    <div class="skills-grid">
-      <div class="col"><h4>Full-stack</h4><ul>
-        <li><span>TypeScript · JavaScript</span><span class="yrs">5y</span></li>
-        <li><span>React · Next.js · React Query</span><span class="yrs">5y</span></li>
-        <li><span>Node.js · GraphQL · REST</span><span class="yrs">5y</span></li>
-        <li><span>Go</span><span class="yrs">1y</span></li>
-        <li><span>PostgreSQL · Redis · MongoDB</span><span class="yrs">5y</span></li>
-        <li><span>Tailwind CSS</span><span class="yrs">4y</span></li>
-      </ul></div>
-      <div class="col"><h4>Smart contracts · Web3</h4><ul>
-        <li><span>Solidity 0.5 — 0.8</span><span class="yrs">5y</span></li>
-        <li><span>Foundry · Hardhat</span><span class="yrs">4y</span></li>
-        <li><span>OpenZeppelin · UUPS upgrades</span><span class="yrs">5y</span></li>
-        <li><span>The Graph (subgraphs)</span><span class="yrs">3y</span></li>
-        <li><span>Slither · Mythril · solhint</span><span class="yrs">3y</span></li>
-        <li><span>Viem · Ethers · EIP-712 / permit</span><span class="yrs">4y</span></li>
-      </ul></div>
-      <div class="col"><h4>Applied AI · Infra</h4><ul>
-        <li><span>Claude (subagents, skills, Code)</span><span class="yrs">1y</span></li>
-        <li><span>Playwright (auth-persisted crawlers)</span><span class="yrs">2y</span></li>
-        <li><span>Sanity · Firebase · Chart.js</span><span class="yrs">3y</span></li>
-        <li><span>Azure Blob · SendGrid · S3</span><span class="yrs">2y</span></li>
-        <li><span>Docker · CI/CD · AWS ECS · Vercel</span><span class="yrs">4y</span></li>
-        <li><span>Sentry · JWT · RBAC</span><span class="yrs">5y</span></li>
-      </ul></div>
-    </div>
-  </section>
-
-  <section class="resume-section">
-    <div class="lab">Writing &amp; Patents</div>
+  <section class="rs misc">
+    <div class="lab">§ 03.4 / Writing &amp; IP</div>
     <div>
-      <div class="role"><div class="yrs">2020</div><div class="body"><h3>"Solidity Essentials" — chapter in <i>Bitcoin and Blockchain</i></h3><div class="company">Book chapter · EVM &amp; Solidity primitives</div><ul><li>Co-authored chapter on Solidity fundamentals for an introductory blockchain text.</li></ul></div><div class="stack"><span>Writing</span></div></div>
-      <div class="role"><div class="yrs">2020</div><div class="body"><h3>Indian Patent 202041018639</h3><div class="company">Blockchain-based tracking for counterfeit medical supplies</div><ul><li>On-chain chain-of-custody for medical-supply tracking.</li></ul></div><div class="stack"><span>Patent</span></div></div>
+      <ul>
+        <li><span class="yr">2026 —</span><div><div class="ttl">Applied AI in Web3 — architecture writeups</div><div class="sub">Ongoing LinkedIn series: agent marketplaces, cryptoeconomic security, inference verification.</div></div><span class="kind">Essays</span></li>
+        <li><span class="yr">2020</span><div><div class="ttl">"Solidity Essentials" — chapter in <i>Bitcoin and Blockchain</i></div><div class="sub">Co-authored chapter on Solidity fundamentals for an introductory blockchain text.</div></div><span class="kind">Book</span></li>
+        <li><span class="yr">2020</span><div><div class="ttl">Indian Patent 202041018639</div><div class="sub">Blockchain-based tracking for counterfeit medical supplies — on-chain chain-of-custody.</div></div><span class="kind">Patent</span></li>
+      </ul>
     </div>
   </section>
 
-  <section class="resume-section">
-    <div class="lab">Education</div>
+  <section class="rs">
+    <div class="lab">§ 03.5 / Education</div>
     <div>
-      <div class="role"><div class="yrs">Undergrad</div><div class="body"><h3>B.Tech, Computer Science</h3><div class="company">Undergraduate · India</div><ul><li>Shipped the first production Web3 projects in parallel to coursework — seeded the 2021 freelance track.</li></ul></div><div class="stack"><span>CSE</span></div></div>
+      <article class="role" style="border-top:0;padding-top:0;">
+        <div class="yrs">Undergrad</div>
+        <div class="body">
+          <h3>B.Tech, Computer Science</h3>
+          <div class="company">India</div>
+          <ul><li>Shipped the first production Web3 projects in parallel to coursework — seeded the 2021 freelance track.</li></ul>
+        </div>
+        <div class="stack"><span>CSE</span></div>
+      </article>
     </div>
   </section>
 
-  <section class="resume-section">
-    <div class="lab">Job search</div>
+  <section class="rs">
+    <div class="lab">§ 03.6 / Job search</div>
     <div>
-      <p style="margin:0;font-size:var(--fs-body);line-height:1.65;color:var(--ink-2);max-width:62ch;">
-        Notice period <b style="color:var(--ink)">none</b>, can join immediately. Base Bengaluru; open to <b style="color:var(--ink)">remote, hybrid, or on-site</b> anywhere in India. Open to full-time senior roles (SaaS / platform / Web3) and selective contract / audit engagements. Tavolo contract ended Feb 2026.
-      </p>
+      <p class="js-note">Notice period <b>none</b>, can join immediately. Base Bengaluru; open to <b>remote, hybrid, or on-site</b> anywhere in India. Open to senior full-time roles (SaaS / platform / Web3) and selective contract / audit engagements. Tavolo contract ended Feb 2026.</p>
     </div>
   </section>
 
-  <div class="sync-line"><span class="pip"></span><span>Résumé assembled from role records and git history. <strong>Last updated: 2026-04-21</strong></span></div>
+  <div class="sync">
+    <span class="pip"></span>
+    <span>Résumé assembled from role records and git history. <strong>Last updated: 2026-04-21</strong></span>
+  </div>
+
+  </main>
+
 
   <footer class="foot">
-    <div class="name">
-      <div><strong>Parv Garg</strong> — Bengaluru / remote</div>
-      <div style="margin-top:6px;color:var(--ink-4);font-family:var(--font-mono);font-size:12px;">parv3213@gmail.com · +91 · UTC+05:30</div>
-    </div>
+    <div class="name"><strong>Parv Garg</strong> — Bengaluru / remote · parv3213@gmail.com · UTC+05:30</div>
     <ul>
-      <li><span class="k">CV</span><a href="javascript:window.print()">print</a></li>
       <li><span class="k">GH</span><a href="https://github.com/parv3213">github.com/parv3213</a></li>
       <li><span class="k">LI</span><a href="https://www.linkedin.com/in/parv3213">linkedin.com/in/parv3213</a></li>
       <li><span class="k">EM</span><a href="mailto:parv3213@gmail.com">parv3213@gmail.com</a></li>
@@ -193,6 +288,6 @@
   </footer>
 </div>
 
-<script src="app.js"></script>
+<script src="app.js" defer></script>
 </body>
 </html>

@@ -30,9 +30,9 @@ npm ci --no-audit --no-fund
 
 ### Static checks
 
-- `git diff origin/main -- work.html work-medium.html resume.html resume-medium.html index.html index-medium.html` — skim the diff.
+- `git diff origin/main -- work.html resume.html index.html simple/` — skim the diff.
 - Flag: orphan `<` or unclosed tags, leftover `TODO` / `TBD` / `FIXME`, empty `<div>` where text is expected, broken anchor comments (`<!-- project: -->` with no slug).
-- Confirm both density variants changed together when the change is content (e.g., a new project should appear in both `work.html` and `work-medium.html`).
+- If a new project appears on `work.html`, confirm it also appears on `simple/work.html` (and vice versa).
 - Check the sync-line date (`Profile last updated: YYYY-MM-DD` / `Last updated:`) — should match today's date on any edited page.
 
 ### Playwright
@@ -46,9 +46,9 @@ If it fails, collect the failure summary for the review comment.
 ### Visual smoke (optional but preferred)
 
 Use the Playwright MCP to navigate each edited page at 1280×800 and 390×844 and screenshot:
-- `work.html` / `work-medium.html`
-- `resume.html` / `resume-medium.html`
-- `index.html` / `index-medium.html` (if touched)
+- `work.html` / `simple/work.html`
+- `resume.html`
+- `index.html` / `simple/index.html` (if touched)
 
 Serve locally via `python3 -m http.server 8080` in the background; stop it when done.
 
