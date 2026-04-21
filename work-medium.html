@@ -6,7 +6,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='28' font-family='monospace'%3Ep%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap"></noscript>
 <link rel="stylesheet" href="medium.css">
 <style>
 .filters { display: flex; flex-wrap: wrap; gap: 6px; padding: var(--s-5) 0; border-bottom: 1px solid var(--rule); font-family: var(--font-mono); font-size: var(--fs-small); align-items: baseline; }
@@ -64,10 +67,11 @@
       <a href="work-medium.html" aria-current="page">Work</a>
       <a href="resume-medium.html">Résumé</a>
       <a href="contact-medium.html">Contact</a>
-      <button class="mode-toggle" aria-label="Toggle dark mode">Dark</button>
+      <button class="mode-toggle" type="button">Dark</button>
     </nav>
   </header>
 
+  <main>
   <section class="phead">
     <div class="num">§ 02 / Work</div>
     <h1>A full <em>ledger</em> — <span class="muted">14 projects, five years, sorted newest first.</span></h1>
@@ -117,6 +121,8 @@
 
     <div class="yearband"><span class="yr">2026</span><span>Independent</span><span class="count">04 entries</span></div>
 
+    <!-- project:profile-intelligence-pipeline -->
+
     <a class="row" id="p14" href="index-medium.html#case-03" data-tags="ai fullstack oss">
       <div class="idx">14</div>
       <div class="tl">Profile Intelligence Pipeline<span class="sub">5 Claude subagents, Playwright crawlers, Sanity sync. Draft-only for credentialed writes.</span></div>
@@ -125,6 +131,8 @@
       <div class="ot">183 / 121</div>
       <div class="ar">→</div>
     </a>
+
+    <!-- project:bikers-pride -->
 
     <a class="row" id="p13" href="https://bikers-pride.vercel.app/" target="_blank" rel="noopener noreferrer" data-tags="fullstack">
       <div class="idx">13</div>
@@ -135,6 +143,8 @@
       <div class="ar">→</div>
     </a>
 
+    <!-- project:tinywins-habit-tracker -->
+
     <a class="row" id="p12" href="https://tinywins.parv3213.online/" target="_blank" rel="noopener noreferrer" data-tags="fullstack">
       <div class="idx">12</div>
       <div class="tl">TinyWins — gamified habit tracker<span class="sub">Canvas tree renderer, XP / levels, good-vs-bad behavior towers.</span></div>
@@ -143,6 +153,8 @@
       <div class="ot">43 commits · Apr 2026</div>
       <div class="ar">→</div>
     </a>
+
+    <!-- project:csv-intelligence-layer -->
 
     <a class="row" id="p11" href="https://github.com/parv3213/csv-intelligence-layer" target="_blank" rel="noopener noreferrer" data-tags="oss fullstack">
       <div class="idx">11</div>
@@ -155,6 +167,8 @@
 
     <div class="yearband"><span class="yr">2025 — 2026</span><span>Tavolo contract</span><span class="count">01 entry</span></div>
 
+    <!-- project:boomerang-campaign-platform -->
+
     <a class="row" id="p10" href="index-medium.html#case-02" data-tags="fullstack">
       <div class="idx">10</div>
       <div class="tl">Tavolo — B2B video &amp; email campaigns<span class="sub">Azure Blob direct, SendGrid spine, AI segmentation · hours → minutes.</span></div>
@@ -166,6 +180,8 @@
 
     <div class="yearband"><span class="yr">2023 — 2025</span><span>Sperax</span><span class="count">03 entries</span></div>
 
+    <!-- project:usds-v2-stablecoin -->
+
     <a class="row" id="p09" href="index-medium.html#case-01" data-tags="contracts defi">
       <div class="idx">09</div>
       <div class="tl">USDs V2 — over-collateralized stablecoin<span class="sub">State-based rebuild; closed 50+ findings; 18–35% gas cuts.</span></div>
@@ -175,6 +191,8 @@
       <div class="ar">→</div>
     </a>
 
+    <!-- project:demeter-liquidity-farms -->
+
     <a class="row" id="p08" href="https://github.com/Sperax" target="_blank" rel="noopener noreferrer" data-tags="contracts defi">
       <div class="idx">08</div>
       <div class="tl">Demeter — Uniswap V3 farms-as-a-service<span class="sub">BaseFarm multicall, V3 farm upgrades, ARB LTIPP grant. Genesis: GMX · PlutusDAO · Gains · Vela.</span></div>
@@ -183,6 +201,8 @@
       <div class="ot">~$274M peak TVL</div>
       <div class="ar">→</div>
     </a>
+
+    <!-- project:chaquen-fantasy-sports -->
 
     <a class="row" id="p07" href="https://www.youtube.com/@Chaquendotio" target="_blank" rel="noopener noreferrer" data-tags="contracts fullstack">
       <div class="idx">07</div>
@@ -195,6 +215,8 @@
 
     <div class="yearband"><span class="yr">2021 — 2023</span><span>Freelance Web3</span><span class="count">05 entries</span></div>
 
+    <!-- project:quest-chains -->
+
     <a class="row" id="p06" href="#" data-tags="fullstack contracts">
       <div class="idx">06</div>
       <div class="tl">Quest Chains — gamified quest platform<span class="sub">Quest + NFT reward contracts · onboarding and retention flows.</span></div>
@@ -203,6 +225,8 @@
       <div class="ot">live NFT quests</div>
       <div class="ar">→</div>
     </a>
+
+    <!-- project:rigor-finance -->
 
     <a class="row" id="p05" href="#" data-tags="fullstack contracts">
       <div class="idx">05</div>
@@ -213,6 +237,8 @@
       <div class="ar">→</div>
     </a>
 
+    <!-- project:plotx -->
+
     <a class="row" id="p04" href="#" data-tags="fullstack defi">
       <div class="idx">04</div>
       <div class="tl">PlotX — decentralized prediction markets<span class="sub">Gasless meta-tx on Polygon · trades from $1 · Polygon / Hashed seed.</span></div>
@@ -222,6 +248,8 @@
       <div class="ar">→</div>
     </a>
 
+    <!-- project:metokens -->
+
     <a class="row" id="p03" href="#" data-tags="contracts defi">
       <div class="idx">03</div>
       <div class="tl">MeTokens — personal token protocol<span class="sub">Bonded-curve AMM, ENS-linked creator tokens, Ethereum mainnet.</span></div>
@@ -230,6 +258,8 @@
       <div class="ot">mainnet live</div>
       <div class="ar">→</div>
     </a>
+
+    <!-- project:bites-misc -->
 
     <a class="row" id="p02" href="#" data-tags="fullstack contracts">
       <div class="idx">02</div>
@@ -241,6 +271,8 @@
     </a>
 
     <div class="yearband"><span class="yr">2020 — 2021</span><span>Somish · first FTE</span><span class="count">01 entry</span></div>
+
+    <!-- project:somish -->
 
     <a class="row" id="p01" href="#" data-tags="fullstack">
       <div class="idx">01</div>
@@ -256,6 +288,9 @@
     <span class="pip"></span>
     <span>Ledger auto-built from Git history and role records. <strong>Profile last updated: 2026-04-21</strong></span>
   </div>
+
+  </main>
+
 
   <footer class="foot">
     <div class="name"><strong>Parv Garg</strong> — Bengaluru / remote · parv3213@gmail.com · UTC+05:30</div>

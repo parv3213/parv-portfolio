@@ -18,7 +18,7 @@
 }
 body[data-dark="1"] {
   --bone: #161310; --bone-2: #1E1A16; --bone-3: #2A241E;
-  --ink: #EFE6D7; --ink-2: #CCC2B1; --ink-3: #93897A; --ink-4: #5F584C;
+  --ink: #EFE6D7; --ink-2: #CCC2B1; --ink-3: #A89E8C; --ink-4: #9A8F7D;
   --rule: #2E2721;
   --accent: #E57A55; --accent-ink: #F0A485; --accent-wash: #3A2318;
 }
