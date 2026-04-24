@@ -80,6 +80,11 @@ a { color: inherit; text-decoration: none; }
 .creds .lab { font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; }
 .creds .sep { color: var(--ink-4); }
 .creds strong { color: var(--ink); font-weight: 500; }
+@media (max-width: 720px) {
+  .creds { flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 0; }
+  .creds .sep { display: none; }
+  .creds .lab { margin-bottom: 2px; }
+}
 
 /* Section head */
 .sec-head { display: grid; grid-template-columns: 140px 1fr auto; gap: var(--s-7); align-items: baseline; padding: var(--s-8) 0 var(--s-6); }
