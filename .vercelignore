@@ -1,0 +1,14 @@
+node_modules
+deprecated
+tests
+test-results
+playwright-report
+screenshots
+.playwright-mcp
+*.report.html
+playwright.config.ts
+package.json
+package-lock.json
+.claude
+AGENTS.md
+README.md

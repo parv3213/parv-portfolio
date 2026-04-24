@@ -17,11 +17,11 @@
 .filters .count { color: var(--ink-3); font-size: 12px; }
 
 .ledger { border-bottom: 1px solid var(--rule); }
-.ledger .row { display: grid; grid-template-columns: 50px 1fr 160px 230px 120px 24px; gap: var(--s-5); align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 14px; transition: background 160ms, padding 160ms; }
+.ledger .row { display: grid; grid-template-columns: 50px 1fr 160px 230px 120px 24px; gap: var(--s-5); align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--rule); font-size: 14px; transition: background-color 160ms, box-shadow 160ms; }
 .ledger .row:last-child { border-bottom: 0; }
-.ledger .row:hover { background: var(--bone-2); padding-left: 10px; padding-right: 10px; margin: 0 -10px; }
+.ledger .row:hover { background-color: var(--bone-2); box-shadow: 10px 0 0 var(--bone-2), -10px 0 0 var(--bone-2); }
 .ledger .row.head { font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; background: var(--bone-2); padding: 10px 0; }
-.ledger .row.head:hover { padding: 10px 0; margin: 0; }
+.ledger .row.head:hover { box-shadow: none; }
 .ledger .row .idx { font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); }
 .ledger .row .tl { color: var(--ink); font-weight: 500; letter-spacing: -0.005em; }
 .ledger .row .tl .sub { display: block; color: var(--ink-3); font-weight: 400; font-size: 12px; margin-top: 2px; font-family: var(--font-mono); line-height: 1.5; }
@@ -31,6 +31,9 @@
 .ledger .row .ot { font-family: var(--font-mono); font-size: 12px; color: var(--accent-ink); text-align: right; font-weight: 500; }
 .ledger .row .ar { color: var(--ink-4); font-family: var(--font-mono); font-size: 14px; text-align: right; transition: color 160ms, transform 160ms; }
 .ledger .row:hover .ar { color: var(--accent); transform: translateX(3px); }
+.ledger .row[target="_blank"] .ar { font-size: 0; }
+.ledger .row[target="_blank"] .ar::before { content: "↗"; font-size: 14px; }
+.ledger .row[target="_blank"]:hover .ar { transform: translate(2px, -2px); }
 
 .yearband { padding: 20px 0 10px; font-family: var(--font-mono); font-size: 10px; color: var(--ink-4); letter-spacing: var(--track-wider); text-transform: uppercase; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 120px 1fr auto; gap: var(--s-4); align-items: baseline; }
 .yearband .yr { color: var(--ink); font-size: 13px; letter-spacing: 0; font-family: var(--font-sans); font-weight: 500; text-transform: none; }
@@ -63,6 +66,7 @@
       <a href="work.html" aria-current="page">Work</a>
       <a href="resume.html">Résumé</a>
       <a href="contact.html">Contact</a>
+      <a class="variant-link" href="simple/index.html" data-variant-link="simple">Plain-English version <span class="arr">→</span></a>
       <button class="mode-toggle" type="button">Dark</button>
     </nav>
   </header>
@@ -70,11 +74,11 @@
   <main>
   <section class="phead">
     <div class="num">§ 02 / Work</div>
-    <h1>A full <em>ledger</em> — <span class="muted">14 projects, five years, sorted newest first.</span></h1>
+    <h1>A full <em>ledger</em> — <span class="muted">14+ projects, five years, sorted newest first.</span></h1>
     <aside class="aside">
       <div class="avail"><span class="pip"></span><span>Live ledger · <strong>auto-synced</strong></span></div>
       <hr>
-      <div><span class="k">Total</span><strong>14</strong> shipped projects</div>
+      <div><span class="k">Total</span><strong>14+</strong> shipped projects</div>
       <div><span class="k">Years</span>2020 — 2026</div>
       <div><span class="k">Phases</span>Somish → Freelance → Sperax → Tavolo → Indie</div>
     </aside>
@@ -84,7 +88,7 @@
     <div class="c"><span class="k">TVL under contract</span><span class="v"><span class="acc">~$10M</span></span></div>
     <div class="c"><span class="k">Audit findings · 0 critical</span><span class="v">50<span class="u">+</span></span></div>
     <div class="c"><span class="k">Longest tenure</span><span class="v">~2<span class="u">&nbsp;yrs</span> at Sperax</span></div>
-    <div class="c"><span class="k">Production apps</span><span class="v">14 <span class="u">total</span></span></div>
+    <div class="c"><span class="k">Production apps</span><span class="v">14<span class="u">+ total</span></span></div>
   </section>
 
   <section class="intro">
@@ -294,11 +298,13 @@
       <li><span class="k">GH</span><a href="https://github.com/parv3213">github.com/parv3213</a></li>
       <li><span class="k">LI</span><a href="https://www.linkedin.com/in/parv3213">linkedin.com/in/parv3213</a></li>
       <li><span class="k">CV</span><a href="resume.html">résumé</a></li>
+      <li><span class="k">v</span><a class="variant-foot-link" href="simple/index.html" data-variant-link="simple">plain-English version <span class="arr">→</span></a></li>
     </ul>
   </footer>
 </div>
 
 <script src="app.js" defer></script>
+<script src="variant.js" defer></script>
 <script>
 // filters
 (function(){

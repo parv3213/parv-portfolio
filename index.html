@@ -116,6 +116,7 @@
       <a href="work.html">Work</a>
       <a href="resume.html">Résumé</a>
       <a href="contact.html">Contact</a>
+      <a class="variant-link" href="simple/index.html" data-variant-link="simple">Plain-English version <span class="arr">→</span></a>
       <button class="mode-toggle" type="button">Dark</button>
     </nav>
   </header>
@@ -136,19 +137,21 @@
 
   <!-- Ticker -->
   <section class="ticker">
-    <div class="c"><span class="k">TVL stack · Sperax</span><span class="v"><span class="acc">~$10M</span></span></div>
-    <div class="c"><span class="k">USDs minted · lifetime</span><span class="v">$36<span class="u">M+</span></span></div>
-    <div class="c"><span class="k">B2B customers · Tavolo</span><span class="v">70<span class="u">+</span></span></div>
-    <div class="c"><span class="k">Git repos · pipeline</span><span class="v">183</span></div>
+    <div class="c"><span class="k">Sperax ecosystem · peak TVL</span><span class="v"><span class="acc">~$10M</span></span></div>
+    <div class="c"><span class="k">Sperax USDs · stablecoin minted</span><span class="v">$36<span class="u">M+</span></span></div>
+    <div class="c"><span class="k">Tavolo · B2B customers (O'Leary-backed)</span><span class="v">70<span class="u">+</span></span></div>
+    <div class="c"><span class="k">Repos indexed · my AI pipeline</span><span class="v">183</span></div>
   </section>
 
   <!-- Credentials -->
   <div class="creds">
     <span class="lab">CV</span>
     <span><strong>5 years</strong> shipping SaaS + EVM</span><span class="sep">·</span>
-    <span>ex-<strong>Sperax</strong> / <strong>Tavolo</strong> / <strong>Somish</strong></span><span class="sep">·</span>
-    <span>patent <strong>IN 202041018639</strong></span><span class="sep">·</span>
-    <span>book chapter, <strong>Bitcoin and Blockchain</strong> (2020)</span><span class="sep">·</span>
+    <span>ex-<strong>Sperax</strong> / <strong>Tavolo</strong> · <strong>2 yrs freelance Web3</strong> (10+ clients)</span><span class="sep">·</span>
+    <span><strong>$1.2M seed</strong> at Tavolo (<strong>Kevin O'Leary</strong>)</span><span class="sep">·</span>
+    <span><strong>$274M</strong> peak TVL on Demeter infra</span><span class="sep">·</span>
+    <span><strong>50+</strong> audit findings closed</span><span class="sep">·</span>
+    <span>patent <strong>IN 202041018639</strong> · book chapter, <strong>Bitcoin and Blockchain</strong> (2020)</span><span class="sep">·</span>
     <span>Bengaluru · available <strong>immediately</strong></span>
   </div>
 
@@ -169,7 +172,7 @@
     <div class="body">
       <h3>Architecting USDs V2, then closing the Quantstamp batch.</h3>
       <p>Joined Sperax to rebuild an over-collateralized stablecoin on a state-based clean slate — token, VaultCore, rebase, oracle router, collateral, Uniswap V3 strategies, with The Graph subgraphs and TypeScript/Go backends on top. Same tenure also shipped Demeter (V3 farms-as-a-service — Genesis partners GMX, PlutusDAO, Gains, Vela) and Chaquen (on-chain fantasy sports, ~27K Polygon users).</p>
-      <p>The Quantstamp batch hit the whole repo — approvals, input validation, event emission, rebase/redeem edge cases — alongside 18–35% gas reductions on hot paths. CI grew solhint, gas-diff, and coverage gates, with state-machine diagrams in-repo so reviewers didn't have to read bytecode.</p>
+      <p>The Quantstamp batch hit the whole repo — approvals, input validation, event emission, rebase/redeem edge cases — alongside 18–35% gas reductions on hot paths.</p>
       <div class="tags"><span>Solidity 0.8</span><span>Foundry</span><span>OpenZeppelin</span><span>The Graph</span><span>Slither</span><span>GitHub Actions</span></div>
       <div class="links">
         <span class="lab">→ Live</span>
@@ -207,7 +210,7 @@
     </div>
     <div class="body">
       <h3>A B2B video-and-email platform, shipped end-to-end.</h3>
-      <p>Campaign platform for restaurant marketing — media gallery, video uploads, role-based approvals, async notifications. Built across Go, Node, and React. The core upgrade swapped a Google-Drive-backed media flow for direct-to-Azure-Blob: chunked client sessions, concurrency control, fault-tolerant processing, SAS download URLs, lifecycle cleanup.</p>
+      <p>Restaurant-marketing campaign platform seeded by Kevin O'Leary ($1.2M, O'Leary Ventures) — media gallery, video uploads, role-based approvals, async notifications. Built across Go, Node, and React. The core upgrade swapped a Google-Drive-backed media flow for direct-to-Azure-Blob: chunked client sessions, concurrency control, fault-tolerant processing, SAS download URLs, lifecycle cleanup.</p>
       <p>SendGrid became the email spine for video campaigns; batching and throughput passes consolidated the send pipeline onto one instrumented path. AI-assisted segmentation (chat UI + CSV bulk import) pulled manual work from hours into minutes.</p>
       <div class="tags"><span>Go</span><span>Node</span><span>React</span><span>Azure Blob</span><span>SendGrid</span><span>Postgres</span></div>
       <div class="links">
@@ -246,7 +249,7 @@
     </div>
     <div class="body">
       <h3>An AI pipeline that runs my own career operations.</h3>
-      <p>Most portfolios get written once and quietly rot. Mine is an artifact of a pipeline that treats my engineering career as a living database — Git history is the source of truth, five Claude subagents curate typed records, idempotent syncs fan out to Sanity, which publishes this site.</p>
+      <p>This site is the output of a pipeline that treats my engineering career as a living database — Git history is the source of truth, five Claude subagents curate typed records, idempotent syncs fan out to Sanity, which publishes this site.</p>
       <p>Playwright crawlers pull LinkedIn, Wellfound, web3.career, and cryptojobslist against persisted auth. Credentialed writes stay draft-only — agents queue JSON, I press send. 183 repos ingested, 121 outreach drafts queued, four products shipped in the ~10 weeks since the pipeline has been running.</p>
       <div class="tags"><span>TypeScript</span><span>Python</span><span>Claude</span><span>Playwright</span><span>Sanity</span><span>Git</span></div>
       <div class="links">
@@ -284,7 +287,7 @@
   <!-- Ledger preview -->
   <div class="sec-head" id="ledger">
     <div class="num">§ 02 / <b>Work index</b></div>
-    <h2>The long tail — <em>fourteen</em> more worth recording.</h2>
+    <h2>The long tail — <em>14+</em> more worth recording.</h2>
     <div class="jump"><a href="work.html">Full list <span class="arr">→</span></a></div>
   </div>
 
@@ -315,11 +318,13 @@
       <li><span class="k">GH</span><a href="https://github.com/parv3213">github.com/parv3213</a></li>
       <li><span class="k">LI</span><a href="https://www.linkedin.com/in/parv3213">linkedin.com/in/parv3213</a></li>
       <li><span class="k">CV</span><a href="resume.html">résumé</a></li>
+      <li><span class="k">v</span><a class="variant-foot-link" href="simple/index.html" data-variant-link="simple">plain-English version <span class="arr">→</span></a></li>
     </ul>
   </footer>
 </div>
 
 <script src="app.js" defer></script>
+<script src="variant.js" defer></script>
 
 </body>
 </html>
