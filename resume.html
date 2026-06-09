@@ -101,7 +101,7 @@
 
   <section class="summary">
     <div class="lab">§ 03.1 / Summary</div>
-    <p>Five years shipping production SaaS and user-facing platforms — React, Next.js, Node, TypeScript, Go, Postgres — with deep EVM protocol work when the role calls for it: stablecoins, liquidity farms, on-chain fantasy sports, subgraphs, audit-driven hardening. End-to-end ownership from contracts through subgraphs to APIs on protocol-adjacent products; B2B SaaS engineering — approvals, RBAC, media pipelines, segmentation — on the rest. Prefer state-based designs to computational ones, and measurable outcomes to surface polish.</p>
+    <p>Five years shipping production SaaS and user-facing platforms — React, Next.js, Node, TypeScript, Go, Postgres — with deep EVM protocol work when the role calls for it: stablecoins, liquidity farms, on-chain fantasy sports, subgraphs, audit-driven hardening. End-to-end ownership from contracts through subgraphs to APIs on protocol-adjacent products; B2B SaaS engineering — approvals, RBAC, media pipelines, segmentation — on the rest. I optimize for measurable outcomes over surface polish.</p>
     <div class="facts">
       <div><span class="k">Years</span><strong>5 production</strong></div>
       <div><span class="k">Stack</span>TS · Go · Solidity · PG</div>
@@ -121,15 +121,16 @@
           <h3>Independent Engineer — Open Source &amp; Applied AI</h3>
           <div class="company">Independent · Bengaluru / remote</div>
           <ul>
-            <li>Shipped <b>four products in ~10 weeks</b> following the Tavolo contract — Profile Intelligence Pipeline, TinyWins, Bikers Pride, CSV Intelligence Layer.</li>
+            <li>Shipped <b>five products in ~4 months</b> following the Tavolo contract — Profile Intelligence Pipeline, Meeting Copilot, TinyWins, Bikers Pride, CSV Intelligence Layer.</li>
             <li><b>Profile Intelligence Pipeline</b> — Git-as-source-of-truth career DB; five skill-scoped Claude subagents (curator, recruiter-lens, company discovery, job hunter, outreach draft); Playwright crawlers with persisted auth; draft-only boundary for credentialed writes. The data layer behind this site.</li>
+            <li><b>Meeting Copilot</b> (May 2026 —) — real-time meeting assistant: dual-channel audio capture, speaker-labeled Deepgram transcription, grounded LLM answers over the live transcript. FastAPI + WebSocket backend, Electron overlay w/ global hotkeys, auto-recovery from CoreAudio / Deepgram stream drops.</li>
             <li><b>TinyWins</b> (43 commits, Apr 2026) — Next.js habit tracker: Firebase Auth + Firestore, canvas tree renderer w/ zoom + retina crispness, XP system, good-vs-bad behavior towers.</li>
             <li><b>Bikers Pride</b> (15 commits, Apr 2026) — Next.js 16 + React 19 + Tailwind 4 design studio for a Bhopal cycling brand; fit calculator, product configurator, JSON-backed typed content pipeline.</li>
             <li><b>CSV Intelligence Layer</b> (OSS, Dec 2025 – Jan 2026) — schema-first CSV ingest: streaming parser, Drizzle migrations, worker/service split, S3-compatible storage, Vercel playground.</li>
             <li>Publishing architecture writeups on applied AI in Web3 — agent marketplaces, cryptoeconomic security, inference verification.</li>
           </ul>
         </div>
-        <div class="stack"><span>TypeScript</span><span>Next.js</span><span>Python</span><span>Claude</span><span>Playwright</span><span>Firebase</span></div>
+        <div class="stack"><span>TypeScript</span><span>Next.js</span><span>Python</span><span>FastAPI</span><span>Claude</span><span>Playwright</span><span>Firebase</span></div>
       </article>
 
       <!-- role:tavolo-fullstack-contract -->
@@ -157,10 +158,10 @@
           <ul>
             <li>Architected <b>USDs V2</b>, the state-based over-collateralized stablecoin rebuild — token, VaultCore, RebaseManager/Dripper, OracleRouter, CollateralManager, UniV3 strategies; The Graph subgraphs + TS/Go backends on top.</li>
             <li>Closed the <b>Quantstamp batch</b> across the whole repo — <b>50+</b> findings (approvals, input validation, event emission, rebase/redeem edges) — and delivered <b>18–35%</b> gas reductions via storage, caching, and execution tuning. CI grew solhint, gas-diff, coverage gates.</li>
-            <li>Built <b>Demeter</b> farms-as-a-service (Uniswap V3): BaseFarm multicall, gas cuts, V3 farm upgrades, CI gas reporting. Genesis partners <b>GMX, PlutusDAO, Gains, Vela, Layer2DAO</b>; Demeter 2.0 backed by an <b>ARB LTIPP grant</b> (250.5K ARB + 32M SPA / 10 wks). Third-party DeSyn Safe peaked <b>~$274M TVL</b> on Demeter infra.</li>
-            <li>Delivered <b>Chaquen</b> end-to-end — league/contest contracts on Polygon, pay-to-play flows, Chaquen Predict, realtime leaderboards. TS APIs w/ JWT + Redis + The Graph; <b>~640 commits</b> across two repos. <b>~27K users</b>.</li>
+            <li>Built <b>Demeter</b> farms-as-a-service (Uniswap V3 · Balancer · Camelot): BaseFarm multicall, gas cuts, V3 farm upgrades, CI gas reporting. Genesis partners <b>GMX, PlutusDAO, Gains, Vela, Layer2DAO</b>; Demeter 2.0 backed by an <b>ARB LTIPP grant</b> (250.5K ARB + 32M SPA / 10 wks). Third-party DeSyn Safe peaked <b>~$274M TVL</b> on Demeter infra.</li>
+            <li>Delivered <b>Chaquen</b> end-to-end — league/contest contracts on Polygon (Berachain + Monad testnet deploys), pay-to-play flows, Chaquen Predict, realtime leaderboards. TS APIs w/ JWT + Redis + The Graph; <b>~640 commits</b> across two repos. <b>~27K users</b>.</li>
             <li>Also shipped <b>OptiFAI</b> — UUPS vault manager, OZ Foundry upgrades, mock Aave strategy, Arbitrum Sepolia pipeline.</li>
-            <li>Sperax ecosystem reached on the order of <b>~$10M TVL</b> at peak; USDs V2 saw <b>$36M+</b> cumulative minted since launch.</li>
+            <li>Sperax ecosystem reached on the order of <b>$10M TVL</b> at peak; USDs V2 saw <b>$36M+</b> cumulative minted since launch.</li>
           </ul>
         </div>
         <div class="stack"><span>Solidity 0.8</span><span>Foundry</span><span>OpenZeppelin</span><span>The Graph</span><span>Uniswap V3</span><span>Polygon</span></div>
@@ -177,7 +178,7 @@
             <li><b>Quest Chains</b> — gamified quest + NFT reward pipelines (React / Next.js / Node / GraphQL / Solidity) for onboarding and retention.</li>
             <li><b>Rigor Finance</b> — transparent vendor payments and automated on-chain disbursements for construction lending.</li>
             <li><b>PlotX</b> — gasless meta-transactions on Polygon for cross-chain prediction markets; trades from $1. 80K+ users at peak.</li>
-            <li>Audits and gas optimization cited at <b>~20–30%</b> on some engagements; concurrent delivery across multiple clients. <b>Top Rated Plus</b> on Upwork — <b>100% Job Success Score</b> across <b>60+ engagements</b>.</li>
+            <li>Gas optimizations of <b>~20–30%</b> on several engagements; concurrent delivery across multiple clients. <b>Top Rated Plus</b> on Upwork — <b>100% Job Success Score</b> across <b>60+ engagements</b>.</li>
           </ul>
         </div>
         <div class="stack"><span>Solidity</span><span>Next.js</span><span>Node.js</span><span>GraphQL</span><span>Hardhat</span></div>
@@ -228,6 +229,7 @@
         <h4>Applied AI · Infra</h4>
         <ul>
           <li><span>Claude (subagents, skills, Code)</span><span class="yrs">1y</span></li>
+          <li><span>Python · FastAPI · WebSockets</span><span class="yrs">1y</span></li>
           <li><span>Playwright (auth-persisted crawlers)</span><span class="yrs">2y</span></li>
           <li><span>Sanity · Firebase · Chart.js</span><span class="yrs">3y</span></li>
           <li><span>Azure Blob · SendGrid · S3</span><span class="yrs">2y</span></li>
@@ -253,11 +255,11 @@
     <div class="lab">§ 03.5 / Education</div>
     <div>
       <article class="role" style="border-top:0;padding-top:0;">
-        <div class="yrs">Undergrad</div>
+        <div class="yrs">2017 —<br>2021</div>
         <div class="body">
           <h3>B.Tech, Computer Science</h3>
-          <div class="company">India</div>
-          <ul><li>Shipped first production Web3 projects alongside coursework; this seeded the 2021 freelance track.</li></ul>
+          <div class="company">ICFAI, Hyderabad</div>
+          <ul><li>Shipped first production Web3 projects alongside coursework — including the 2020 patent and book chapter; this seeded the 2021 freelance track.</li></ul>
         </div>
         <div class="stack"><span>CSE</span></div>
       </article>
@@ -273,7 +275,7 @@
 
   <div class="sync">
     <span class="pip"></span>
-    <span>Résumé compiled from role records and git history. <strong>Last updated: 2026-05-14</strong></span>
+    <span>Résumé compiled from role records and git history. <strong>Last updated: 2026-06-09</strong></span>
   </div>
 
   </main>
