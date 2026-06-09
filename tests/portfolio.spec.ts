@@ -221,8 +221,8 @@ test.describe('Work page', () => {
     }
   });
 
-  test('count starts at "Showing 15 of 15"', async ({ page }) => {
-    await expect(page.locator('#ct')).toHaveText('Showing 15 of 15');
+  test('count starts at "Showing 14 of 14"', async ({ page }) => {
+    await expect(page.locator('#ct')).toHaveText('Showing 14 of 14');
   });
 
   test('filter contracts: only matching rows visible', async ({ page }) => {
@@ -247,8 +247,8 @@ test.describe('Work page', () => {
   test('filter contracts: count updates', async ({ page }) => {
     await page.locator('.filters button[data-f="contracts"]').click();
     const ctText = await page.locator('#ct').innerText();
-    expect(ctText).toMatch(/^Showing \d+ of 15$/);
-    expect(ctText).not.toBe('Showing 15 of 15');
+    expect(ctText).toMatch(/^Showing \d+ of 14$/);
+    expect(ctText).not.toBe('Showing 14 of 14');
   });
 
   test('filter ai: yearband with no visible rows is hidden', async ({ page }) => {
@@ -283,7 +283,7 @@ test.describe('Work page', () => {
       const display = await rows.nth(i).evaluate(el => (el as HTMLElement).style.display);
       expect(display).not.toBe('none');
     }
-    await expect(page.locator('#ct')).toHaveText('Showing 15 of 15');
+    await expect(page.locator('#ct')).toHaveText('Showing 14 of 14');
   });
 
   test('external links have rel="noopener noreferrer"', async ({ page }) => {
@@ -296,8 +296,6 @@ test.describe('Work page', () => {
   });
 
   test('fragment links reference correct case IDs', async ({ page }) => {
-    const p15 = page.locator('#p15');
-    await expect(p15).toHaveAttribute('href', '#');
     const p14 = page.locator('#p14');
     await expect(p14).toHaveAttribute('href', 'index.html#case-03');
     const p10 = page.locator('#p10');
@@ -644,8 +642,8 @@ test.describe('Simple variant — work page', () => {
     await page.goto(url('simple/work.html'));
   });
 
-  test('work list count element shows "13"', async ({ page }) => {
-    await expect(page.locator('#wl-count')).toHaveText('13');
+  test('work list count element shows "12"', async ({ page }) => {
+    await expect(page.locator('#wl-count')).toHaveText('12');
   });
 
   test('6 filter chips are present', async ({ page }) => {
@@ -679,7 +677,7 @@ test.describe('Simple variant — work page', () => {
     await aiChip.click();
     await allChip.click();
     await expect(allChip).toHaveClass(/on/);
-    await expect(page.locator('#wl-count')).toHaveText('13');
+    await expect(page.locator('#wl-count')).toHaveText('12');
   });
 });
 
