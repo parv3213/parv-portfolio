@@ -611,3 +611,7 @@ node_modules/playwright-core/lib/vite/traceViewer/assets/xtermModule-CsJ4vdCR.js
 node_modules/playwright-core/types/protocol.d.ts
 node_modules/playwright-core/types/structs.d.ts
 node_modules/playwright-core/types/types.d.ts
+
+# Playwright artifacts
+test-results/
+playwright-report/

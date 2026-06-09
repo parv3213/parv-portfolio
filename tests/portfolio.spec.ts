@@ -5,10 +5,17 @@ const ROOT = `file://${path.resolve(__dirname, '..')}`;
 const url = (page: string) => `${ROOT}/${page}`;
 
 const PAGES = [
-  { file: 'index-medium.html',   label: 'Index',   ariaCurrent: 'Index' },
-  { file: 'work-medium.html',    label: 'Work',    ariaCurrent: 'Work' },
-  { file: 'resume-medium.html',  label: 'Résumé',  ariaCurrent: 'Résumé' },
-  { file: 'contact-medium.html', label: 'Contact', ariaCurrent: 'Contact' },
+  { file: 'index.html',   label: 'Index',   ariaCurrent: 'Index' },
+  { file: 'work.html',    label: 'Work',    ariaCurrent: 'Work' },
+  { file: 'resume.html',  label: 'Résumé',  ariaCurrent: 'Résumé' },
+  { file: 'contact.html', label: 'Contact', ariaCurrent: 'Contact' },
+];
+
+const SIMPLE_PAGES = [
+  { file: 'simple/index.html',   label: 'Index' },
+  { file: 'simple/work.html',    label: 'Work' },
+  { file: 'simple/resume.html',  label: 'Résumé' },
+  { file: 'simple/contact.html', label: 'Contact' },
 ];
 
 // ─── Navigation ──────────────────────────────────────────────────────────────
@@ -18,7 +25,7 @@ test.describe('Navigation', () => {
     test(`${pg.label}: nav links reach correct pages`, async ({ page }) => {
       await page.goto(url(pg.file));
       const navLinks = page.locator('.topbar nav a');
-      await expect(navLinks).toHaveCount(4);
+      await expect(navLinks).toHaveCount(5);
 
       for (const target of PAGES) {
         const link = page.locator(`.topbar nav a[href="${target.file}"]`);
@@ -34,22 +41,22 @@ test.describe('Navigation', () => {
       await expect(current).toHaveText(pg.ariaCurrent);
     });
 
-    test(`${pg.label}: logo links to index-medium.html`, async ({ page }) => {
+    test(`${pg.label}: logo links to index.html`, async ({ page }) => {
       await page.goto(url(pg.file));
-      await expect(page.locator('.topbar .mark')).toHaveAttribute('href', 'index-medium.html');
+      await expect(page.locator('.topbar .mark')).toHaveAttribute('href', 'index.html');
     });
   }
 
   test('clicking nav link navigates to that page', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
-    await page.locator('.topbar nav a[href="work-medium.html"]').click();
-    await expect(page).toHaveURL(/work-medium\.html/);
+    await page.goto(url('index.html'));
+    await page.locator('.topbar nav a[href="work.html"]').click();
+    await expect(page).toHaveURL(/work\.html/);
   });
 
   test('logo click returns to index from work page', async ({ page }) => {
-    await page.goto(url('work-medium.html'));
+    await page.goto(url('work.html'));
     await page.locator('.topbar .mark').click();
-    await expect(page).toHaveURL(/index-medium\.html/);
+    await expect(page).toHaveURL(/index\.html/);
   });
 });
 
@@ -57,24 +64,24 @@ test.describe('Navigation', () => {
 
 test.describe('Dark mode', () => {
   test('initial state is light (data-dark="0")', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     await expect(page.locator('body')).toHaveAttribute('data-dark', '0');
   });
 
   test('toggle button text starts as "Dark"', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     await expect(page.locator('.mode-toggle')).toHaveText('Dark');
   });
 
   test('clicking toggle sets dark mode and changes button text to "Light"', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     await page.locator('.mode-toggle').click();
     await expect(page.locator('body')).toHaveAttribute('data-dark', '1');
     await expect(page.locator('.mode-toggle')).toHaveText('Light');
   });
 
   test('clicking toggle twice returns to light mode', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     await page.locator('.mode-toggle').click();
     await page.locator('.mode-toggle').click();
     await expect(page.locator('body')).toHaveAttribute('data-dark', '0');
@@ -82,7 +89,7 @@ test.describe('Dark mode', () => {
   });
 
   test('dark mode preference persists on reload via localStorage', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     await page.locator('.mode-toggle').click();
     await expect(page.locator('body')).toHaveAttribute('data-dark', '1');
     await page.reload();
@@ -91,9 +98,9 @@ test.describe('Dark mode', () => {
   });
 
   test('dark mode persists across page navigation', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     await page.locator('.mode-toggle').click();
-    await page.goto(url('work-medium.html'));
+    await page.goto(url('work.html'));
     await expect(page.locator('body')).toHaveAttribute('data-dark', '1');
   });
 });
@@ -102,7 +109,7 @@ test.describe('Dark mode', () => {
 
 test.describe('Index page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
   });
 
   test('hero h1 is visible and non-empty', async ({ page }) => {
@@ -165,7 +172,7 @@ test.describe('Index page', () => {
 
 test.describe('Index — hover states', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
   });
 
   test('ledger row background changes on hover', async ({ page, viewport }) => {
@@ -192,7 +199,7 @@ test.describe('Index — hover states', () => {
 
 test.describe('Work page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(url('work-medium.html'));
+    await page.goto(url('work.html'));
   });
 
   test('page header h1 is visible', async ({ page }) => {
@@ -214,8 +221,8 @@ test.describe('Work page', () => {
     }
   });
 
-  test('count starts at "Showing 14 of 14"', async ({ page }) => {
-    await expect(page.locator('#ct')).toHaveText('Showing 14 of 14');
+  test('count starts at "Showing 15 of 15"', async ({ page }) => {
+    await expect(page.locator('#ct')).toHaveText('Showing 15 of 15');
   });
 
   test('filter contracts: only matching rows visible', async ({ page }) => {
@@ -240,8 +247,8 @@ test.describe('Work page', () => {
   test('filter contracts: count updates', async ({ page }) => {
     await page.locator('.filters button[data-f="contracts"]').click();
     const ctText = await page.locator('#ct').innerText();
-    expect(ctText).toMatch(/^Showing \d+ of 14$/);
-    expect(ctText).not.toBe('Showing 14 of 14');
+    expect(ctText).toMatch(/^Showing \d+ of 15$/);
+    expect(ctText).not.toBe('Showing 15 of 15');
   });
 
   test('filter ai: yearband with no visible rows is hidden', async ({ page }) => {
@@ -276,7 +283,7 @@ test.describe('Work page', () => {
       const display = await rows.nth(i).evaluate(el => (el as HTMLElement).style.display);
       expect(display).not.toBe('none');
     }
-    await expect(page.locator('#ct')).toHaveText('Showing 14 of 14');
+    await expect(page.locator('#ct')).toHaveText('Showing 15 of 15');
   });
 
   test('external links have rel="noopener noreferrer"', async ({ page }) => {
@@ -289,12 +296,14 @@ test.describe('Work page', () => {
   });
 
   test('fragment links reference correct case IDs', async ({ page }) => {
+    const p15 = page.locator('#p15');
+    await expect(p15).toHaveAttribute('href', '#');
     const p14 = page.locator('#p14');
-    await expect(p14).toHaveAttribute('href', 'index-medium.html#case-03');
+    await expect(p14).toHaveAttribute('href', 'index.html#case-03');
     const p10 = page.locator('#p10');
-    await expect(p10).toHaveAttribute('href', 'index-medium.html#case-02');
+    await expect(p10).toHaveAttribute('href', 'index.html#case-02');
     const p09 = page.locator('#p09');
-    await expect(p09).toHaveAttribute('href', 'index-medium.html#case-01');
+    await expect(p09).toHaveAttribute('href', 'index.html#case-01');
   });
 
   test('row arrow gets accent color on hover', async ({ page, viewport }) => {
@@ -311,7 +320,7 @@ test.describe('Work page', () => {
 
 test.describe('Resume page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(url('resume-medium.html'));
+    await page.goto(url('resume.html'));
   });
 
   test('page header h1 is visible', async ({ page }) => {
@@ -376,7 +385,7 @@ test.describe('Resume page', () => {
 
 test.describe('Contact page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(url('contact-medium.html'));
+    await page.goto(url('contact.html'));
   });
 
   test('4 channel links are present', async ({ page }) => {
@@ -450,8 +459,8 @@ test.describe('Contact page', () => {
 test.describe('Hover states — shared', () => {
   test('nav link color changes on hover (index)', async ({ page, viewport }) => {
     test.skip(!viewport || viewport.width < 960, 'hover not reliable on narrow viewports');
-    await page.goto(url('index-medium.html'));
-    const link = page.locator('.topbar nav a[href="work-medium.html"]');
+    await page.goto(url('index.html'));
+    const link = page.locator('.topbar nav a[href="work.html"]');
     const colorBefore = await link.evaluate(el => getComputedStyle(el).color);
     await link.hover();
     await page.waitForTimeout(200);
@@ -461,7 +470,7 @@ test.describe('Hover states — shared', () => {
 
   test('footer links get accent border on hover (index)', async ({ page, viewport }) => {
     test.skip(!viewport || viewport.width < 960, 'hover not reliable on narrow viewports');
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     const link = page.locator('.foot ul li a').first();
     await link.hover();
     await page.waitForTimeout(200);
@@ -471,7 +480,7 @@ test.describe('Hover states — shared', () => {
 
   test('sec-head jump link gets accent color on hover', async ({ page, viewport }) => {
     test.skip(!viewport || viewport.width < 960, 'jump link hidden on mobile, hover desktop-only');
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     const jumpLink = page.locator('.sec-head .jump a').first();
     await jumpLink.hover();
     await page.waitForTimeout(350);
@@ -503,7 +512,7 @@ test.describe('Accessibility', () => {
   }
 
   test('Work: all filter buttons have aria-pressed', async ({ page }) => {
-    await page.goto(url('work-medium.html'));
+    await page.goto(url('work.html'));
     const buttons = page.locator('.filters button');
     const count = await buttons.count();
     for (let i = 0; i < count; i++) {
@@ -513,7 +522,7 @@ test.describe('Accessibility', () => {
   });
 
   test('mode-toggle can receive keyboard focus', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     // Tab through focusable elements until mode-toggle is focused
     for (let i = 0; i < 15; i++) {
       await page.keyboard.press('Tab');
@@ -531,7 +540,7 @@ test.describe('Responsive — mobile', () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
   test('topbar stacks vertically', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     const flexDir = await page.locator('.topbar').evaluate(el =>
       getComputedStyle(el).flexDirection
     );
@@ -539,7 +548,7 @@ test.describe('Responsive — mobile', () => {
   });
 
   test('hero collapses to single column', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     const cols = await page.locator('.hero').evaluate(el =>
       getComputedStyle(el).gridTemplateColumns
     );
@@ -548,7 +557,7 @@ test.describe('Responsive — mobile', () => {
   });
 
   test('ledger context column hidden on mobile', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     const coDisplay = await page.locator('.ledger .row .co').first().evaluate(el =>
       getComputedStyle(el).display
     );
@@ -556,7 +565,7 @@ test.describe('Responsive — mobile', () => {
   });
 
   test('work page: context column hidden on mobile', async ({ page }) => {
-    await page.goto(url('work-medium.html'));
+    await page.goto(url('work.html'));
     const coDisplay = await page.locator('.ledger .row .co').first().evaluate(el =>
       getComputedStyle(el).display
     );
@@ -564,7 +573,7 @@ test.describe('Responsive — mobile', () => {
   });
 
   test('contact: channel arrow hidden on mobile', async ({ page }) => {
-    await page.goto(url('contact-medium.html'));
+    await page.goto(url('contact.html'));
     const arrDisplay = await page.locator('.channel .arr').first().evaluate(el =>
       getComputedStyle(el).display
     );
@@ -572,7 +581,7 @@ test.describe('Responsive — mobile', () => {
   });
 
   test('resume: skills grid collapses to 1 column on mobile', async ({ page }) => {
-    await page.goto(url('resume-medium.html'));
+    await page.goto(url('resume.html'));
     const cols = await page.locator('.skills-grid').evaluate(el =>
       getComputedStyle(el).gridTemplateColumns.split(' ').filter(Boolean).length
     );
@@ -580,7 +589,7 @@ test.describe('Responsive — mobile', () => {
   });
 
   test('ticker wraps to 2-column grid on mobile', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     const cols = await page.locator('.ticker').evaluate(el =>
       getComputedStyle(el).gridTemplateColumns.split(' ').filter(Boolean).length
     );
@@ -595,7 +604,7 @@ test.describe('Responsive — tablet (950px, below 960px breakpoint)', () => {
   test.use({ viewport: { width: 950, height: 800 } });
 
   test('work ledger context column hidden below 960px', async ({ page }) => {
-    await page.goto(url('work-medium.html'));
+    await page.goto(url('work.html'));
     const display = await page.locator('.ledger .row .co').first().evaluate(el =>
       getComputedStyle(el).display
     );
@@ -603,7 +612,7 @@ test.describe('Responsive — tablet (950px, below 960px breakpoint)', () => {
   });
 
   test('sec-head jump link hidden below 960px', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     const display = await page.locator('.sec-head .jump').first().evaluate(el =>
       getComputedStyle(el).display
     );
@@ -611,10 +620,91 @@ test.describe('Responsive — tablet (950px, below 960px breakpoint)', () => {
   });
 
   test('ticker collapses to 2 columns below 960px', async ({ page }) => {
-    await page.goto(url('index-medium.html'));
+    await page.goto(url('index.html'));
     const cols = await page.locator('.ticker').evaluate(el =>
       getComputedStyle(el).gridTemplateColumns.split(' ').filter(Boolean).length
     );
     expect(cols).toBe(2);
+  });
+});
+
+// ─── Simple Variant Pages ─────────────────────────────────────────────────────
+
+test.describe('Simple variant — structure', () => {
+  for (const pg of SIMPLE_PAGES) {
+    test(`${pg.label}: loads with single h1`, async ({ page }) => {
+      await page.goto(url(pg.file));
+      await expect(page.locator('h1')).toHaveCount(1);
+    });
+  }
+});
+
+test.describe('Simple variant — work page', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(url('simple/work.html'));
+  });
+
+  test('work list count element shows "13"', async ({ page }) => {
+    await expect(page.locator('#wl-count')).toHaveText('13');
+  });
+
+  test('6 filter chips are present', async ({ page }) => {
+    await expect(page.locator('#wl-chips .chip')).toHaveCount(6);
+  });
+
+  test('default: "all" chip is active', async ({ page }) => {
+    const allChip = page.locator('#wl-chips .chip[data-f="all"]');
+    await expect(allChip).toHaveClass(/on/);
+  });
+
+  test('filter chips update count and filter .wl-item rows', async ({ page }) => {
+    const aiChip = page.locator('#wl-chips .chip[data-f="ai"]');
+    await aiChip.click();
+    await expect(aiChip).toHaveClass(/on/);
+    const count = await page.locator('#wl-count').innerText();
+    expect(count).toMatch(/^\d+$/);
+    const items = page.locator('#wl-list .wl-item');
+    const total = await items.count();
+    let shown = 0;
+    for (let i = 0; i < total; i++) {
+      const display = await items.nth(i).evaluate(el => (el as HTMLElement).style.display);
+      if (display !== 'none') shown++;
+    }
+    expect(shown.toString()).toBe(count);
+  });
+
+  test('all chip restores all items', async ({ page }) => {
+    const aiChip = page.locator('#wl-chips .chip[data-f="ai"]');
+    const allChip = page.locator('#wl-chips .chip[data-f="all"]');
+    await aiChip.click();
+    await allChip.click();
+    await expect(allChip).toHaveClass(/on/);
+    await expect(page.locator('#wl-count')).toHaveText('13');
+  });
+});
+
+test.describe('Simple variant — navigation and dark mode', () => {
+  test('each simple page has "Detailed version" pill link', async ({ page }) => {
+    for (const pg of SIMPLE_PAGES) {
+      await page.goto(url(pg.file));
+      const detailedLink = page.locator('a[data-variant-link="technical"].pill').first();
+      await expect(detailedLink).toBeVisible();
+      await expect(detailedLink).toHaveText(/Detailed version/i);
+    }
+  });
+
+  test('simple pages have mode-toggle button', async ({ page }) => {
+    await page.goto(url('simple/index.html'));
+    const toggle = page.locator('.mode-toggle');
+    await expect(toggle).toBeVisible();
+    await expect(toggle).toHaveAttribute('type', 'button');
+  });
+
+  test('dark mode toggle works on simple pages', async ({ page }) => {
+    await page.goto(url('simple/index.html'));
+    await page.locator('.mode-toggle').click();
+    await expect(page.locator('body')).toHaveAttribute('data-dark', '1');
+    await page.locator('.mode-toggle').click();
+    await expect(page.locator('body')).toHaveAttribute('data-dark', '0');
   });
 });
